@@ -1,68 +1,38 @@
-# Extended Lang Translations Template
+# Laravel Lang: Locales
 
-![laravel-lang translations template](https://preview.dragon-code.pro/laravel-lang/translations-template.svg?brand=laravel&mode=dark)
+![laravel-lang locale locales](https://preview.dragon-code.pro/laravel-lang/locales.svg?brand=laravel&mode=dark)
 
 [![Stable Version][badge_stable]][link_packagist]
 [![Unstable Version][badge_unstable]][link_packagist]
 [![Total Downloads][badge_downloads]][link_packagist]
+[![Github Workflow Status][badge_build]][link_build]
 [![License][badge_license]][link_license]
 
-## Prepare Template
+## Documentation
 
-Template branch compatibility with [`publisher`](https://github.com/Laravel-Lang/publisher):
+See the [documentation](https://laravel-lang.com) for detailed installation and [usage](https://laravel-lang.com/usage/general-principles.html) instructions.
 
-* [`14.x`](https://github.com/Laravel-Lang/translations-template/tree/14.x) - `laravel-lang/publisher:^14.0`
-* [`13.x`](https://github.com/Laravel-Lang/translations-template/tree/13.x) - `laravel-lang/publisher:^13.0`
-* [`12.x`](https://github.com/Laravel-Lang/translations-template/tree/12.x) - `laravel-lang/publisher:^12.0`
-* [`11.x`](https://github.com/Laravel-Lang/translations-template/tree/11.x) - `laravel-lang/publisher:^11.0`
-* [`10.x`](https://github.com/Laravel-Lang/translations-template/tree/10.x) - `laravel-lang/publisher:^10.0`
+## Contributing
 
-### Steps
+Please see [CONTRIBUTING](https://laravel-lang.com/contributing.html) for details.
 
-1. Replace `<your_namespace>` with your GitHub package namespace. For example, `Laravel-Lang/translations-template`.
-2. Replace `your/namespace`with package namespace. For example, `laravel-lang/translations-template`.
-3. Replace `YourNamespace\Translations` with your PSR package namespace.
-4. Replace `Extended Lang Translations Template` with your package title.
-5. Replace `<username>` with your name or name of your company.
-6. Update tests.
-7. Remove this block.
+## License
 
-## Installation
-
-To get the latest version of `Extended Lang Translations Template` library, simply require the project using [Composer](https://getcomposer.org):
-
-```
-$ composer require <your_namespace> --dev
-```
-
-Instead, you may of course manually update your `require-dev` block and run `composer update` if you so choose:
-
-```json
-{
-    "require-dev": {
-        "<your_namespace>": "^1.0"
-    }
-}
-```
-
-## Using
-
-To install files from this repository into your project, you need to install the [laravel-lang/publisher](https://github.com/Laravel-Lang/publisher)
-version `^14.0` and above.
-
-Yes, that's all 😊
-
-Now the package is connected to your application and you can [manage localizations](https://laravel-lang.github.io/publisher/using).
+This package is licensed under the [MIT License][link_license].
 
 
-[badge_stable]:     https://img.shields.io/github/v/release/<your_namespace>?label=stable&style=flat-square
+[badge_build]:          https://img.shields.io/github/actions/workflow/status/laravel-lang/locales/phpunit.yml?style=flat-square
 
-[badge_unstable]:   https://img.shields.io/badge/unstable-dev--main-orange?style=flat-square
+[badge_downloads]:      https://img.shields.io/packagist/dt/laravel-lang/locales.svg?style=flat-square
 
-[badge_downloads]:  https://img.shields.io/packagist/dt/<your_namespace>.svg?style=flat-square
+[badge_license]:        https://img.shields.io/packagist/l/laravel-lang/locales.svg?style=flat-square
 
-[badge_license]:    https://img.shields.io/packagist/l/<your_namespace>.svg?style=flat-square
+[badge_stable]:         https://img.shields.io/github/v/release/laravel-lang/locales?label=stable&style=flat-square
 
-[link_packagist]:   https://packagist.org/packages/<your_namespace>
+[badge_unstable]:       https://img.shields.io/badge/unstable-dev--main-orange?style=flat-square
 
-[link_license]:     LICENSE
+[link_build]:           https://github.com/laravel-lang/locales/actions
+
+[link_license]:         LICENSE
+
+[link_packagist]:       https://packagist.org/packages/laravel-lang/locales
