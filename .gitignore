@@ -1,21 +1,16 @@
 .idea/
-_site/
 build/
 node_modules/
 vendor/
-tmp/
 
-.cache
-.DS_Store
 .env
-.php_cs.cache
-.phpintel
+.cache
 .temp
 
 *.bak
 *.cache
 *.clover
 *.orig
+*.lock
 
-composer.lock
 package-lock.json
