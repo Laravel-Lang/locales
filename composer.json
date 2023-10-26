@@ -1,14 +1,15 @@
 {
-    "name": "your/namespace",
-    "description": "Extended translations for Laravel Projects",
+    "name": "laravel-lang/locales",
+    "description": "Basic functionality for working with localizations",
     "license": "MIT",
     "type": "library",
     "keywords": [
         "laravel",
-        "languages",
-        "lang",
-        "translations",
-        "messages"
+        "locale",
+        "locales",
+        "localization",
+        "translation",
+        "translations"
     ],
     "authors": [
         {
@@ -20,31 +21,44 @@
             "homepage": "https://github.com/Laravel-Lang"
         }
     ],
+    "support": {
+        "issues": "https://github.com/Laravel-Lang/locales/issues",
+        "source": "https://github.com/Laravel-Lang/locales"
+    },
     "require": {
         "php": "^8.1",
         "ext-json": "*",
-        "laravel-lang/publisher": "^14.6"
+        "archtechx/enums": "^0.3"
     },
     "require-dev": {
-        "laravel-lang/status-generator": "^1.19",
-        "phpunit/phpunit": "^10.0",
-        "symfony/var-dumper": "^6.2"
+        "orchestra/testbench": "^6.25 || ^7.22 || ^8.0 || ^9.0",
+        "phpunit/phpunit": "^9.6 || ^10.0",
+        "symfony/var-dumper": "^5.0 || ^6.0"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "YourNamespace\\Translations\\": "src"
-        }
+            "LaravelLang\\Locales\\": "src"
+        },
+        "files": [
+            "helper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests"
-        }
+        },
+        "files": [
+            "tests/Fixtures/collision_functions.php"
+        ]
     },
     "config": {
         "allow-plugins": {
-            "php-http/discovery": true
+            "dragon-code/codestyler": true,
+            "ergebnis/composer-normalize": true,
+            "friendsofphp/php-cs-fixer": true,
+            "symfony/thanks": true
         },
         "preferred-install": "dist",
         "sort-packages": true
@@ -52,7 +66,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "YourNamespace\\Translations\\ServiceProvider"
+                "LaravelLang\\Locales\\ServiceProvider"
             ]
         }
     }
