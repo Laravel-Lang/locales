@@ -24,3 +24,24 @@ function setAlias(Locales $locale, string $alias): void
 {
     config()->set(Config::PublicKey->value . '.aliases.' . $locale->value, $alias);
 }
+
+function setLocales(Locales|string|null $main = null, Locales|string|null $fallback = null): void
+{
+    if ($main) {
+        setMainLocale($main);
+    }
+
+    if ($fallback) {
+        setFallbackLocale($fallback);
+    }
+}
+
+function setMainLocale(Locales|string $locale): void
+{
+    config()->set('app.locale', $locale->value ?? $locale);
+}
+
+function setFallbackLocale(Locales|string $locale): void
+{
+    config()->set('app.fallback_locale', $locale->value ?? $locale);
+}

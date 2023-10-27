@@ -20,14 +20,17 @@ declare(strict_types=1);
 use LaravelLang\Locales\Enums\Locales;
 
 it('checks the use of aliases', function () {
-    createLocales(Locales::GERMAN, Locales::GERMAN_SWITZERLAND);
+    createLocales(Locales::German, Locales::GermanSwitzerland, Locales::SerbianCyrillic);
+    setLocales(fallback: Locales::French);
 
-    setAlias(Locales::GERMAN, 'de-DE');
-    setAlias(Locales::GERMAN_SWITZERLAND, 'de-CH');
+    setAlias(Locales::German, 'de-DE');
+    setAlias(Locales::GermanSwitzerland, 'de-CH');
 
     expect(Locales::installed())->toBe([
         'de-CH',
         'de-DE',
         'en',
+        'fr',
+        'sr_Cyrl',
     ]);
 });
