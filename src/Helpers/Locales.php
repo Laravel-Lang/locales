@@ -101,7 +101,7 @@ class Locales
     {
         $locale = config('app.locale');
 
-        return $this->isAvailable($locale) ? $locale : LocaleCodes::ENGLISH->value;
+        return $this->isAvailable($locale) ? $locale : LocaleCodes::English->value;
     }
 
     public function getFallback(): string
