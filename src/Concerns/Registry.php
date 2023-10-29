@@ -25,7 +25,7 @@ trait Registry
 {
     protected array $registry = [];
 
-    protected function registry(Locale|array|string|null $key, Closure $callback): mixed
+    protected function registry(array|Locale|string|null $key, Closure $callback): mixed
     {
         $key = $this->registryKey($key);
 
@@ -36,7 +36,7 @@ trait Registry
         return $this->registry[$key] = $callback();
     }
 
-    protected function registryKey(Locale|array|string|null $key): string
+    protected function registryKey(array|Locale|string|null $key): string
     {
         return Arr::of(Arr::wrap($key))
             ->map(static fn (mixed $item) => $item instanceof Locale ? $item->value : (string) $key)

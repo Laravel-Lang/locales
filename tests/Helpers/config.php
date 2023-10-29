@@ -23,7 +23,7 @@ function setAlias(Locale $locale, string $alias): void
     config()->set(Config::PublicKey->value . '.aliases.' . $locale->value, $alias);
 }
 
-function setLocales(Locale|string|null|bool $main = false, Locale|string|null|bool $fallback = false): void
+function setLocales(bool|Locale|string|null $main = false, bool|Locale|string|null $fallback = false): void
 {
     if (! is_bool($main)) {
         setMainLocale($main);
