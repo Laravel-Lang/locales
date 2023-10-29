@@ -42,10 +42,7 @@
     "autoload": {
         "psr-4": {
             "LaravelLang\\Locales\\": "src/"
-        },
-        "files": [
-            "helpers/lang.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
