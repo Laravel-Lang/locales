@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Concerns;
 
 use Closure;
-use DragonCode\Support\Facades\Helpers\Arr;
 use LaravelLang\Locales\Enums\Locale;
 
 trait Registry
@@ -38,8 +37,8 @@ trait Registry
 
     protected function registryKey(array|Locale|string|null $key): string
     {
-        return Arr::of(Arr::wrap($key))
-            ->map(static fn (mixed $item) => $item instanceof Locale ? $item->value : (string) $key)
-            ->implode(':')->toString();
+        return collect($key)
+            ->map(static fn (mixed $item) => $item instanceof Locale ? $item->value : (string) $item)
+            ->implode(':');
     }
 }

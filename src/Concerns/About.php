@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Concerns;
 
 use Composer\InstalledVersions;
-use DragonCode\Support\Facades\Helpers\Arr;
 use Illuminate\Foundation\Console\AboutCommand;
 use LaravelLang\Locales\Facades\Locales;
 
@@ -54,6 +53,6 @@ trait About
 
     protected function implode(array $values): string
     {
-        return Arr::of($values)->sort()->implode(', ')->toString();
+        return collect($values)->sort()->implode(', ');
     }
 }

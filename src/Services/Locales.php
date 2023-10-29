@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Services;
 
 use DragonCode\Support\Facades\Filesystem\Path;
-use DragonCode\Support\Facades\Helpers\Arr;
 use LaravelLang\Locales\Concerns\Aliases;
 use LaravelLang\Locales\Concerns\Pathable;
 use LaravelLang\Locales\Concerns\Registry;
@@ -32,27 +31,35 @@ class Locales
 
     public function available(): array
     {
-        return $this->registry(__METHOD__, fn () => Locale::collection()->sort()->values()->toArray());
+        return $this->registry(__METHOD__, fn () => Locale::collection()
+            ->map(fn (Locale $locale) => $this->toAlias($locale))
+            ->filter()
+            ->sort()
+            ->values()
+            ->all()
+        );
     }
 
     public function installed(): array
     {
         return $this->registry(__METHOD__, function () {
-            if ($this->doesntExistLangDirectory()) {
+            if ($this->directoryDoesntExist()) {
                 return $this->protects();
             }
 
-            return Arr::of()
-                ->push($this->directoryNames())
-                ->push($this->fileNames())
-                ->push($this->protects())
+            return collect()
+                ->push(
+                    $this->directories(),
+                    $this->jsons(),
+                    $this->protects()
+                )
                 ->flatten()
-                ->map(static fn (string $name) => Path::filename($name))
+                ->map(fn (string $name) => $this->toAlias(Path::filename($name)))
                 ->filter(fn (string $locale) => $this->isAvailable($locale))
                 ->unique()
                 ->sort()
                 ->values()
-                ->toArray();
+                ->all();
         });
     }
 
@@ -63,20 +70,18 @@ class Locales
 
     public function protects(): array
     {
-        return $this->registry(__METHOD__, fn () => Arr::of([
+        return $this->registry(__METHOD__, fn () => collect([
             $this->getDefault(),
             $this->getFallback(),
-        ])->filter()->unique()->sort()->values()->toArray());
+        ])->filter()->unique()->sort()->values()->all());
     }
 
     public function isAvailable(Locale|string|null $locale): bool
     {
-        return $this->registry([__METHOD__, $locale], function () use ($locale) {
-            $locales = $this->available();
+        $locales = $this->available();
 
-            return $this->inArray($locale, $locales)
-                || $this->inArray($this->fromAlias($locale), $locales);
-        });
+        return $this->inArray($this->toAlias($locale), $locales)
+            || $this->inArray($this->fromAlias($locale), $locales);
     }
 
     public function isInstalled(Locale|string|null $locale): bool
@@ -84,8 +89,7 @@ class Locales
         return $this->registry([__METHOD__, $locale], function () use ($locale) {
             $locales = $this->installed();
 
-            return $this->inArray($locale, $locales)
-                || $this->inArray($this->fromAlias($locale), $locales)
+            return $this->inArray($this->fromAlias($locale), $locales)
                 || $this->inArray($this->toAlias($locale), $locales);
         });
     }
@@ -100,18 +104,16 @@ class Locales
         return $this->registry(__METHOD__, function () {
             $locale = config('app.locale');
 
-            return $this->isAvailable($locale) ? $locale : Locale::English->value;
+            return $this->isAvailable($locale) ? $locale : $this->getFallback();
         });
     }
 
     public function getFallback(): string
     {
         return $this->registry(__METHOD__, function () {
-            if ($locale = config('app.fallback_locale')) {
-                return $this->isAvailable($locale) ? $locale : $this->getDefault();
-            }
+            $locale = config('app.fallback_locale');
 
-            return $this->getDefault();
+            return $this->isAvailable($locale) ? $locale : Locale::English->value;
         });
     }
 
@@ -119,7 +121,7 @@ class Locales
     {
         $locale = $this->toString($locale);
 
-        return ! empty($locale) && in_array($locale, $haystack);
+        return ! empty($locale) && in_array($locale, $haystack, true);
     }
 
     protected function toString(Locale|string|null $locale): ?string

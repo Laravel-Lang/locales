@@ -22,22 +22,22 @@ use DragonCode\Support\Facades\Filesystem\File;
 
 trait Pathable
 {
-    protected function existsLangDirectory(): bool
+    protected function directoryExists(): bool
     {
         return Directory::exists(lang_path());
     }
 
-    protected function doesntExistLangDirectory(): bool
+    protected function directoryDoesntExist(): bool
     {
-        return ! $this->existsLangDirectory();
+        return ! $this->directoryExists();
     }
 
-    protected function directoryNames(): array
+    protected function directories(): array
     {
         return Directory::names(lang_path());
     }
 
-    protected function fileNames(): array
+    protected function jsons(): array
     {
         return File::names(lang_path(), recursive: true);
     }

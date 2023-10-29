@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
-use DragonCode\Support\Facades\Helpers\Arr;
 use LaravelLang\Locales\Enums\Config;
 use LaravelLang\Locales\Enums\Locale as LocaleCode;
 
@@ -26,7 +25,7 @@ trait Aliases
     protected function fromAlias(LocaleCode|string|null $locale): ?string
     {
         if ($locale = $locale?->value ?? $locale) {
-            return Arr::of($this->aliases())->flip()->get($locale, $locale);
+            return collect($this->aliases())->flip()->get($locale, $locale);
         }
 
         return null;
@@ -35,7 +34,7 @@ trait Aliases
     protected function toAlias(LocaleCode|string|null $locale): ?string
     {
         if ($locale = $locale?->value ?? $locale) {
-            return Arr::of($this->aliases())->get($locale, $locale);
+            return collect($this->aliases())->get($locale, $locale);
         }
 
         return null;
