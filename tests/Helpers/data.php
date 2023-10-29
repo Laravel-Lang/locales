@@ -19,5 +19,5 @@ use LaravelLang\Locales\Data\Locale as LocaleData;
 
 function simpleData(array $locales): array
 {
-    return array_map(static fn (LocaleData $locale) => $locale->code, $locales);
+    return array_map(static fn (LocaleData $locale) => $locale->codeAlias, $locales);
 }

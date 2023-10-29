@@ -22,26 +22,35 @@ use LaravelLang\Locales\Enums\Locale as LocaleCode;
 
 trait Aliases
 {
-    protected function fromAlias(LocaleCode|string|null $locale): ?string
+    protected function fromAlias(LocaleCode|string|null $locale, LocaleCode|string|null $default = null): ?string
     {
         if ($locale = $locale?->value ?? $locale) {
             return collect($this->aliases())->flip()->get($locale, $locale);
         }
 
-        return null;
+        return $this->stringify($locale);
     }
 
-    protected function toAlias(LocaleCode|string|null $locale): ?string
+    protected function toAlias(LocaleCode|string|null $locale, LocaleCode|string|null $default = null): ?string
     {
         if ($locale = $locale?->value ?? $locale) {
             return collect($this->aliases())->get($locale, $locale);
         }
 
-        return null;
+        return $this->stringify($locale);
     }
 
     protected function aliases(): array
     {
         return config(Config::PublicKey->value . '.aliases', []);
+    }
+
+    protected function stringify(LocaleCode|string|null $locale): ?string
+    {
+        if (! is_null($locale)) {
+            return $locale->value ?? $locale;
+        }
+
+        return null;
     }
 }

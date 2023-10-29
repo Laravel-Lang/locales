@@ -31,6 +31,11 @@ class Locales
         protected RawLocales $raw
     ) {}
 
+    public function raw(): RawLocales
+    {
+        return $this->raw;
+    }
+
     public function available(): array
     {
         return $this->registry(__METHOD__, fn () => $this->mapLocales($this->raw->available()));

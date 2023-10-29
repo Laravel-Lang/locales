@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Facade;
 use LaravelLang\Locales\Data\Locale as LocaleData;
 use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Services\Locales as Service;
+use LaravelLang\Locales\Services\RawLocales;
 
 /**
  * @method static array<LocaleData> available()
@@ -32,6 +33,7 @@ use LaravelLang\Locales\Services\Locales as Service;
  * @method static bool isProtected(string|Locale|null $locale)
  * @method static LocaleData getDefault()
  * @method static LocaleData getFallback()
+ * @method static RawLocales raw()
  */
 class Locales extends Facade
 {
