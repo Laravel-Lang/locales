@@ -20,7 +20,7 @@ namespace LaravelLang\Locales\Concerns;
 use Composer\InstalledVersions;
 use DragonCode\Support\Facades\Helpers\Arr;
 use Illuminate\Foundation\Console\AboutCommand;
-use LaravelLang\Locales\Facades\Helpers\Locales;
+use LaravelLang\Locales\Facades\Locales;
 use LaravelLang\Locales\Helpers\Config;
 
 trait About
@@ -32,10 +32,10 @@ trait About
         }
 
         $this->pushInformation(fn () => [
-            'Installed'         => $this->implodeLocales(Locales::installed()),
-            'Protected Locales' => $this->implodeLocales(Locales::protects()),
+            'Installed' => $this->implodeLocales(Locales::installed()),
+            'Protected' => $this->implodeLocales(Locales::protects()),
 
-            'Locales Version' => $this->getPackageVersion('laravel-lang/Locales'),
+            'Locales Version' => $this->getPackageVersion('laravel-lang/locales'),
         ]);
 
         $this->pushInformation(fn () => $this->getPackages());
@@ -43,7 +43,7 @@ trait About
 
     protected function pushInformation(callable $data): void
     {
-        AboutCommand::add('Localization', $data);
+        AboutCommand::add('Locales', $data);
     }
 
     protected function getPackages(): array
