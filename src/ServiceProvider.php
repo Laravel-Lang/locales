@@ -46,5 +46,6 @@ class ServiceProvider extends BaseServiceProvider
     protected function registerConfig(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/public.php', Config::PublicKey->value);
+        $this->mergeConfigFrom(__DIR__ . '/../config/private.php', Config::PrivateKey->value);
     }
 }

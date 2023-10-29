@@ -21,14 +21,14 @@ use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
 it('returns English locale as the only one installed', function () {
-    expect(Locales::installed())
+    expect(simpleData(Locales::installed()))
         ->toBe([Locale::English->value]);
 });
 
 it('returns English and German locales as the only ones installed', function () {
     setLocales(Locale::German);
 
-    expect(Locales::installed())
+    expect(simpleData(Locales::installed()))
         ->toBe([
             Locale::German->value,
             Locale::English->value,
@@ -42,14 +42,14 @@ it('returns English and German locales as the only ones installed', function () 
 it('returns English locale if both are specified incorrectly', function () {
     setLocales('foo', 'foo');
 
-    expect(Locales::installed())
+    expect(simpleData(Locales::installed()))
         ->toBe([Locale::English->value]);
 });
 
 it('returns German and French locales as the only ones installed', function () {
     setLocales(Locale::German, Locale::French);
 
-    expect(Locales::installed())
+    expect(simpleData(Locales::installed()))
         ->toBe([
             Locale::German->value,
             Locale::French->value,
@@ -61,7 +61,7 @@ it('returns a list of installed locales', function () {
 
     setLocales(fallback: Locale::German);
 
-    expect(Locales::installed())
+    expect(simpleData(Locales::installed()))
         ->toBe([
             Locale::German->value,
             Locale::English->value,
@@ -74,7 +74,7 @@ it('returns a list of installed locales', function () {
 it('check localization detection by vendor file availability', function () {
     File::store(lang_path('vendor/custom/de.json'), '{}');
 
-    expect(Locales::installed())
+    expect(simpleData(Locales::installed()))
         ->toBe([
             Locale::German->value,
             Locale::English->value,
@@ -84,7 +84,7 @@ it('check localization detection by vendor file availability', function () {
 it('check localization detection by vendor directory availability', function () {
     Directory::ensureDirectory(lang_path('vendor/custom/de'));
 
-    expect(Locales::installed())
+    expect(simpleData(Locales::installed()))
         ->toBe([
             Locale::German->value,
             Locale::English->value,
@@ -98,7 +98,7 @@ it('checks installed localizations without declaring aliases', function () {
     Directory::ensureDirectory(lang_path('vendor/custom/de_CH'));
     Directory::ensureDirectory(lang_path('vendor/custom/de-CH'));
 
-    expect(Locales::installed())->toBe([
+    expect(simpleData(Locales::installed()))->toBe([
         'de',
         'de_CH',
         'en',

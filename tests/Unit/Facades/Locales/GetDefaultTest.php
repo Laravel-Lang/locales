@@ -19,35 +19,35 @@ use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
 it('returns English locale', function () {
-    expect(Locales::getDefault())
+    expect(Locales::getDefault()->code)
         ->toBe(Locale::English->value);
 });
 
 it('returns German locale', function () {
     setLocales(main: Locale::German);
 
-    expect(Locales::getDefault())
+    expect(Locales::getDefault()->code)
         ->toBe(Locale::German->value);
 });
 
 it('returns English locale if the main one is specified incorrectly', function () {
     setLocales(main: 'foo');
 
-    expect(Locales::getDefault())
+    expect(Locales::getDefault()->code)
         ->toBe(Locale::English->value);
 });
 
 it('returns a backup locale if the main one is null', function () {
     setLocales(null, Locale::German);
 
-    expect(Locales::getDefault())
+    expect(Locales::getDefault()->code)
         ->toBe(Locale::German->value);
 });
 
 it('returns English locale if primary and fallback are incorrect', function () {
     setLocales('foo', 'foo');
 
-    expect(Locales::getDefault())
+    expect(Locales::getDefault()->code)
         ->toBe(Locale::English->value);
 });
 
@@ -56,7 +56,7 @@ it('will return the locale by alias', function (Locale $locale, string $alias) {
 
     setAlias($locale, $alias);
 
-    expect(Locales::getDefault())
+    expect(Locales::getDefault()->code)
         ->toBe($alias)
         ->not->toBe($locale->value);
 })->with('aliased-locales');
@@ -64,6 +64,6 @@ it('will return the locale by alias', function (Locale $locale, string $alias) {
 it('will return the English locale if both are set to null', function () {
     setLocales(null, null);
 
-    expect(Locales::getDefault())
+    expect(Locales::getDefault()->code)
         ->toBe(Locale::English->value);
 });
