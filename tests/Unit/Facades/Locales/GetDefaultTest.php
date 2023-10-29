@@ -37,6 +37,13 @@ it('returns English locale if the main one is specified incorrectly', function (
         ->toBe(Locale::English->value);
 });
 
+it('returns a backup locale if the main one is null', function () {
+    setLocales(null, Locale::German);
+
+    expect(Locales::getDefault())
+        ->toBe(Locale::German->value);
+});
+
 it('returns English locale if primary and fallback are incorrect', function () {
     setLocales('foo', 'foo');
 
@@ -54,18 +61,9 @@ it('will return the locale by alias', function (Locale $locale, string $alias) {
         ->not->toBe($locale->value);
 })->with('aliased-locales');
 
-it('will return a backup locale if the main one is null', function () {
-    setLocales(null, Locale::German);
-
-    expect(Locales::getDefault())
-        ->toBe(Locale::German->value)
-        ->not->toBeNull();
-});
-
 it('will return the English locale if both are set to null', function () {
     setLocales(null, null);
 
     expect(Locales::getDefault())
-        ->toBe(Locale::English->value)
-        ->not->toBeNull();
+        ->toBe(Locale::English->value);
 });

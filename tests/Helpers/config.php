@@ -34,12 +34,12 @@ function setLocales(bool|Locale|string|null $main = false, bool|Locale|string|nu
     }
 }
 
-function setMainLocale(Locale|string $locale): void
+function setMainLocale(Locale|string|null $locale): void
 {
     config()->set('app.locale', $locale->value ?? $locale);
 }
 
-function setFallbackLocale(Locale|string $locale): void
+function setFallbackLocale(Locale|string|null $locale): void
 {
     config()->set('app.fallback_locale', $locale->value ?? $locale);
 }

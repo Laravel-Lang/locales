@@ -96,7 +96,12 @@ class Locales
 
     public function isProtected(Locale|string|null $locale): bool
     {
-        return $this->registry([__METHOD__, $locale], fn () => $this->inArray($locale, $this->protects()));
+        return $this->registry([__METHOD__, $locale], function () use ($locale) {
+            $locales = $this->protects();
+
+            return $this->inArray($this->fromAlias($locale), $locales)
+                || $this->inArray($this->toAlias($locale), $locales);
+        });
     }
 
     public function getDefault(): string
@@ -104,7 +109,9 @@ class Locales
         return $this->registry(__METHOD__, function () {
             $locale = config('app.locale');
 
-            return $this->isAvailable($locale) ? $locale : $this->getFallback();
+            return $this->toAlias(
+                $this->isAvailable($locale) ? $locale : $this->getFallback()
+            );
         });
     }
 
@@ -113,7 +120,15 @@ class Locales
         return $this->registry(__METHOD__, function () {
             $locale = config('app.fallback_locale');
 
-            return $this->isAvailable($locale) ? $locale : Locale::English->value;
+            if ($this->isAvailable($locale)) {
+                return $this->toAlias($locale);
+            }
+
+            $fallback = config('app.locale');
+
+            return $this->toAlias(
+                $this->isAvailable($fallback) ? $fallback : Locale::English->value
+            );
         });
     }
 

@@ -18,7 +18,7 @@ declare(strict_types=1);
 use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
-it('checks availability of all locales', function (Locale $locale) {
+it('checks availability of all locales', function (string $locale) {
     expect(Locales::isAvailable($locale))->toBeBool()->toBeTrue();
 })->with('locales');
 

@@ -21,8 +21,11 @@ use LaravelLang\Locales\Facades\Locales;
 it('checks the list of available locales', function () {
     expect(Locales::available())
         ->toBeArray()
-        ->toBeIn([Locale::English->value])
-        ->not->toBeIn(['foo', 'bar']);
+        ->toContain(
+            Locale::English->value,
+            Locale::German->value
+        )
+        ->not->toContain('foo', 'bar');
 });
 
 it('checks the list of available locales taking into account aliases', function (Locale $locale, string $alias) {
@@ -30,10 +33,10 @@ it('checks the list of available locales taking into account aliases', function 
 
     expect(Locales::available())
         ->toBeArray()
-        ->toBeIn([$alias])
-        ->not->toBeIn([$locale->value]);
+        ->toContain($alias)
+        ->not->toContain($locale->value);
 })->with('aliased-locales');
 
 it('checks incorrect locales against the list of available ones', function (?string $locale) {
-    expect(Locales::available())->toBeArray()->not->toBeIn([$locale]);
+    expect(Locales::available())->toBeArray()->not->toContain($locale);
 })->with('incorrect-locales');

@@ -28,8 +28,8 @@ it('checks the list of protected locales when the primary locale changes', funct
 
     expect(Locales::protects())
         ->toBe([
-            Locale::English->value,
             Locale::German->value,
+            Locale::English->value,
         ]);
 });
 
@@ -38,8 +38,8 @@ it('checks the list of protected locales when the fallback locale changes', func
 
     expect(Locales::protects())
         ->toBe([
-            Locale::English->value,
             Locale::German->value,
+            Locale::English->value,
         ]);
 });
 
@@ -48,8 +48,8 @@ it('checks the list of protected locales when all locales change', function () {
 
     expect(Locales::protects())
         ->toBe([
-            Locale::French->value,
             Locale::German->value,
+            Locale::French->value,
         ]);
 });
 

@@ -23,24 +23,24 @@ use LaravelLang\Locales\Facades\Locales;
 it('checks whether protected locales are installed', function () {
     expect(Locales::notInstalled())
         ->toBeArray()
-        ->toBeIn([Locale::German])
-        ->not->toBeIn([Locale::English->value]);
+        ->toContain(Locale::German->value)
+        ->not->toContain(Locale::English->value);
 });
 
 it('checks whether the main locale is installed', function () {
     setLocales(main: Locale::German);
 
     expect(Locales::notInstalled())
-        ->toBeIn([Locale::French])
-        ->not->toBeIn([Locale::German->value, Locale::English->value]);
+        ->toContain(Locale::French->value)
+        ->not->toContain(Locale::German->value, Locale::English->value);
 });
 
 it('checks whether a fallback locale is installed', function () {
     setLocales(fallback: Locale::German);
 
     expect(Locales::notInstalled())
-        ->toBeIn([Locale::French])
-        ->not->toBeIn([Locale::German->value, Locale::English->value]);
+        ->toContain(Locale::French->value)
+        ->not->toContain(Locale::German->value, Locale::English->value);
 });
 
 it('checks the availability of installed localizations', function () {
@@ -49,34 +49,34 @@ it('checks the availability of installed localizations', function () {
     setLocales(fallback: Locale::German);
 
     expect(Locales::notInstalled())
-        ->toBeIn([Locale::Urdu])
-        ->not->toBe([
+        ->toContain(Locale::Urdu->value)
+        ->not->toContain(
             Locale::English->value,
             Locale::French->value,
             Locale::German->value,
             Locale::Russian->value,
             Locale::Ukrainian->value,
-        ]);
+        );
 });
 
 it('check localization detection by file availability', function () {
     File::store(lang_path('vendor/custom/de.json'), '{}');
 
     expect(Locales::notInstalled())
-        ->toBeIn([Locale::French])
-        ->not->toBe([
+        ->toContain(Locale::French->value)
+        ->not->toContain(
             Locale::English->value,
             Locale::German->value,
-        ]);
+        );
 });
 
 it('check localization detection by directory availability', function () {
     Directory::ensureDirectory(lang_path('vendor/custom/de'));
 
     expect(Locales::notInstalled())
-        ->toBeIn([Locale::French])
-        ->not->toBe([
+        ->toContain(Locale::French->value)
+        ->not->toContain(
             Locale::English->value,
             Locale::German->value,
-        ]);
+        );
 });

@@ -22,8 +22,7 @@ use LaravelLang\Locales\Facades\Locales;
 
 it('returns English locale as the only one installed', function () {
     expect(Locales::installed())
-        ->toBe([Locale::English->value])
-        ->not->toBeIn([Locale::Thai->value, Locale::Turkish->value]);
+        ->toBe([Locale::English->value]);
 });
 
 it('returns English and German locales as the only ones installed', function () {
@@ -31,10 +30,10 @@ it('returns English and German locales as the only ones installed', function () 
 
     expect(Locales::installed())
         ->toBe([
-            Locale::English->value,
             Locale::German->value,
+            Locale::English->value,
         ])
-        ->not->toBeIn([
+        ->not->toContain([
             Locale::Thai->value,
             Locale::Turkish->value,
         ]);
@@ -44,8 +43,7 @@ it('returns English locale if both are specified incorrectly', function () {
     setLocales('foo', 'foo');
 
     expect(Locales::installed())
-        ->toBe([Locale::English->value])
-        ->not->toBeIn([Locale::Thai->value, Locale::Turkish->value]);
+        ->toBe([Locale::English->value]);
 });
 
 it('returns German and French locales as the only ones installed', function () {
@@ -53,8 +51,8 @@ it('returns German and French locales as the only ones installed', function () {
 
     expect(Locales::installed())
         ->toBe([
-            Locale::French->value,
             Locale::German->value,
+            Locale::French->value,
         ]);
 });
 
@@ -65,15 +63,11 @@ it('returns a list of installed locales', function () {
 
     expect(Locales::installed())
         ->toBe([
+            Locale::German->value,
             Locale::English->value,
             Locale::French->value,
-            Locale::German->value,
             Locale::Russian->value,
             Locale::Ukrainian->value,
-        ])
-        ->not->toBeIn([
-            Locale::Thai->value,
-            Locale::Turkish->value,
         ]);
 });
 
@@ -82,8 +76,8 @@ it('check localization detection by vendor file availability', function () {
 
     expect(Locales::installed())
         ->toBe([
-            Locale::English->value,
             Locale::German->value,
+            Locale::English->value,
         ]);
 });
 
@@ -92,7 +86,21 @@ it('check localization detection by vendor directory availability', function () 
 
     expect(Locales::installed())
         ->toBe([
-            Locale::English->value,
             Locale::German->value,
+            Locale::English->value,
         ]);
+});
+
+it('checks installed localizations without declaring aliases', function () {
+    File::store(lang_path('vendor/custom/de.json'), '{}');
+    File::store(lang_path('vendor/custom/de-DE.json'), '{}');
+
+    Directory::ensureDirectory(lang_path('vendor/custom/de_CH'));
+    Directory::ensureDirectory(lang_path('vendor/custom/de-CH'));
+
+    expect(Locales::installed())->toBe([
+        'de',
+        'de_CH',
+        'en',
+    ]);
 });

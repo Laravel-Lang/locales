@@ -19,6 +19,7 @@ namespace LaravelLang\Locales\Concerns;
 
 use DragonCode\Support\Facades\Filesystem\Directory;
 use DragonCode\Support\Facades\Filesystem\File;
+use Illuminate\Support\Collection;
 
 trait Pathable
 {
@@ -32,9 +33,19 @@ trait Pathable
         return ! $this->directoryExists();
     }
 
-    protected function directories(): array
+    protected function directories(string $path = ''): array
     {
-        return Directory::names(lang_path());
+        return collect(Directory::names(lang_path($path)))
+            ->when(
+                fn (Collection $items) => $items->contains('vendor'),
+                fn (Collection $items) => $items->merge(
+                    collect($this->directories('vendor'))->map(
+                        fn (string $folder) => $this->directories('vendor/' . $folder)
+                    )
+                )
+            )
+            ->flatten()
+            ->all();
     }
 
     protected function jsons(): array
