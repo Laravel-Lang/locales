@@ -43,7 +43,7 @@ enum Locale: string
     case Basque             = 'eu';
     case Belarusian         = 'be';
     case Bengali            = 'bn';
-    case BOSNIAN            = 'bs';
+    case Bosnian            = 'bs';
     case Bulgarian          = 'bg';
     case Catalan            = 'ca';
     case CentralKhmer       = 'km';

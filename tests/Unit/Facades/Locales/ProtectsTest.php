@@ -19,14 +19,14 @@ use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
 it('checks the list of protected locales', function () {
-    expect(Locales::protects())
+    expect(simpleData(Locales::protects()))
         ->toBe([Locale::English->value]);
 });
 
 it('checks the list of protected locales when the primary locale changes', function () {
     setLocales(main: Locale::German);
 
-    expect(Locales::protects())
+    expect(simpleData(Locales::protects()))
         ->toBe([
             Locale::German->value,
             Locale::English->value,
@@ -36,7 +36,7 @@ it('checks the list of protected locales when the primary locale changes', funct
 it('checks the list of protected locales when the fallback locale changes', function () {
     setLocales(fallback: Locale::German);
 
-    expect(Locales::protects())
+    expect(simpleData(Locales::protects()))
         ->toBe([
             Locale::German->value,
             Locale::English->value,
@@ -46,7 +46,7 @@ it('checks the list of protected locales when the fallback locale changes', func
 it('checks the list of protected locales when all locales change', function () {
     setLocales(Locale::German, Locale::French);
 
-    expect(Locales::protects())
+    expect(simpleData(Locales::protects()))
         ->toBe([
             Locale::German->value,
             Locale::French->value,
@@ -59,7 +59,7 @@ it('checks the protected locale by alias', function () {
     setAlias(Locale::German, 'de-DE');
     setAlias(Locale::French, 'fr-custom');
 
-    expect(Locales::protects())
+    expect(simpleData(Locales::protects()))
         ->toBe([
             'de-DE',
             'fr-custom',
@@ -69,20 +69,20 @@ it('checks the protected locale by alias', function () {
 it('checks for invalid primary locale', function () {
     setLocales(main: 'foo');
 
-    expect(Locales::protects())
+    expect(simpleData(Locales::protects()))
         ->toBe([Locale::English->value]);
 });
 
 it('checks for invalid fallback locale', function () {
     setLocales(fallback: 'foo');
 
-    expect(Locales::protects())
+    expect(simpleData(Locales::protects()))
         ->toBe([Locale::English->value]);
 });
 
 it('checks incorrect locale for signs of protecting', function () {
     setLocales('foo', 'bar');
 
-    expect(Locales::protects())
+    expect(simpleData(Locales::protects()))
         ->toBe([Locale::English->value]);
 });

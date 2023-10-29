@@ -18,19 +18,20 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use LaravelLang\Locales\Data\Locale as LocaleData;
 use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Services\Locales as Service;
 
 /**
- * @method static array<string> available()
- * @method static array<string> installed()
- * @method static array<string> notInstalled()
- * @method static array<string> protects()
+ * @method static array<LocaleData> available()
+ * @method static array<LocaleData> installed()
+ * @method static array<LocaleData> notInstalled()
+ * @method static array<LocaleData> protects()
  * @method static bool isAvailable(string|Locale|null $locale)
  * @method static bool isInstalled(string|Locale|null $locale)
  * @method static bool isProtected(string|Locale|null $locale)
- * @method static string getDefault()
- * @method static string getFallback()
+ * @method static LocaleData getDefault()
+ * @method static LocaleData getFallback()
  */
 class Locales extends Facade
 {

@@ -27,7 +27,7 @@ it('checks the use of aliases', function () {
     setAlias(Locale::German, 'de-DE');
     setAlias(Locale::GermanSwitzerland, 'de-CH');
 
-    expect(Locales::installed())->toBe([
+    expect(simpleData(Locales::installed()))->toBe([
         'de-CH',
         'de-DE',
         'en',
@@ -46,7 +46,7 @@ it('checks aliases of installed locales in the vendor folder', function () {
     setAlias(Locale::German, 'de-DE');
     setAlias(Locale::GermanSwitzerland, 'de-CH');
 
-    expect(Locales::installed())->toBe([
+    expect(simpleData(Locales::installed()))->toBe([
         'de-CH',
         'de-DE',
         'en',

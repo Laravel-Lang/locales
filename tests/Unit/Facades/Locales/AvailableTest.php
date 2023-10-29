@@ -19,11 +19,11 @@ use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
 it('checks the list of available locales', function () {
-    expect(Locales::available())
+    expect(simpleData(Locales::available()))
         ->toBeArray()
         ->toContain(
             Locale::English->value,
-            Locale::German->value
+            Locale::German->value,
         )
         ->not->toContain('foo', 'bar');
 });
@@ -31,12 +31,12 @@ it('checks the list of available locales', function () {
 it('checks the list of available locales taking into account aliases', function (Locale $locale, string $alias) {
     setAlias($locale, $alias);
 
-    expect(Locales::available())
+    expect(simpleData(Locales::available()))
         ->toBeArray()
         ->toContain($alias)
         ->not->toContain($locale->value);
 })->with('aliased-locales');
 
 it('checks incorrect locales against the list of available ones', function (?string $locale) {
-    expect(Locales::available())->toBeArray()->not->toContain($locale);
+    expect(simpleData(Locales::available()))->toBeArray()->not->toContain($locale);
 })->with('incorrect-locales');
