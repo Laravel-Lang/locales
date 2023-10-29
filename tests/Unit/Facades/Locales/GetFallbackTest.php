@@ -59,3 +59,19 @@ it('will return the locale by alias', function (Locale $locale, string $alias) {
         ->toBe($alias)
         ->not->toBe($locale->value);
 })->with('aliased-locales');
+
+it('will return the main localization if the spare is null', function () {
+    setLocales(Locale::German, null);
+
+    expect(Locales::getFallback())
+        ->toBe(Locale::German->value)
+        ->not->toBeNull();
+});
+
+it('will return the English locale if both are set to null', function () {
+    setLocales(null, null);
+
+    expect(Locales::getFallback())
+        ->toBe(Locale::English->value)
+        ->not->toBeNull();
+});

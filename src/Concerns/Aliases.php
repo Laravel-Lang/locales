@@ -17,36 +17,32 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
+use DragonCode\Support\Facades\Helpers\Arr;
+use LaravelLang\Locales\Enums\Config;
 use LaravelLang\Locales\Enums\Locale as LocaleCode;
-use LaravelLang\Locales\Helpers\Config;
 
 trait Aliases
 {
-    protected array $aliases = [];
-
-    protected function fromAlias(LocaleCode|string|null $locale, Config $config): ?string
+    protected function fromAlias(LocaleCode|string|null $locale): ?string
     {
         if ($locale = $locale?->value ?? $locale) {
-            if ($hashed = $this->aliases[$locale] ?? false) {
-                return $hashed;
-            }
-
-            return $this->aliases[$locale] = $this->arr->of($config->getAliases())->flip()->get($locale);
+            return Arr::of($this->aliases())->flip()->get($locale, $locale);
         }
 
         return null;
     }
 
-    protected function toAlias(LocaleCode|string|null $locale, Config $config): ?string
+    protected function toAlias(LocaleCode|string|null $locale): ?string
     {
         if ($locale = $locale?->value ?? $locale) {
-            if ($hashed = $this->aliases[$locale] ?? false) {
-                return $hashed;
-            }
-
-            return $this->aliases[$locale] = $this->arr->get($config->getAliases(), $locale, $locale);
+            return Arr::of($this->aliases())->get($locale, $locale);
         }
 
         return null;
+    }
+
+    protected function aliases(): array
+    {
+        return config(Config::PublicKey->value . '.aliases', []);
     }
 }

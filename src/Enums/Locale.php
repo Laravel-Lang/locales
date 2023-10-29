@@ -18,6 +18,8 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Enums;
 
 use ArchTech\Enums\Values;
+use DragonCode\Support\Facades\Helpers\Arr;
+use DragonCode\Support\Helpers\Ables\Arrayable;
 
 /**
  * Based on ISO 15897.
@@ -113,4 +115,9 @@ enum Locale: string
     case UzbekLatin         = 'uz_Latn';
     case Vietnamese         = 'vi';
     case Welsh              = 'cy';
+
+    public static function collection(): Arrayable
+    {
+        return Arr::of(self::cases());
+    }
 }

@@ -19,7 +19,7 @@ namespace LaravelLang\Locales\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use LaravelLang\Locales\Enums\Locale;
-use LaravelLang\Locales\Helpers\Locales as LocalesService;
+use LaravelLang\Locales\Services\Locales as Service;
 
 /**
  * @method static array<string> available()
@@ -36,6 +36,6 @@ class Locales extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return LocalesService::class;
+        return Service::class;
     }
 }

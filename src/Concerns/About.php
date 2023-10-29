@@ -21,7 +21,6 @@ use Composer\InstalledVersions;
 use DragonCode\Support\Facades\Helpers\Arr;
 use Illuminate\Foundation\Console\AboutCommand;
 use LaravelLang\Locales\Facades\Locales;
-use LaravelLang\Locales\Helpers\Config;
 
 trait About
 {
@@ -32,26 +31,16 @@ trait About
         }
 
         $this->pushInformation(fn () => [
-            'Installed' => $this->implodeLocales(Locales::installed()),
-            'Protected' => $this->implodeLocales(Locales::protects()),
+            'Installed' => $this->implode(Locales::installed()),
+            'Protected' => $this->implode(Locales::protects()),
 
             'Locales Version' => $this->getPackageVersion('laravel-lang/locales'),
         ]);
-
-        $this->pushInformation(fn () => $this->getPackages());
     }
 
     protected function pushInformation(callable $data): void
     {
         AboutCommand::add('Locales', $data);
-    }
-
-    protected function getPackages(): array
-    {
-        return Arr::of(config(Config::PRIVATE_KEY . '.packages'))
-            ->renameKeys(static fn (mixed $key, array $values) => $values['class'])
-            ->map(fn (array $values) => $this->getPackageVersion($values['name']))
-            ->toArray();
     }
 
     protected function getPackageVersion(string $package): string
@@ -63,8 +52,8 @@ trait About
         return '<fg=yellow;options=bold>INCORRECT</>';
     }
 
-    protected function implodeLocales(array $locales): string
+    protected function implode(array $values): string
     {
-        return Arr::of($locales)->sort()->implode(', ')->toString();
+        return Arr::of($values)->sort()->implode(', ')->toString();
     }
 }

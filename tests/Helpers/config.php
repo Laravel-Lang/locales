@@ -23,13 +23,13 @@ function setAlias(Locale $locale, string $alias): void
     config()->set(Config::PublicKey->value . '.aliases.' . $locale->value, $alias);
 }
 
-function setLocales(Locale|string|null $main = null, Locale|string|null $fallback = null): void
+function setLocales(Locale|string|null|bool $main = false, Locale|string|null|bool $fallback = false): void
 {
-    if ($main) {
+    if (! is_bool($main)) {
         setMainLocale($main);
     }
 
-    if ($fallback) {
+    if (! is_bool($fallback)) {
         setFallbackLocale($fallback);
     }
 }
