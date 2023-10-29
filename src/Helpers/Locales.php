@@ -21,7 +21,7 @@ use DragonCode\Support\Facades\Filesystem\Directory;
 use DragonCode\Support\Facades\Filesystem\File;
 use DragonCode\Support\Facades\Filesystem\Path;
 use LaravelLang\Locales\Concerns\Aliases;
-use LaravelLang\Locales\Enums\Locales as LocaleCodes;
+use LaravelLang\Locales\Enums\Locale as LocaleCodes;
 
 class Locales
 {
@@ -55,11 +55,6 @@ class Locales
             ->sort()
             ->values()
             ->toArray();
-    }
-
-    public function installedWithoutProtects(): array
-    {
-        return array_values(array_diff($this->installed(), $this->protects()));
     }
 
     public function notInstalled(): array

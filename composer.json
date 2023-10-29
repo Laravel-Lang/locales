@@ -18,7 +18,7 @@
         },
         {
             "name": "Laravel-Lang Team",
-            "homepage": "https://github.com/Laravel-Lang"
+            "homepage": "https://laravel-lang.com"
         }
     ],
     "support": {
@@ -40,19 +40,16 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "LaravelLang\\Locales\\": "src"
+            "LaravelLang\\Locales\\": "src/"
         },
         "files": [
-            "helper.php"
+            "helpers/lang.php"
         ]
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests"
-        },
-        "files": [
-            "tests/Fixtures/collision_functions.php"
-        ]
+            "Tests\\": "tests/"
+        }
     },
     "config": {
         "allow-plugins": {

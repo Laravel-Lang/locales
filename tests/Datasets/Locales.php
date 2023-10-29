@@ -15,9 +15,13 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\Locales;
+use LaravelLang\Locales\Enums\Locale;
 
-interface TextDecorator
-{
-    public function convert(string $locale, string $value): string;
-}
+dataset('locales', Locale::values());
+
+dataset('incorrect-locales', ['FOO', 'BAR', 'AA', 'BB', 'cc', 'dd', null]);
+
+dataset('aliased-locales', [
+    Locale::German->value => [Locale::German, 'de-DE'],
+    Locale::French->value => [Locale::French, 'fr-custom'],
+]);

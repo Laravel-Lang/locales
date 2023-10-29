@@ -16,16 +16,16 @@
 declare(strict_types=1);
 
 use DragonCode\Support\Facades\Filesystem\Directory;
-use LaravelLang\Locales\Enums\Locales;
+use LaravelLang\Locales\Enums\Locale;
 
-function createLocale(Locales|string $locale): void
+function createLocale(Locale|string $locale): void
 {
     Directory::ensureDirectory(
         lang_path($locale->value ?? $locale)
     );
 }
 
-function createLocales(Locales|string ...$locales): void
+function createLocales(Locale|string ...$locales): void
 {
     foreach ($locales as $locale) {
         createLocale($locale);

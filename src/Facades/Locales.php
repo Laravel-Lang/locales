@@ -15,21 +15,20 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\Locales\Facades\Helpers;
+namespace LaravelLang\Locales\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use LaravelLang\Locales\Enums\Locales as LocaleCode;
-use LaravelLang\Locales\Helpers\Locales as Helper;
+use LaravelLang\Locales\Enums\Locale;
+use LaravelLang\Locales\Helpers\Locales as LocalesService;
 
 /**
- * @method static array available()
- * @method static array installed()
- * @method static array installedWithoutProtects()
- * @method static array notInstalled()
- * @method static array protects()
- * @method static bool isAvailable(string|LocaleCode|null $locale)
- * @method static bool isInstalled(string|LocaleCode|null $locale)
- * @method static bool isProtected(string|LocaleCode|null $locale)
+ * @method static array<string> available()
+ * @method static array<string> installed()
+ * @method static array<string> notInstalled()
+ * @method static array<string> protects()
+ * @method static bool isAvailable(string|Locale|null $locale)
+ * @method static bool isInstalled(string|Locale|null $locale)
+ * @method static bool isProtected(string|Locale|null $locale)
  * @method static string getDefault()
  * @method static string getFallback()
  */
@@ -37,6 +36,6 @@ class Locales extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return Helper::class;
+        return LocalesService::class;
     }
 }

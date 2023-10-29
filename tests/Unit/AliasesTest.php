@@ -15,14 +15,15 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Locales\Enums\Locales;
+use LaravelLang\Locales\Enums\Locale;
+use LaravelLang\Locales\Facades\Locales;
 
 it('checks the use of aliases', function () {
-    createLocales(Locales::German, Locales::GermanSwitzerland, Locales::SerbianCyrillic);
-    setLocales(fallback: Locales::French);
+    createLocales(Locale::German, Locale::GermanSwitzerland, Locale::SerbianCyrillic);
+    setLocales(fallback: Locale::French);
 
-    setAlias(Locales::German, 'de-DE');
-    setAlias(Locales::GermanSwitzerland, 'de-CH');
+    setAlias(Locale::German, 'de-DE');
+    setAlias(Locale::GermanSwitzerland, 'de-CH');
 
     expect(Locales::installed())->toBe([
         'de-CH',

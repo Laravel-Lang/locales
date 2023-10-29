@@ -19,6 +19,6 @@ namespace LaravelLang\Locales\Enums;
 
 enum Config: string
 {
-    case PublicKey  = 'translations';
-    case PrivateKey = 'translations-private';
+    case PublicKey  = 'localization';
+    case PrivateKey = 'localization-private';
 }

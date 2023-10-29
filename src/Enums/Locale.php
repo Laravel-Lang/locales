@@ -30,7 +30,7 @@ use ArchTech\Enums\Values;
  * ISO-639-1 standard
  * @see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
  */
-enum Locales: string
+enum Locale: string
 {
     use Values;
 

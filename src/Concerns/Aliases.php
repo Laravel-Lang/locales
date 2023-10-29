@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
-use LaravelLang\Locales\Enums\Locales as LocaleCode;
+use LaravelLang\Locales\Enums\Locale as LocaleCode;
 use LaravelLang\Locales\Helpers\Config;
 
 trait Aliases

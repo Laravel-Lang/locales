@@ -16,14 +16,14 @@
 declare(strict_types=1);
 
 use LaravelLang\Locales\Enums\Config;
-use LaravelLang\Locales\Enums\Locales;
+use LaravelLang\Locales\Enums\Locale;
 
-function setAlias(Locales $locale, string $alias): void
+function setAlias(Locale $locale, string $alias): void
 {
     config()->set(Config::PublicKey->value . '.aliases.' . $locale->value, $alias);
 }
 
-function setLocales(Locales|string|null $main = null, Locales|string|null $fallback = null): void
+function setLocales(Locale|string|null $main = null, Locale|string|null $fallback = null): void
 {
     if ($main) {
         setMainLocale($main);
@@ -34,12 +34,12 @@ function setLocales(Locales|string|null $main = null, Locales|string|null $fallb
     }
 }
 
-function setMainLocale(Locales|string $locale): void
+function setMainLocale(Locale|string $locale): void
 {
     config()->set('app.locale', $locale->value ?? $locale);
 }
 
-function setFallbackLocale(Locales|string $locale): void
+function setFallbackLocale(Locale|string $locale): void
 {
     config()->set('app.fallback_locale', $locale->value ?? $locale);
 }

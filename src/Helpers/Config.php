@@ -20,7 +20,7 @@ namespace LaravelLang\Locales\Helpers;
 use DragonCode\Contracts\Support\Stringable;
 use LaravelLang\Locales\Concerns\Aliases;
 use LaravelLang\Locales\Constants\Types;
-use LaravelLang\Locales\Enums\Locales;
+use LaravelLang\Locales\Enums\Locale;
 
 class Config
 {
@@ -74,11 +74,11 @@ class Config
         $this->setPrivate('packages', $items);
     }
 
-    public function langPath(Locales|string|null ...$paths): string
+    public function langPath(Locale|string|null ...$paths): string
     {
         $path = $this->arr->of($paths)
             ->filter()
-            ->map(fn (Locales|string $value) => $this->toAlias($value, $this))
+            ->map(fn (Locale|string $value) => $this->toAlias($value, $this))
             ->implode('/');
 
         return $this->path(lang_path(), $path);
