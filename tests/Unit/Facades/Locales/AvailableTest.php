@@ -18,11 +18,12 @@ declare(strict_types=1);
 use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
-it('checks the list of available locales')
-    ->expect(Locales::available())
-    ->toBeArray()
-    ->toBeIn([Locale::English->value])
-    ->not->toBeIn(['foo', 'bar']);
+it('checks the list of available locales', function () {
+    expect(Locales::available())
+        ->toBeArray()
+        ->toBeIn([Locale::English->value])
+        ->not->toBeIn(['foo', 'bar']);
+});
 
 it('checks the list of available locales taking into account aliases', function (Locale $locale, string $alias) {
     setAlias($locale, $alias);

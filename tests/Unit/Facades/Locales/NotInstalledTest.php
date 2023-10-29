@@ -20,11 +20,12 @@ use DragonCode\Support\Facades\Filesystem\File;
 use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
-it('checks whether protected locales are installed')
-    ->expect(Locales::notInstalled())
-    ->toBeArray()
-    ->toBeIn([Locale::German])
-    ->not->toBeIn([Locale::English->value]);
+it('checks whether protected locales are installed', function () {
+    expect(Locales::notInstalled())
+        ->toBeArray()
+        ->toBeIn([Locale::German])
+        ->not->toBeIn([Locale::English->value]);
+});
 
 it('checks whether the main locale is installed', function () {
     setLocales(main: Locale::German);

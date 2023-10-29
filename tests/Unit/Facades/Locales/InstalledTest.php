@@ -20,10 +20,11 @@ use DragonCode\Support\Facades\Filesystem\File;
 use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
-it('returns English locale as the only one installed')
-    ->expect(Locales::installed())
-    ->toBe([Locale::English->value])
-    ->not->toBeIn([Locale::Thai->value, Locale::Turkish->value]);
+it('returns English locale as the only one installed', function () {
+    expect(Locales::installed())
+        ->toBe([Locale::English->value])
+        ->not->toBeIn([Locale::Thai->value, Locale::Turkish->value]);
+});
 
 it('returns English and German locales as the only ones installed', function () {
     setLocales(Locale::German);

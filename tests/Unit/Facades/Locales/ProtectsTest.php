@@ -18,9 +18,10 @@ declare(strict_types=1);
 use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
-it('checks the list of protected locales')
-    ->expect(Locales::protects())
-    ->toBe([Locale::English->value]);
+it('checks the list of protected locales', function () {
+    expect(Locales::protects())
+        ->toBe([Locale::English->value]);
+});
 
 it('checks the list of protected locales when the primary locale changes', function () {
     setLocales(main: Locale::German);

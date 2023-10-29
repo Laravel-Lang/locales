@@ -18,9 +18,10 @@ declare(strict_types=1);
 use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
-it('returns English locale')
-    ->expect(Locales::getDefault())
-    ->toBe(Locale::English->value);
+it('returns English locale', function () {
+    expect(Locales::getDefault())
+        ->toBe(Locale::English->value);
+});
 
 it('returns German locale', function () {
     setLocales(main: Locale::German);
