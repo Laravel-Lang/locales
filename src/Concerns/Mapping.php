@@ -45,6 +45,6 @@ trait Mapping
 
     protected function mapData(LocaleEnum $locale): array
     {
-        return config(Config::PrivateKey->value . '.map.' . $locale->value);
+        return config(Config::PrivateKey() . '.map.' . $locale->value);
     }
 }

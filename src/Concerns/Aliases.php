@@ -42,7 +42,7 @@ trait Aliases
 
     protected function aliases(): array
     {
-        return config(Config::PublicKey->value . '.aliases', []);
+        return config(Config::PublicKey() . '.aliases', []);
     }
 
     protected function stringify(LocaleCode|string|null $locale): ?string
