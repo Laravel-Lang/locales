@@ -19,11 +19,7 @@ namespace LaravelLang\Locales;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use LaravelLang\Locales\Concerns\About;
-use LaravelLang\Locales\Console\Add;
-use LaravelLang\Locales\Console\Remove;
-use LaravelLang\Locales\Console\Reset;
-use LaravelLang\Locales\Console\Update;
-use LaravelLang\Locales\Helpers\Config;
+use LaravelLang\Locales\Enums\Config;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -32,7 +28,6 @@ class ServiceProvider extends BaseServiceProvider
     public function boot(): void
     {
         $this->bootPublishes();
-        $this->bootCommands();
     }
 
     public function register(): void
@@ -41,26 +36,15 @@ class ServiceProvider extends BaseServiceProvider
         $this->registerAbout();
     }
 
-    protected function bootCommands(): void
-    {
-        $this->commands([
-            Add::class,
-            Remove::class,
-            Reset::class,
-            Update::class,
-        ]);
-    }
-
     protected function bootPublishes(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/public.php' => $this->app->configPath(Config::PUBLIC_KEY . '.php'),
-        ], 'config');
+            __DIR__ . '/../config/public.php' => $this->app->configPath(Config::PublicKey->value . '.php'),
+        ], ['config', Config::PublicKey->value]);
     }
 
     protected function registerConfig(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/public.php', Config::PUBLIC_KEY);
-        $this->mergeConfigFrom(__DIR__ . '/../config/private.php', Config::PRIVATE_KEY);
+        $this->mergeConfigFrom(__DIR__ . '/../config/public.php', Config::PublicKey->value);
     }
 }
