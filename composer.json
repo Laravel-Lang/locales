@@ -30,13 +30,12 @@
         "ext-json": "*",
         "archtechx/enums": "^0.3.2",
         "dragon-code/support": "^6.11.3",
-        "illuminate/collections": "^8.79 || ^9.18 || ^10.0",
-        "illuminate/support": "^8.79 || ^9.18 || ^10.0"
+        "illuminate/collections": "^10.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.25 || ^7.22 || ^8.0",
+        "orchestra/testbench": "^8.0",
         "pestphp/pest": "^2.24.1",
-        "symfony/var-dumper": "^5.0 || ^6.0"
+        "symfony/var-dumper": "^6.0"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
@@ -45,8 +44,7 @@
             "LaravelLang\\Locales\\": "src/"
         },
         "files": [
-            "helpers/lang.php",
-            "helpers/collection.php"
+            "helpers/lang.php"
         ]
     },
     "autoload-dev": {
@@ -59,8 +57,8 @@
             "dragon-code/codestyler": true,
             "ergebnis/composer-normalize": true,
             "friendsofphp/php-cs-fixer": true,
-            "symfony/thanks": true,
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "symfony/thanks": true
         },
         "preferred-install": "dist",
         "sort-packages": true
