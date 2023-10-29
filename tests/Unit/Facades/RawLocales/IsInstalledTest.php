@@ -21,18 +21,18 @@ use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
 it('checks whether localization is installed', function () {
-    expect(Locales::isInstalled(Locale::English))->toBeBool()->toBeTrue();
-    expect(Locales::isInstalled(Locale::German))->toBeBool()->toBeFalse();
+    expect(Locales::raw()->isInstalled(Locale::English))->toBeBool()->toBeTrue();
+    expect(Locales::raw()->isInstalled(Locale::German))->toBeBool()->toBeFalse();
 });
 
 it('checks the installation of protected locales', function () {
     setLocales(Locale::German, Locale::French);
 
-    expect(Locales::isInstalled(Locale::German))->toBeBool()->toBeTrue();
-    expect(Locales::isInstalled(Locale::French))->toBeBool()->toBeTrue();
+    expect(Locales::raw()->isInstalled(Locale::German))->toBeBool()->toBeTrue();
+    expect(Locales::raw()->isInstalled(Locale::French))->toBeBool()->toBeTrue();
 
-    expect(Locales::isInstalled(Locale::English))->toBeBool()->toBeFalse();
-    expect(Locales::isInstalled(Locale::Urdu))->toBeBool()->toBeFalse();
+    expect(Locales::raw()->isInstalled(Locale::English))->toBeBool()->toBeFalse();
+    expect(Locales::raw()->isInstalled(Locale::Urdu))->toBeBool()->toBeFalse();
 });
 
 it('checks the label of installed locales using a json file', function () {
@@ -40,8 +40,8 @@ it('checks the label of installed locales using a json file', function () {
 
     setAlias(Locale::German, 'de-DE');
 
-    expect(Locales::isInstalled(Locale::German))->toBeBool()->toBeTrue();
-    expect(Locales::isInstalled('de-DE'))->toBeBool()->toBeTrue();
+    expect(Locales::raw()->isInstalled(Locale::German))->toBeBool()->toBeTrue();
+    expect(Locales::raw()->isInstalled('de-DE'))->toBeBool()->toBeTrue();
 });
 
 it('checks the label of installed locales using a directory', function () {
@@ -49,6 +49,6 @@ it('checks the label of installed locales using a directory', function () {
 
     setAlias(Locale::German, 'de-DE');
 
-    expect(Locales::isInstalled(Locale::German))->toBeBool()->toBeTrue();
-    expect(Locales::isInstalled('de-DE'))->toBeBool()->toBeTrue();
+    expect(Locales::raw()->isInstalled(Locale::German))->toBeBool()->toBeTrue();
+    expect(Locales::raw()->isInstalled('de-DE'))->toBeBool()->toBeTrue();
 });

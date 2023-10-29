@@ -19,17 +19,17 @@ use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
 it('checks availability of all locales', function (string $locale) {
-    expect(Locales::isAvailable($locale))->toBeBool()->toBeTrue();
+    expect(Locales::raw()->isAvailable($locale))->toBeBool()->toBeTrue();
 })->with('locales');
 
 it('should check the availability of the locale by alias', function (Locale $locale, string $alias) {
     setAlias($locale, $alias);
 
-    expect(Locales::isAvailable($locale))->toBeBool()->toBeTrue();
-    expect(Locales::isAvailable($locale->value))->toBeBool()->toBeTrue();
-    expect(Locales::isAvailable($alias))->toBeBool()->toBeTrue();
+    expect(Locales::raw()->isAvailable($locale))->toBeBool()->toBeTrue();
+    expect(Locales::raw()->isAvailable($locale->value))->toBeBool()->toBeTrue();
+    expect(Locales::raw()->isAvailable($alias))->toBeBool()->toBeTrue();
 })->with('aliased-locales');
 
 it('checks incorrect locales', function (?string $locale) {
-    expect(Locales::isAvailable($locale))->toBeBool()->toBeFalse();
+    expect(Locales::raw()->isAvailable($locale))->toBeBool()->toBeFalse();
 })->with('incorrect-locales');
