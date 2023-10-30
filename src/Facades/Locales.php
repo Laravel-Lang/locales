@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use LaravelLang\Locales\Data\Locale as LocaleData;
+use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Services\Locales as Service;
 use LaravelLang\Locales\Services\RawLocales;

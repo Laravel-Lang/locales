@@ -15,7 +15,7 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Locales\Data\Locale as LocaleData;
+use LaravelLang\Locales\Data\LocaleData;
 
 function simpleData(array $locales): array
 {

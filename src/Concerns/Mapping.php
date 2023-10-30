@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
-use LaravelLang\Locales\Data\Locale as LocaleData;
+use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Enums\Config;
 use LaravelLang\Locales\Enums\Locale as LocaleEnum;
 

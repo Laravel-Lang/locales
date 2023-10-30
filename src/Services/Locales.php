@@ -19,7 +19,7 @@ namespace LaravelLang\Locales\Services;
 
 use LaravelLang\Locales\Concerns\Mapping;
 use LaravelLang\Locales\Concerns\Registry;
-use LaravelLang\Locales\Data\Locale as LocaleData;
+use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Enums\Locale;
 
 class Locales
