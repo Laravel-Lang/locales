@@ -20,7 +20,7 @@ namespace LaravelLang\Locales\Data;
 use LaravelLang\Locales\Concerns\Aliases;
 use LaravelLang\Locales\Enums\Locale as LocaleEnum;
 
-class Locale
+class LocaleData
 {
     use Aliases;
 
