@@ -41,9 +41,12 @@ class Locales
         return $this->registry(__METHOD__, fn () => $this->mapLocales($this->raw->available()));
     }
 
-    public function installed(): array
+    public function installed(bool $withProtects = true): array
     {
-        return $this->registry(__METHOD__, fn () => $this->mapLocales($this->raw->installed()));
+        return $this->registry(
+            [__METHOD__, $withProtects],
+            fn () => $this->mapLocales($this->raw->installed($withProtects))
+        );
     }
 
     public function notInstalled(): array

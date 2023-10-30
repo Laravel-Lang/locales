@@ -25,7 +25,7 @@ use LaravelLang\Locales\Services\RawLocales;
 
 /**
  * @method static array<LocaleData> available()
- * @method static array<LocaleData> installed()
+ * @method static array<LocaleData> installed(bool $withProtects = true)
  * @method static array<LocaleData> notInstalled()
  * @method static array<LocaleData> protects()
  * @method static bool isAvailable(string|Locale|null $locale)

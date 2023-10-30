@@ -104,3 +104,15 @@ it('checks installed localizations without declaring aliases', function () {
         'en',
     ]);
 });
+
+it('will display a list of installed localizations without protected ones', function () {
+    createLocales(Locale::Russian, Locale::Ukrainian, Locale::French);
+
+    setLocales(Locale::German, Locale::French);
+
+    expect(simpleData(Locales::installed(false)))
+        ->toBe([
+            Locale::Russian->value,
+            Locale::Ukrainian->value,
+        ]);
+});
