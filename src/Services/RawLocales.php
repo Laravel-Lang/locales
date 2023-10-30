@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Services;
 
 use DragonCode\Support\Facades\Filesystem\Path;
+use Illuminate\Support\Collection;
 use LaravelLang\Locales\Concerns\Aliases;
 use LaravelLang\Locales\Concerns\Pathable;
 use LaravelLang\Locales\Concerns\Registry;
@@ -40,22 +41,25 @@ class RawLocales
         );
     }
 
-    public function installed(): array
+    public function installed(bool $withProtects = true): array
     {
-        return $this->registry(__METHOD__, function () {
+        return $this->registry([__METHOD__, $withProtects], function () use ($withProtects) {
             if ($this->directoryDoesntExist()) {
-                return $this->protects();
+                return $withProtects ? $this->protects() : [];
             }
 
             return collect()
                 ->push(
                     $this->directories(),
                     $this->jsons(),
-                    $this->protects()
+                    $this->protects(),
                 )
                 ->flatten()
                 ->map(fn (string $name) => $this->toAlias(Path::filename($name)))
                 ->filter(fn (string $locale) => $this->isAvailable($locale))
+                ->when(! $withProtects, fn (Collection $items) => $items->filter(
+                    fn (string $locale) => ! $this->isProtected($locale)
+                ))
                 ->unique()
                 ->sort()
                 ->values()
