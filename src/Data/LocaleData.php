@@ -26,8 +26,6 @@ class LocaleData
 
     public readonly string $code;
 
-    public readonly string $codeAlias;
-
     public readonly string $type;
 
     public readonly string $name;
@@ -38,8 +36,7 @@ class LocaleData
 
     public function __construct(LocaleEnum $locale, array $data)
     {
-        $this->code      = $locale->value;
-        $this->codeAlias = $this->toAlias($locale, $locale);
+        $this->code = $this->toAlias($locale, $locale);
 
         $this->type     = $data['type'] ?? 'Latn';
         $this->name     = $data['name'];

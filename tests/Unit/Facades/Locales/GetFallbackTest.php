@@ -19,49 +19,49 @@ use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
 it('returns English locale as a fallback', function () {
-    expect(Locales::getFallback()->codeAlias)
+    expect(Locales::getFallback()->code)
         ->toBe(Locale::English->value);
 });
 
 it('returns German locale as a fallback', function () {
     setLocales(fallback: Locale::German);
 
-    expect(Locales::getFallback()->codeAlias)
+    expect(Locales::getFallback()->code)
         ->toBe(Locale::German->value);
 });
 
 it('returns English locale if the fallback one is specified incorrectly', function () {
     setLocales(fallback: 'foo');
 
-    expect(Locales::getFallback()->codeAlias)
+    expect(Locales::getFallback()->code)
         ->toBe(Locale::English->value);
 });
 
 it('returns German locale if the fallback is invalid', function () {
     setLocales(Locale::German, 'foo');
 
-    expect(Locales::getFallback()->codeAlias)
+    expect(Locales::getFallback()->code)
         ->toBe(Locale::German->value);
 });
 
 it('returns the main localization if the spare is null', function () {
     setLocales(Locale::German, null);
 
-    expect(Locales::getFallback()->codeAlias)
+    expect(Locales::getFallback()->code)
         ->toBe(Locale::German->value);
 });
 
 it('returns the English locale if both are set to null', function () {
     setLocales(null, null);
 
-    expect(Locales::getFallback()->codeAlias)
+    expect(Locales::getFallback()->code)
         ->toBe(Locale::English->value);
 });
 
 it('returns English locale if both are invalid', function () {
     setLocales('foo', 'foo');
 
-    expect(Locales::getFallback()->codeAlias)
+    expect(Locales::getFallback()->code)
         ->toBe(Locale::English->value);
 });
 
@@ -70,7 +70,7 @@ it('will return the locale by alias', function (Locale $locale, string $alias) {
 
     setAlias($locale, $alias);
 
-    expect(Locales::getFallback()->codeAlias)
+    expect(Locales::getFallback()->code)
         ->toBe($alias)
         ->not->toBe($locale->value);
 })->with('aliased-locales');
