@@ -18,13 +18,13 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Concerns;
 
 use Closure;
-use LaravelLang\Locales\Enums\Locale;
+use LaravelLang\Locales\Services\Resolver;
 
 trait Registry
 {
     protected array $registry = [];
 
-    protected function registry(array|Locale|string|null $key, Closure $callback): mixed
+    protected function registry(array|string $key, Closure $callback): mixed
     {
         $key = $this->registryKey($key);
 
@@ -35,10 +35,10 @@ trait Registry
         return $this->registry[$key] = $callback();
     }
 
-    protected function registryKey(array|Locale|string|null $key): string
+    protected function registryKey(array|string $key): string
     {
         return collect($key)
-            ->map(static fn (mixed $item) => $item instanceof Locale ? $item->value : (string) $item)
+            ->map(static fn (mixed $item) => (string) Resolver::fromMixed($item))
             ->implode(':');
     }
 }

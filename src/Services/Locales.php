@@ -74,6 +74,11 @@ class Locales
         return $this->raw->isProtected($locale);
     }
 
+    public function get(mixed $locale): LocaleData
+    {
+        return $this->registry([__METHOD__, $locale], fn () => $this->map($this->raw->get($locale)));
+    }
+
     public function getDefault(): LocaleData
     {
         return $this->registry(__METHOD__, fn () => $this->map($this->raw->getDefault()));

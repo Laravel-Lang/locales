@@ -108,6 +108,19 @@ class RawLocales
         });
     }
 
+    public function get(mixed $locale): string
+    {
+        return $this->registry([__METHOD__, $locale], function () use ($locale) {
+            $locale = Resolver::fromMixed($locale);
+
+            if ($this->isInstalled($locale)) {
+                return $this->toAlias($locale);
+            }
+
+            return $this->getDefault();
+        });
+    }
+
     public function getDefault(): string
     {
         return $this->registry(__METHOD__, function () {
@@ -138,13 +151,8 @@ class RawLocales
 
     protected function inArray(Locale|string|null $locale, array $haystack): bool
     {
-        $locale = $this->toString($locale);
+        $locale = Resolver::toString($locale);
 
         return ! empty($locale) && in_array($locale, $haystack, true);
-    }
-
-    protected function toString(Locale|string|null $locale): ?string
-    {
-        return $locale?->value ?? $locale;
     }
 }
