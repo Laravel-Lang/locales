@@ -31,6 +31,7 @@ use LaravelLang\Locales\Services\RawLocales;
  * @method static bool isAvailable(string|Locale|null $locale)
  * @method static bool isInstalled(string|Locale|null $locale)
  * @method static bool isProtected(string|Locale|null $locale)
+ * @method static LocaleData get(mixed $locale)
  * @method static LocaleData getDefault()
  * @method static LocaleData getFallback()
  * @method static RawLocales raw()
