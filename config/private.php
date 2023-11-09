@@ -29,7 +29,7 @@ return [
         Locale::Albanian->value => [
             'type'     => 'Latn',
             'name'     => 'Albanian',
-            'native'   => 'shqip',
+            'native'   => 'Shqip',
             'regional' => 'sq_AL',
         ],
 
@@ -50,21 +50,21 @@ return [
         Locale::Azerbaijani->value => [
             'type'     => 'Latn',
             'name'     => 'Azerbaijani (Latin)',
-            'native'   => 'azərbaycanca',
+            'native'   => 'Azərbaycanca',
             'regional' => 'az_AZ',
         ],
 
         Locale::Basque->value => [
             'type'     => 'Latn',
             'name'     => 'Basque',
-            'native'   => 'euskara',
+            'native'   => 'Euskara',
             'regional' => 'eu_ES',
         ],
 
         Locale::Belarusian->value => [
             'type'     => 'Cyrl',
             'name'     => 'Belarusian',
-            'native'   => 'беларуская',
+            'native'   => 'Беларуская',
             'regional' => 'be_BY',
         ],
 
@@ -78,21 +78,21 @@ return [
         Locale::Bosnian->value => [
             'type'     => 'Latn',
             'name'     => 'Bosnian',
-            'native'   => 'bosanski',
+            'native'   => 'Bosanski',
             'regional' => 'bs_BA',
         ],
 
         Locale::Bulgarian->value => [
             'type'     => 'Cyrl',
             'name'     => 'Bulgarian',
-            'native'   => 'български',
+            'native'   => 'Български',
             'regional' => 'bg_BG',
         ],
 
         Locale::Catalan->value => [
             'type'     => 'Latn',
             'name'     => 'Catalan',
-            'native'   => 'català',
+            'native'   => 'Català',
             'regional' => 'ca_ES',
         ],
 
@@ -127,21 +127,21 @@ return [
         Locale::Croatian->value => [
             'type'     => 'Latn',
             'name'     => 'Croatian',
-            'native'   => 'hrvatski',
+            'native'   => 'Hrvatski',
             'regional' => 'hr_HR',
         ],
 
         Locale::Czech->value => [
             'type'     => 'Latn',
             'name'     => 'Czech',
-            'native'   => 'čeština',
+            'native'   => 'Čeština',
             'regional' => 'cs_CZ',
         ],
 
         Locale::Danish->value => [
             'type'     => 'Latn',
             'name'     => 'Danish',
-            'native'   => 'dansk',
+            'native'   => 'Dansk',
             'regional' => 'da_DK',
         ],
 
@@ -162,28 +162,28 @@ return [
         Locale::Estonian->value => [
             'type'     => 'Latn',
             'name'     => 'Estonian',
-            'native'   => 'eesti',
+            'native'   => 'Eesti',
             'regional' => 'et_EE',
         ],
 
         Locale::Finnish->value => [
             'type'     => 'Latn',
             'name'     => 'Finnish',
-            'native'   => 'suomi',
+            'native'   => 'Suomalainen',
             'regional' => 'fi_FI',
         ],
 
         Locale::French->value => [
             'type'     => 'Latn',
             'name'     => 'French',
-            'native'   => 'français',
+            'native'   => 'Français',
             'regional' => 'fr_FR',
         ],
 
         Locale::Galician->value => [
             'type'     => 'Latn',
             'name'     => 'Galician',
-            'native'   => 'galego',
+            'native'   => 'Galego',
             'regional' => 'gl_ES',
         ],
 
@@ -239,14 +239,14 @@ return [
         Locale::Hungarian->value => [
             'type'     => 'Latn',
             'name'     => 'Hungarian',
-            'native'   => 'magyar',
+            'native'   => 'Magyar',
             'regional' => 'hu_HU',
         ],
 
         Locale::Icelandic->value => [
             'type'     => 'Latn',
             'name'     => 'Icelandic',
-            'native'   => 'íslenska',
+            'native'   => 'Íslenska',
             'regional' => 'is_IS',
         ],
 
@@ -260,7 +260,7 @@ return [
         Locale::Italian->value => [
             'type'     => 'Latn',
             'name'     => 'Italian',
-            'native'   => 'italiano',
+            'native'   => 'Italiano',
             'regional' => 'it_IT',
         ],
 
@@ -281,7 +281,7 @@ return [
         Locale::Kazakh->value => [
             'type'     => 'Cyrl',
             'name'     => 'Kazakh',
-            'native'   => 'қазақ тілі',
+            'native'   => 'Қазақ тілі',
             'regional' => 'kk_KZ',
         ],
 
@@ -295,21 +295,21 @@ return [
         Locale::Latvian->value => [
             'type'     => 'Latn',
             'name'     => 'Latvian',
-            'native'   => 'latviešu',
+            'native'   => 'Latviešu',
             'regional' => 'lv_LV',
         ],
 
         Locale::Lithuanian->value => [
             'type'     => 'Latn',
             'name'     => 'Lithuanian',
-            'native'   => 'lietuvių',
+            'native'   => 'Lietuvių',
             'regional' => 'lt_LT',
         ],
 
         Locale::Macedonian->value => [
             'type'     => 'Cyrl',
             'name'     => 'Macedonian',
-            'native'   => 'македонски',
+            'native'   => 'Македонски',
             'regional' => 'mk_MK',
         ],
 
@@ -343,21 +343,21 @@ return [
         Locale::NorwegianBokmal->value => [
             'type'     => 'Latn',
             'name'     => 'Norwegian Bokmål',
-            'native'   => 'Bokmål',
+            'native'   => 'Norwegian Bokmål',
             'regional' => 'nb_NO',
         ],
 
         Locale::NorwegianNynorsk->value => [
             'type'     => 'Latn',
             'name'     => 'Norwegian Nynorsk',
-            'native'   => 'nynorsk',
+            'native'   => 'Norwegian Nynorsk',
             'regional' => 'nn_NO',
         ],
 
         Locale::Occitan->value => [
             'type'     => 'Latn',
             'name'     => 'Occitan',
-            'native'   => 'occitan',
+            'native'   => 'Occitan',
             'regional' => 'oc_FR',
         ],
 
@@ -385,42 +385,42 @@ return [
         Locale::Polish->value => [
             'type'     => 'Latn',
             'name'     => 'Polish',
-            'native'   => 'polski',
+            'native'   => 'Polski',
             'regional' => 'pl_PL',
         ],
 
         Locale::Portuguese->value => [
             'type'     => 'Latn',
             'name'     => 'Portuguese',
-            'native'   => 'português',
+            'native'   => 'Português',
             'regional' => 'pt_PT',
         ],
 
         Locale::PortugueseBrazil->value => [
             'type'     => 'Latn',
             'name'     => 'Brazilian Portuguese',
-            'native'   => 'português do Brasil',
+            'native'   => 'Português do Brasil',
             'regional' => 'pt_BR',
         ],
 
         Locale::Romanian->value => [
             'type'     => 'Latn',
             'name'     => 'Romanian',
-            'native'   => 'română',
+            'native'   => 'Română',
             'regional' => 'ro_RO',
         ],
 
         Locale::Russian->value => [
             'type'     => 'Cyrl',
             'name'     => 'Russian',
-            'native'   => 'русский',
+            'native'   => 'Русский',
             'regional' => 'ru_RU',
         ],
 
         Locale::Sardinian->value => [
             'type'     => 'Latn',
             'name'     => 'Sardinian',
-            'native'   => 'sardu',
+            'native'   => 'Sardu',
             'regional' => 'sc_IT',
         ],
 
@@ -455,21 +455,21 @@ return [
         Locale::Slovak->value => [
             'type'     => 'Latn',
             'name'     => 'Slovak',
-            'native'   => 'slovenčina',
+            'native'   => 'Slovenčina',
             'regional' => 'sk_SK',
         ],
 
         Locale::Slovenian->value => [
             'type'     => 'Latn',
             'name'     => 'Slovene',
-            'native'   => 'slovenščina',
+            'native'   => 'Slovenščina',
             'regional' => 'sl_SI',
         ],
 
         Locale::Spanish->value => [
             'type'     => 'Latn',
             'name'     => 'Spanish',
-            'native'   => 'español',
+            'native'   => 'Español',
             'regional' => 'es_ES',
         ],
 
@@ -483,7 +483,7 @@ return [
         Locale::Swedish->value => [
             'type'     => 'Latn',
             'name'     => 'Swedish',
-            'native'   => 'svenska',
+            'native'   => 'Svenska',
             'regional' => 'sv_SE',
         ],
 
@@ -497,7 +497,7 @@ return [
         Locale::Tajik->value => [
             'type'     => 'Cyrl',
             'name'     => 'Tajik (Cyrillic)',
-            'native'   => 'тоҷикӣ',
+            'native'   => 'Тоҷикӣ',
             'regional' => 'tg_TJ',
         ],
 
@@ -518,7 +518,7 @@ return [
         Locale::Turkmen->value => [
             'type'     => 'Cyrl',
             'name'     => 'Turkmen',
-            'native'   => 'түркменче',
+            'native'   => 'Түркменче',
             'regional' => 'tk_TM',
         ],
 
@@ -532,7 +532,7 @@ return [
         Locale::Ukrainian->value => [
             'type'     => 'Cyrl',
             'name'     => 'Ukrainian',
-            'native'   => 'українська',
+            'native'   => 'Українська',
             'regional' => 'uk_UA',
         ],
 
@@ -553,7 +553,7 @@ return [
         Locale::UzbekLatin->value => [
             'type'     => 'Latn',
             'name'     => 'Uzbek (Latin)',
-            'native'   => 'oʼzbekcha',
+            'native'   => 'Oʼzbekcha',
             'regional' => 'uz_UZ',
         ],
 
