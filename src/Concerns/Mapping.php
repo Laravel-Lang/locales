@@ -23,13 +23,11 @@ use LaravelLang\Locales\Enums\Locale as LocaleEnum;
 
 trait Mapping
 {
-    use Aliases;
-
     protected function map(string $locale): LocaleData
     {
         $locale = $this->findLocale($locale);
 
-        return new LocaleData($locale, $this->mapData($locale));
+        return new LocaleData($locale, $this->mapData($locale), $this->localized());
     }
 
     protected function mapLocales(array $locales): array
@@ -40,7 +38,8 @@ trait Mapping
     protected function findLocale(string $locale): LocaleEnum
     {
         return LocaleEnum::tryFrom($this->toAlias($locale))
-            ?: LocaleEnum::tryFrom($this->fromAlias($locale));
+            ?: LocaleEnum::tryFrom($this->fromAlias($locale))
+                ?: LocaleEnum::English;
     }
 
     protected function mapData(LocaleEnum $locale): array

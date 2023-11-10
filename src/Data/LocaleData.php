@@ -32,15 +32,19 @@ class LocaleData
 
     public readonly string $native;
 
-    public readonly string $regional;
+    public readonly string $localized;
 
-    public function __construct(LocaleEnum $locale, array $data)
+    public readonly ?string $regional;
+
+    public function __construct(LocaleEnum $locale, array $data, NativeData $native)
     {
-        $this->code = $this->toAlias($locale, $locale);
+        $this->code = $this->toAlias($locale);
 
         $this->type     = $data['type'] ?? 'Latn';
         $this->name     = $data['name'];
-        $this->native   = $data['native'];
-        $this->regional = $data['regional'] ?? '';
+        $this->regional = $data['regional'] ?? null;
+
+        $this->native    = $native->getCurrent($this->code);
+        $this->localized = $native->getLocalized($this->code);
     }
 }
