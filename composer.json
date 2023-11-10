@@ -30,7 +30,8 @@
         "ext-json": "*",
         "archtechx/enums": "^0.3.2",
         "dragon-code/support": "^6.11.3",
-        "illuminate/collections": "^10.0"
+        "illuminate/collections": "^10.0",
+        "laravel-lang/native-locale-names": "^1.2.2"
     },
     "require-dev": {
         "orchestra/testbench": "^8.0",
