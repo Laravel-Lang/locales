@@ -18,19 +18,21 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Concerns;
 
 use LaravelLang\Locales\Data\NativeData;
+use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\NativeLocaleNames\Native;
 
 trait Localized
 {
     public function localized(): NativeData
     {
-        return $this->registry([__METHOD__, $this->currentLocale()], fn () => new NativeData(
+        return $this->registry([__METHOD__, $this->appLocale()], fn () => new NativeData(
+            Native::get(Locale::English),
             Native::get(),
-            Native::get($this->currentLocale())
+            Native::get($this->appLocale())
         ));
     }
 
-    protected function currentLocale(): string
+    protected function appLocale(): string
     {
         return $this->fromAlias(
             $this->raw->getDefault()

@@ -41,10 +41,10 @@ class LocaleData
         $this->code = $this->toAlias($locale);
 
         $this->type     = $data['type'] ?? 'Latn';
-        $this->name     = $data['name'];
         $this->regional = $data['regional'] ?? null;
 
-        $this->native    = $native->getCurrent($this->code);
+        $this->name      = $native->getEnglish($this->code);
+        $this->native    = $native->getNative($this->code);
         $this->localized = $native->getLocalized($this->code);
     }
 }
