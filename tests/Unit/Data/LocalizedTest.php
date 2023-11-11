@@ -15,6 +15,7 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
 use LaravelLang\NativeLocaleNames\Native;
 
@@ -23,11 +24,13 @@ it('checks language localization', function (string $locale) {
 
     expect(app()->getLocale())->toBe($locale);
 
-    $combined  = Native::get();
+    $native    = Native::get();
+    $english   = Native::get(Locale::English);
     $localized = Native::get($locale);
 
     foreach (Locales::available() as $item) {
-        expect($item->native)->toBe($combined[$item->code]);
+        expect($item->name)->toBe($english[$item->code]);
+        expect($item->native)->toBe($native[$item->code]);
         expect($item->localized)->toBe($localized[$item->code]);
     }
 })->with('locales');
