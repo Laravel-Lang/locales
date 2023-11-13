@@ -119,3 +119,13 @@ it('checks the Sinh locale type', function (Locale $locale) {
 it('checks the Thai locale type', function (Locale $locale) {
     expect(Locales::info($locale))->type->toBe('Thai');
 })->with('locale-type-thai');
+
+it('checking information for incorrect locale', function (?string $locale) {
+    expect(Locales::info($locale))
+        ->code->toBeString()->toBe('en')
+        ->type->toBeString()->toBe('Latn')
+        ->name->toBeString()->toBe('English')
+        ->native->toBeString()->toBe('English')
+        ->localized->toBeString()->toBe('English')
+        ->orientation->toBe(Orientation::LeftToRight);
+})->with('incorrect-locales');
