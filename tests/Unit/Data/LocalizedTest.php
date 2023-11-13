@@ -34,3 +34,19 @@ it('checks language localization', function (string $locale) {
         expect($item->localized)->toBe($localized[$item->code]);
     }
 })->with('locales');
+
+it(
+    'manually checks the localization of locales',
+    function (string $locale, string $forLocale, string $name, string $native, string $localized) {
+        setLocales($forLocale);
+
+        expect(app()->getLocale())->toBe($forLocale);
+        expect(Locales::getDefault()->code)->toBe($forLocale);
+
+        expect(Locales::info($locale))
+            ->code->toBe($locale)
+            ->name->toBe($name)
+            ->native->toBe($native)
+            ->localized->toBe($localized);
+    }
+)->with('localized');

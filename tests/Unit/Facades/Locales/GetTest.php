@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 use LaravelLang\Locales\Enums\Locale;
 use LaravelLang\Locales\Facades\Locales;
+use Pest\Expectation;
 
 it('returns the base locale from the correctly passed one', function () {
     createLocales(Locale::Russian, Locale::Ukrainian);
@@ -215,3 +216,21 @@ it('returns the default locale if passed is not set and if the main and fallback
     expect(Locales::get(Locale::Swedish)->code)->toBe('en');
     expect(Locales::get('sv')->code)->toBe('en');
 });
+
+it('checks the return of the main localization if uninstalled ones are transmitted', function (string $locale) {
+    setLocales(Locale::German, Locale::French);
+
+    $german = Locale::German->value;
+    $french = Locale::French->value;
+
+    expect(Locales::get($locale)->code)
+        ->when($locale === $german, fn (Expectation $item) => $item->toBe($german))
+        ->when($locale === $french, fn (Expectation $item) => $item->toBe($french))
+        ->when(! in_array($locale, [$german, $french], true), fn (Expectation $item) => $item->toBe($german));
+})->with('locales');
+
+it('checks the return of the fallback localization if uninstalled ones are transmitted', function (string $locale) {
+    setLocales(null, Locale::French);
+
+    expect(Locales::get($locale)->code)->toBe(Locale::French->value);
+})->with('locales');
