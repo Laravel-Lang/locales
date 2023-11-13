@@ -149,6 +149,19 @@ class RawLocales
         });
     }
 
+    public function info(mixed $locale): string
+    {
+        return $this->registry([__METHOD__, $locale], function () use ($locale) {
+            $locale = Resolver::fromMixed($locale);
+
+            if ($this->isAvailable($locale)) {
+                return $this->toAlias($locale);
+            }
+
+            return $this->getDefault();
+        });
+    }
+
     protected function inArray(Locale|string|null $locale, array $haystack): bool
     {
         $locale = Resolver::toString($locale);

@@ -83,6 +83,11 @@ class Locales
         return $this->registry([__METHOD__, $locale], fn () => $this->map($this->raw->get($locale)));
     }
 
+    public function info(mixed $locale): LocaleData
+    {
+        return $this->registry([__METHOD__, $locale], fn () => $this->map($this->raw->info($locale)));
+    }
+
     public function getDefault(): LocaleData
     {
         return $this->registry(__METHOD__, fn () => $this->map($this->raw->getDefault()));

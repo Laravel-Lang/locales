@@ -17,30 +17,13 @@ declare(strict_types=1);
 
 use LaravelLang\Locales\Enums\Locale;
 
-dataset('locales', Locale::values());
-
-dataset('incorrect-locales', ['FOO', 'BAR', 'AA', 'BB', 'cc', 'dd', null]);
-
-dataset('aliased-locales', [
-    Locale::German->value => [Locale::German, 'de-DE'],
-    Locale::French->value => [Locale::French, 'fr-custom'],
-]);
-
-dataset('locale-orientation-left-to-right', [
+dataset('locale-type-latn', [
     Locale::Afrikaans,
     Locale::Albanian,
-    Locale::Armenian,
     Locale::Azerbaijani,
     Locale::Basque,
-    Locale::Belarusian,
-    Locale::Bengali,
     Locale::Bosnian,
-    Locale::Bulgarian,
     Locale::Catalan,
-    Locale::CentralKhmer,
-    Locale::Chinese,
-    Locale::ChineseHongKong,
-    Locale::ChineseT,
     Locale::Croatian,
     Locale::Czech,
     Locale::Danish,
@@ -50,27 +33,15 @@ dataset('locale-orientation-left-to-right', [
     Locale::Finnish,
     Locale::French,
     Locale::Galician,
-    Locale::Georgian,
     Locale::German,
     Locale::GermanSwitzerland,
-    Locale::Greek,
-    Locale::Gujarati,
-    Locale::Hindi,
     Locale::Hungarian,
     Locale::Icelandic,
     Locale::Indonesian,
     Locale::Italian,
-    Locale::Japanese,
-    Locale::Kannada,
-    Locale::Kazakh,
-    Locale::Korean,
     Locale::Latvian,
     Locale::Lithuanian,
-    Locale::Macedonian,
     Locale::Malay,
-    Locale::Marathi,
-    Locale::Mongolian,
-    Locale::Nepali,
     Locale::NorwegianBokmal,
     Locale::NorwegianNynorsk,
     Locale::Occitan,
@@ -79,34 +50,102 @@ dataset('locale-orientation-left-to-right', [
     Locale::Portuguese,
     Locale::PortugueseBrazil,
     Locale::Romanian,
-    Locale::Russian,
     Locale::Sardinian,
-    Locale::SerbianCyrillic,
     Locale::SerbianLatin,
     Locale::SerbianMontenegrin,
-    Locale::Sinhala,
     Locale::Slovak,
     Locale::Slovenian,
     Locale::Spanish,
     Locale::Swahili,
     Locale::Swedish,
     Locale::Tagalog,
-    Locale::Tajik,
-    Locale::Thai,
     Locale::Turkish,
-    Locale::Turkmen,
-    Locale::Ukrainian,
-    Locale::UzbekCyrillic,
     Locale::UzbekLatin,
     Locale::Vietnamese,
     Locale::Welsh,
 ]);
 
-dataset('locale-orientation-right-to-left', [
+dataset('locale-type-armn', [
+    Locale::Armenian,
+]);
+
+dataset('locale-type-cyrl', [
+    Locale::Belarusian,
+    Locale::Bulgarian,
+    Locale::Kazakh,
+    Locale::Macedonian,
+    Locale::Russian,
+    Locale::SerbianCyrillic,
+    Locale::Tajik,
+    Locale::Turkmen,
+    Locale::Ukrainian,
+    Locale::UzbekCyrillic,
+]);
+
+dataset('locale-type-arab', [
     Locale::Arabic,
-    Locale::Hebrew,
     Locale::Pashto,
     Locale::Persian,
     Locale::Uighur,
     Locale::Urdu,
+]);
+
+dataset('locale-type-beng', [
+    Locale::Bengali,
+]);
+
+dataset('locale-type-khmr', [
+    Locale::CentralKhmer,
+]);
+
+dataset('locale-type-hans', [
+    Locale::Chinese,
+    Locale::ChineseHongKong,
+    Locale::ChineseT,
+]);
+
+dataset('locale-type-geor', [
+    Locale::Georgian,
+]);
+
+dataset('locale-type-grek', [
+    Locale::Greek,
+]);
+
+dataset('locale-type-gujr', [
+    Locale::Gujarati,
+]);
+
+dataset('locale-type-hebr', [
+    Locale::Hebrew,
+]);
+
+dataset('locale-type-deva', [
+    Locale::Hindi,
+    Locale::Marathi,
+    Locale::Nepali,
+]);
+
+dataset('locale-type-jpan', [
+    Locale::Japanese,
+]);
+
+dataset('locale-type-knda', [
+    Locale::Kannada,
+]);
+
+dataset('locale-type-hang', [
+    Locale::Korean,
+]);
+
+dataset('locale-type-mong', [
+    Locale::Mongolian,
+]);
+
+dataset('locale-type-sinh', [
+    Locale::Sinhala,
+]);
+
+dataset('locale-type-thai', [
+    Locale::Thai,
 ]);
