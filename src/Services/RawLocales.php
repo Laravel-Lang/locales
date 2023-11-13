@@ -154,7 +154,11 @@ class RawLocales
         return $this->registry([__METHOD__, $locale], function () use ($locale) {
             $locale = Resolver::fromMixed($locale);
 
-            return $this->toAlias($locale);
+            if ($this->isAvailable($locale)) {
+                return $this->toAlias($locale);
+            }
+
+            return $this->getDefault();
         });
     }
 
