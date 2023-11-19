@@ -17,12 +17,12 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Services;
 
+use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Concerns\Aliases;
 use LaravelLang\Locales\Concerns\Localized;
 use LaravelLang\Locales\Concerns\Mapping;
 use LaravelLang\Locales\Concerns\Registry;
 use LaravelLang\Locales\Data\LocaleData;
-use LaravelLang\LocaleList\Locale;
 
 class Locales
 {

@@ -19,10 +19,10 @@ namespace LaravelLang\Locales\Services;
 
 use DragonCode\Support\Facades\Filesystem\Path;
 use Illuminate\Support\Collection;
+use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Concerns\Aliases;
 use LaravelLang\Locales\Concerns\Pathable;
 use LaravelLang\Locales\Concerns\Registry;
-use LaravelLang\LocaleList\Locale;
 
 class RawLocales
 {

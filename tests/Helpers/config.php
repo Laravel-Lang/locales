@@ -15,8 +15,8 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Locales\Enums\Config;
 use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Enums\Config;
 
 function setAlias(Locale $locale, string $alias): void
 {

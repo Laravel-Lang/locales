@@ -39,8 +39,6 @@ it('checks language localization', function (string $locale) {
 
     // Currency
     /** @var array<string, CurrencyData> $nativeCurrency */
-    /** @var array<string, CurrencyData> $englishCurrency */
-    /** @var array<string, CurrencyData> $localizedCurrency */
     $nativeCurrency    = NativeCurrency::get();
     $englishCurrency   = NativeCurrency::get(Locale::English);
     $localizedCurrency = NativeCurrency::get($locale);

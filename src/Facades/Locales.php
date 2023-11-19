@@ -18,8 +18,8 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Services\Locales as Service;
 use LaravelLang\Locales\Services\RawLocales;
 

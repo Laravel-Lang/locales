@@ -52,7 +52,7 @@ class LocaleData
     ) {
         $this->code = $this->toAlias($locale);
 
-        $this->type     = $data['type'] ?? 'Latn';
+        $this->type     = $data['type']     ?? 'Latn';
         $this->regional = $data['regional'] ?? null;
 
         $this->name      = $locales->getEnglish($this->code);

@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Data;
 
 use LaravelLang\Locales\Concerns\Aliases;
-use LaravelLang\NativeCurrencyNames\Data\CurrencyData as ExternalCurrencyData;
 
 class NativeData
 {
