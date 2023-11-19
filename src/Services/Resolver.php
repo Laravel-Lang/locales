@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Services;
 
 use LaravelLang\Locales\Data\LocaleData;
-use LaravelLang\Locales\Enums\Locale;
+use LaravelLang\LocaleList\Locale;
 use stdClass;
 
 class Resolver

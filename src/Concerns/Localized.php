@@ -17,18 +17,38 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
+use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Data\NativeData;
-use LaravelLang\Locales\Enums\Locale;
-use LaravelLang\NativeLocaleNames\Native;
+use LaravelLang\NativeCountryNames\Native as NativeCountry;
+use LaravelLang\NativeCurrencyNames\Native as NativeCurrency;
+use LaravelLang\NativeLocaleNames\Native as NativeLocale;
 
 trait Localized
 {
-    public function localized(): NativeData
+    public function localizedLocales(): NativeData
     {
         return $this->registry([__METHOD__, $this->appLocale()], fn () => new NativeData(
-            Native::get(Locale::English),
-            Native::get(),
-            Native::get($this->appLocale())
+            NativeLocale::get(Locale::English),
+            NativeLocale::get(),
+            NativeLocale::get($this->appLocale())
+        ));
+    }
+
+    public function localizedCountries(): NativeData
+    {
+        return $this->registry([__METHOD__, $this->appLocale()], fn () => new NativeData(
+            NativeCountry::get(Locale::English),
+            NativeCountry::get(),
+            NativeCountry::get($this->appLocale())
+        ));
+    }
+
+    public function localizedCurrencies(): NativeData
+    {
+        return $this->registry([__METHOD__, $this->appLocale()], fn () => new NativeData(
+            NativeCurrency::get(Locale::English),
+            NativeCurrency::get(),
+            NativeCurrency::get($this->appLocale())
         ));
     }
 

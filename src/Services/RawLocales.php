@@ -22,7 +22,7 @@ use Illuminate\Support\Collection;
 use LaravelLang\Locales\Concerns\Aliases;
 use LaravelLang\Locales\Concerns\Pathable;
 use LaravelLang\Locales\Concerns\Registry;
-use LaravelLang\Locales\Enums\Locale;
+use LaravelLang\LocaleList\Locale;
 
 class RawLocales
 {
@@ -32,7 +32,7 @@ class RawLocales
 
     public function available(): array
     {
-        return $this->registry(__METHOD__, fn () => Locale::collection()
+        return $this->registry(__METHOD__, fn () => collect(Locale::cases())
             ->map(fn (Locale $locale) => $this->toAlias($locale))
             ->filter()
             ->sort()

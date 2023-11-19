@@ -17,9 +17,9 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
+use LaravelLang\LocaleList\Locale as LocaleEnum;
 use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Enums\Config;
-use LaravelLang\Locales\Enums\Locale as LocaleEnum;
 
 trait Mapping
 {
@@ -27,7 +27,13 @@ trait Mapping
     {
         $locale = $this->findLocale($locale);
 
-        return new LocaleData($locale, $this->mapData($locale), $this->localized());
+        return new LocaleData(
+            $locale,
+            $this->mapData($locale),
+            $this->localizedLocales(),
+            $this->localizedCountries(),
+            $this->localizedCurrencies()
+        );
     }
 
     protected function mapLocales(array $locales): array

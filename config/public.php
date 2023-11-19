@@ -24,8 +24,7 @@ return [
      */
 
     'aliases' => [
-        // \LaravelLang\Locales\Enums\Locale::German->value => 'de-DE',
-        //
-        // \LaravelLang\Locales\Enums\Locale::GermanSwitzerland->value => 'de-CH',
+        // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
+        // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
     ],
 ];

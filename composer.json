@@ -31,6 +31,9 @@
         "archtechx/enums": "^0.3.2",
         "dragon-code/support": "^6.11.3",
         "illuminate/collections": "^10.0",
+        "laravel-lang/locale-list": "^1.1",
+        "laravel-lang/native-country-names": "^1.0",
+        "laravel-lang/native-currency-names": "^1.1",
         "laravel-lang/native-locale-names": "^1.4.0"
     },
     "require-dev": {

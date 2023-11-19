@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Data;
 
 use LaravelLang\Locales\Concerns\Aliases;
+use LaravelLang\NativeCurrencyNames\Data\CurrencyData as ExternalCurrencyData;
 
 class NativeData
 {
@@ -29,22 +30,22 @@ class NativeData
         public readonly array $localized
     ) {}
 
-    public function getEnglish(string $locale): string
+    public function getEnglish(string $locale): mixed
     {
         return $this->get($this->english, $locale);
     }
 
-    public function getNative(string $locale): string
+    public function getNative(string $locale): mixed
     {
         return $this->get($this->native, $locale);
     }
 
-    public function getLocalized(string $locale): string
+    public function getLocalized(string $locale): mixed
     {
         return $this->get($this->localized, $locale);
     }
 
-    protected function get(array $items, string $locale): string
+    protected function get(array $items, string $locale): mixed
     {
         $locale = $this->fromAlias($locale);
 

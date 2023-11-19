@@ -22,7 +22,7 @@ use LaravelLang\Locales\Concerns\Localized;
 use LaravelLang\Locales\Concerns\Mapping;
 use LaravelLang\Locales\Concerns\Registry;
 use LaravelLang\Locales\Data\LocaleData;
-use LaravelLang\Locales\Enums\Locale;
+use LaravelLang\LocaleList\Locale;
 
 class Locales
 {
