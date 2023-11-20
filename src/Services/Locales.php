@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Services;
 
+use Illuminate\Support\Collection;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Concerns\Aliases;
 use LaravelLang\Locales\Concerns\Localized;
@@ -40,7 +41,7 @@ class Locales
         return $this->raw;
     }
 
-    public function available(bool $withCountries = true, bool $withCurrencies = true): array
+    public function available(bool $withCountries = true, bool $withCurrencies = true): Collection
     {
         return $this->registry(
             __METHOD__,
@@ -48,15 +49,18 @@ class Locales
         );
     }
 
-    public function installed(bool $withProtects = true, bool $withCountries = true, bool $withCurrencies = true): array
-    {
+    public function installed(
+        bool $withProtects = true,
+        bool $withCountries = true,
+        bool $withCurrencies = true
+    ): Collection {
         return $this->registry(
             [__METHOD__, $withProtects],
             fn () => $this->mapLocales($this->raw->installed($withProtects), $withCountries, $withCurrencies)
         );
     }
 
-    public function notInstalled(bool $withCountries = true, bool $withCurrencies = true): array
+    public function notInstalled(bool $withCountries = true, bool $withCurrencies = true): Collection
     {
         return $this->registry(
             __METHOD__,
@@ -64,7 +68,7 @@ class Locales
         );
     }
 
-    public function protects(bool $withCountries = true, bool $withCurrencies = true): array
+    public function protects(bool $withCountries = true, bool $withCurrencies = true): Collection
     {
         return $this->registry(
             __METHOD__,

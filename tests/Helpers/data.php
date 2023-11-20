@@ -15,9 +15,9 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Locales\Data\LocaleData;
+use Illuminate\Support\Collection;
 
-function simpleData(array $locales): array
+function simpleData(Collection $locales): array
 {
-    return array_map(static fn (LocaleData $locale) => $locale->code, $locales);
+    return $locales->pluck('code')->all();
 }

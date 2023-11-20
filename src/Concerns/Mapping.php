@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
+use Illuminate\Support\Collection;
 use LaravelLang\LocaleList\Locale as LocaleEnum;
 use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Enums\Config;
@@ -36,9 +37,11 @@ trait Mapping
         );
     }
 
-    protected function mapLocales(array $locales, bool $withCountries, bool $withCurrencies): array
+    protected function mapLocales(array $locales, bool $withCountries, bool $withCurrencies): Collection
     {
-        return array_map(fn (string $locale) => $this->map($locale, $withCountries, $withCurrencies), $locales);
+        return collect($locales)->map(
+            fn (string $locale) => $this->map($locale, $withCountries, $withCurrencies)
+        );
     }
 
     protected function findLocale(string $locale): LocaleEnum
