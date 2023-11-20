@@ -30,7 +30,6 @@ it('checks locales', function (string $locale) {
     // Locales
     /**
      * @var array<string, string> $nativeLocale
-     * @var array<string, string> $localizedLocale
      */
     $nativeLocale    = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
@@ -38,7 +37,6 @@ it('checks locales', function (string $locale) {
     // Country
     /**
      * @var array<string, CountryData> $nativeCountry
-     * @var array<string, CountryData> $localizedCountry
      */
     $nativeCountry    = CountryNames::get()->all();
     $localizedCountry = CountryNames::get($locale)->all();
@@ -46,7 +44,6 @@ it('checks locales', function (string $locale) {
     // Currency
     /**
      * @var array<string, CurrencyData> $nativeCurrency
-     * @var array<string, CurrencyData> $localizedCurrency
      */
     $nativeCurrency    = CurrencyNames::get()->all();
     $localizedCurrency = CurrencyNames::get($locale)->all();
@@ -79,7 +76,6 @@ it('checks locales without displaying currency information', function (string $l
     // Locales
     /**
      * @var array<string, string> $nativeLocale
-     * @var array<string, string> $localizedLocale
      */
     $nativeLocale    = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
@@ -87,7 +83,6 @@ it('checks locales without displaying currency information', function (string $l
     // Country
     /**
      * @var array<string, CountryData> $nativeCountry
-     * @var array<string, CountryData> $localizedCountry
      */
     $nativeCountry    = CountryNames::get()->all();
     $localizedCountry = CountryNames::get($locale)->all();
@@ -116,7 +111,6 @@ it('checks locales without displaying country information', function (string $lo
     // Locales
     /**
      * @var array<string, string> $nativeLocale
-     * @var array<string, string> $localizedLocale
      */
     $nativeLocale    = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
@@ -124,7 +118,6 @@ it('checks locales without displaying country information', function (string $lo
     // Currency
     /**
      * @var array<string, CurrencyData> $nativeCurrency
-     * @var array<string, CurrencyData> $localizedCurrency
      */
     $nativeCurrency    = CurrencyNames::get()->all();
     $localizedCurrency = CurrencyNames::get($locale)->all();
@@ -154,7 +147,6 @@ it('checks locales without displaying country and currency information', functio
     // Locales
     /**
      * @var array<string, string> $nativeLocale
-     * @var array<string, string> $localizedLocale
      */
     $nativeLocale    = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);

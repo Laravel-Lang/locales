@@ -16,9 +16,7 @@
 declare(strict_types=1);
 
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Facades\Locales;
-use Pest\Expectation;
 
 it('returns English locale', function () {
     expect(Locales::getDefault()->code)
