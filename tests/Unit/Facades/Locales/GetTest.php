@@ -15,7 +15,7 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Locales\Enums\Locale;
+use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
 use Pest\Expectation;
 
@@ -234,3 +234,18 @@ it('checks the return of the fallback localization if uninstalled ones are trans
 
     expect(Locales::get($locale)->code)->toBe(Locale::French->value);
 })->with('locales');
+
+it('checks for missing currency information')
+    ->expect(fn () => Locales::get(Locale::Vietnamese, withCurrency: false))
+    ->country->not->toBeNull()
+    ->currency->toBeNull();
+
+it('checks for missing country information')
+    ->expect(fn () => Locales::get(Locale::Vietnamese, withCountry: false))
+    ->country->toBeNull()
+    ->currency->not->toBeNull();
+
+it('checks for missing country and currency information')
+    ->expect(fn () => Locales::get(Locale::Vietnamese, false, false))
+    ->country->toBeNull()
+    ->currency->toBeNull();

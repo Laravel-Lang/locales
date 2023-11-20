@@ -16,7 +16,7 @@
 declare(strict_types=1);
 
 use DragonCode\Support\Facades\Filesystem\Directory;
-use LaravelLang\Locales\Enums\Locale;
+use LaravelLang\LocaleList\Locale;
 
 function createLocale(Locale|string $locale): void
 {

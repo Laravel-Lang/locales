@@ -15,7 +15,7 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Locales\Enums\Locale;
+use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Enums\Orientation;
 use LaravelLang\Locales\Facades\Locales;
 
@@ -42,7 +42,6 @@ it('checks locale information without checking its installation', function (stri
             'Sinh',
             'Thai',
         ])
-        ->name->toBeString()
         ->native->toBeString()
         ->localized->toBeString()
         ->orientation->toBeIn([Orientation::LeftToRight, Orientation::RightToLeft]);
@@ -124,7 +123,6 @@ it('checking information for incorrect locale', function (?string $locale) {
     expect(Locales::info($locale))
         ->code->toBeString()->toBe('en')
         ->type->toBeString()->toBe('Latn')
-        ->name->toBeString()->toBe('English')
         ->native->toBeString()->toBe('English')
         ->localized->toBeString()->toBe('English')
         ->orientation->toBe(Orientation::LeftToRight);

@@ -15,8 +15,10 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Locales\Enums\Locale;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Facades\Locales;
+use Pest\Expectation;
 
 it('checks the list of available locales', function () {
     expect(simpleData(Locales::available()))
@@ -40,3 +42,24 @@ it('checks the list of available locales taking into account aliases', function 
 it('checks incorrect locales against the list of available ones', function (?string $locale) {
     expect(simpleData(Locales::available()))->toBeArray()->not->toContain($locale);
 })->with('incorrect-locales');
+
+it('checks for missing currency information')
+    ->expect(fn () => Locales::available(withCurrencies: false))
+    ->each(fn (Expectation|LocaleData $item) => $item
+        ->country->not->toBeNull()
+        ->currency->toBeNull()
+    );
+
+it('checks for missing country information')
+    ->expect(fn () => Locales::available(withCountries: false))
+    ->each(fn (Expectation|LocaleData $item) => $item
+        ->country->toBeNull()
+        ->currency->not->toBeNull()
+    );
+
+it('checks for missing country and currency information')
+    ->expect(fn () => Locales::available(false, false))
+    ->each(fn (Expectation|LocaleData $item) => $item
+        ->country->toBeNull()
+        ->currency->toBeNull()
+    );

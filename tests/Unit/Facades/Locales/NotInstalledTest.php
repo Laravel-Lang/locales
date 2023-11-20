@@ -17,8 +17,10 @@ declare(strict_types=1);
 
 use DragonCode\Support\Facades\Filesystem\Directory;
 use DragonCode\Support\Facades\Filesystem\File;
-use LaravelLang\Locales\Enums\Locale;
+use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Facades\Locales;
+use Pest\Expectation;
 
 it('checks whether protected locales are installed', function () {
     expect(simpleData(Locales::notInstalled()))
@@ -78,5 +80,41 @@ it('check localization detection by directory availability', function () {
         ->not->toContain(
             Locale::English->value,
             Locale::German->value,
+        );
+});
+
+it('checks for missing currency information', function () {
+    createLocales(Locale::Russian, Locale::Ukrainian, Locale::French);
+
+    setLocales(Locale::German, Locale::French);
+
+    expect(Locales::notInstalled(withCurrencies: false))
+        ->each(fn (Expectation|LocaleData $item) => $item
+            ->country->not->toBeNull()
+            ->currency->toBeNull()
+        );
+});
+
+it('checks for missing country information', function () {
+    createLocales(Locale::Russian, Locale::Ukrainian, Locale::French);
+
+    setLocales(Locale::German, Locale::French);
+
+    expect(Locales::notInstalled(withCountries: false))
+        ->each(fn (Expectation|LocaleData $item) => $item
+            ->country->toBeNull()
+            ->currency->not->toBeNull()
+        );
+});
+
+it('checks for missing country and currency information', function () {
+    createLocales(Locale::Russian, Locale::Ukrainian, Locale::French);
+
+    setLocales(Locale::German, Locale::French);
+
+    expect(Locales::notInstalled(withCountries: false, withCurrencies: false))
+        ->each(fn (Expectation|LocaleData $item) => $item
+            ->country->toBeNull()
+            ->currency->toBeNull()
         );
 });

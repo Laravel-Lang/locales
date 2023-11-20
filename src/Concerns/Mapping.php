@@ -17,22 +17,28 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
+use LaravelLang\LocaleList\Locale as LocaleEnum;
 use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Enums\Config;
-use LaravelLang\Locales\Enums\Locale as LocaleEnum;
 
 trait Mapping
 {
-    protected function map(string $locale): LocaleData
+    protected function map(string $locale, bool $withCountry, bool $withCurrency): LocaleData
     {
         $locale = $this->findLocale($locale);
 
-        return new LocaleData($locale, $this->mapData($locale), $this->localized());
+        return new LocaleData(
+            $locale,
+            $this->mapData($locale),
+            $this->localizedLocales(),
+            $this->localizedCountries($withCountry),
+            $this->localizedCurrencies($withCurrency)
+        );
     }
 
-    protected function mapLocales(array $locales): array
+    protected function mapLocales(array $locales, bool $withCountries, bool $withCurrencies): array
     {
-        return array_map(fn (string $locale) => $this->map($locale), $locales);
+        return array_map(fn (string $locale) => $this->map($locale, $withCountries, $withCurrencies), $locales);
     }
 
     protected function findLocale(string $locale): LocaleEnum
