@@ -17,38 +17,42 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
-use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Data\NativeData;
-use LaravelLang\NativeCountryNames\Native as NativeCountry;
-use LaravelLang\NativeCurrencyNames\Native as NativeCurrency;
-use LaravelLang\NativeLocaleNames\Native as NativeLocale;
+use LaravelLang\NativeCountryNames\CountryNames;
+use LaravelLang\NativeCurrencyNames\CurrencyNames;
+use LaravelLang\NativeLocaleNames\LocaleNames;
 
 trait Localized
 {
     public function localizedLocales(): NativeData
     {
         return $this->registry([__METHOD__, $this->appLocale()], fn () => new NativeData(
-            NativeLocale::get(Locale::English),
-            NativeLocale::get(),
-            NativeLocale::get($this->appLocale())
+            LocaleNames::get(),
+            LocaleNames::get($this->appLocale())
         ));
     }
 
-    public function localizedCountries(): NativeData
+    public function localizedCountries(bool $withCountries): ?NativeData
     {
+        if (! $withCountries) {
+            return null;
+        }
+
         return $this->registry([__METHOD__, $this->appLocale()], fn () => new NativeData(
-            NativeCountry::get(Locale::English),
-            NativeCountry::get(),
-            NativeCountry::get($this->appLocale())
+            CountryNames::get()->all(),
+            CountryNames::get($this->appLocale())->all()
         ));
     }
 
-    public function localizedCurrencies(): NativeData
+    public function localizedCurrencies(bool $withCurrencies): ?NativeData
     {
+        if (! $withCurrencies) {
+            return null;
+        }
+
         return $this->registry([__METHOD__, $this->appLocale()], fn () => new NativeData(
-            NativeCurrency::get(Locale::English),
-            NativeCurrency::get(),
-            NativeCurrency::get($this->appLocale())
+            CurrencyNames::get()->all(),
+            CurrencyNames::get($this->appLocale())->all()
         ));
     }
 

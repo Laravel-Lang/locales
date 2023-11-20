@@ -26,20 +26,16 @@ class CountryData
 
     public readonly string $code;
 
-    public readonly string $name;
-
     public readonly string $native;
 
     public readonly string $localized;
 
-    public function __construct(LocaleEnum $locale, NativeData $countries, NativeData $currencies)
+    public function __construct(LocaleEnum $locale, NativeData $data)
     {
         $code = $this->fromAlias($locale);
 
-        $this->code = $currencies->getEnglish($code)->country;
-
-        $this->name      = $countries->getEnglish($code);
-        $this->native    = $countries->getNative($code);
-        $this->localized = $countries->getLocalized($code);
+        $this->code      = $data->getNative($code)->code;
+        $this->native    = $data->getNative($code)->native;
+        $this->localized = $data->getLocalized($code)->localized;
     }
 }

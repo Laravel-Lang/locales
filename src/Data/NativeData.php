@@ -24,15 +24,9 @@ class NativeData
     use Aliases;
 
     public function __construct(
-        public readonly array $english,
         public readonly array $native,
         public readonly array $localized
     ) {}
-
-    public function getEnglish(string $locale): mixed
-    {
-        return $this->get($this->english, $locale);
-    }
 
     public function getNative(string $locale): mixed
     {

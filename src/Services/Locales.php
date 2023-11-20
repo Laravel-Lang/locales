@@ -40,27 +40,36 @@ class Locales
         return $this->raw;
     }
 
-    public function available(): array
-    {
-        return $this->registry(__METHOD__, fn () => $this->mapLocales($this->raw->available()));
-    }
-
-    public function installed(bool $withProtects = true): array
+    public function available(bool $withCountries = true, bool $withCurrencies = true): array
     {
         return $this->registry(
-            [__METHOD__, $withProtects],
-            fn () => $this->mapLocales($this->raw->installed($withProtects))
+            __METHOD__,
+            fn () => $this->mapLocales($this->raw->available(), $withCountries, $withCurrencies)
         );
     }
 
-    public function notInstalled(): array
+    public function installed(bool $withProtects = true, bool $withCountries = true, bool $withCurrencies = true): array
     {
-        return $this->registry(__METHOD__, fn () => $this->mapLocales($this->raw->notInstalled()));
+        return $this->registry(
+            [__METHOD__, $withProtects],
+            fn () => $this->mapLocales($this->raw->installed($withProtects), $withCountries, $withCurrencies)
+        );
     }
 
-    public function protects(): array
+    public function notInstalled(bool $withCountries = true, bool $withCurrencies = true): array
     {
-        return $this->registry(__METHOD__, fn () => $this->mapLocales($this->raw->protects()));
+        return $this->registry(
+            __METHOD__,
+            fn () => $this->mapLocales($this->raw->notInstalled(), $withCountries, $withCurrencies)
+        );
+    }
+
+    public function protects(bool $withCountries = true, bool $withCurrencies = true): array
+    {
+        return $this->registry(
+            __METHOD__,
+            fn () => $this->mapLocales($this->raw->protects(), $withCountries, $withCurrencies)
+        );
     }
 
     public function isAvailable(Locale|string|null $locale): bool
@@ -78,23 +87,35 @@ class Locales
         return $this->raw->isProtected($locale);
     }
 
-    public function get(mixed $locale): LocaleData
+    public function get(mixed $locale, bool $withCountry = true, bool $withCurrency = true): LocaleData
     {
-        return $this->registry([__METHOD__, $locale], fn () => $this->map($this->raw->get($locale)));
+        return $this->registry(
+            [__METHOD__, $locale],
+            fn () => $this->map($this->raw->get($locale), $withCountry, $withCurrency)
+        );
     }
 
-    public function info(mixed $locale): LocaleData
+    public function info(mixed $locale, bool $withCountry = true, bool $withCurrency = true): LocaleData
     {
-        return $this->registry([__METHOD__, $locale], fn () => $this->map($this->raw->info($locale)));
+        return $this->registry(
+            [__METHOD__, $locale],
+            fn () => $this->map($this->raw->info($locale), $withCountry, $withCurrency)
+        );
     }
 
-    public function getDefault(): LocaleData
+    public function getDefault(bool $withCountry = true, bool $withCurrency = true): LocaleData
     {
-        return $this->registry(__METHOD__, fn () => $this->map($this->raw->getDefault()));
+        return $this->registry(
+            __METHOD__,
+            fn () => $this->map($this->raw->getDefault(), $withCountry, $withCurrency)
+        );
     }
 
-    public function getFallback(): LocaleData
+    public function getFallback(bool $withCountry = true, bool $withCurrency = true): LocaleData
     {
-        return $this->registry(__METHOD__, fn () => $this->map($this->raw->getFallback()));
+        return $this->registry(
+            __METHOD__,
+            fn () => $this->map($this->raw->getFallback(), $withCountry, $withCurrency)
+        );
     }
 }

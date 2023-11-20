@@ -27,19 +27,17 @@ class LocaleData
 
     public readonly string $code;
 
-    public readonly string $type;
+    public readonly ?string $regional;
 
-    public readonly string $name;
+    public readonly string $type;
 
     public readonly string $native;
 
     public readonly string $localized;
 
-    public readonly ?string $regional;
+    public readonly ?CountryData $country;
 
-    public readonly CountryData $country;
-
-    public readonly CurrencyData $currency;
+    public readonly ?CurrencyData $currency;
 
     public readonly Orientation $orientation;
 
@@ -47,21 +45,20 @@ class LocaleData
         LocaleEnum $locale,
         array $data,
         NativeData $locales,
-        NativeData $countries,
-        NativeData $currencies
+        ?NativeData $countries,
+        ?NativeData $currencies
     ) {
         $this->code = $this->toAlias($locale);
 
-        $this->type     = $data['type']     ?? 'Latn';
+        $this->type     = $data['type'] ?? 'Latn';
         $this->regional = $data['regional'] ?? null;
 
-        $this->name      = $locales->getEnglish($this->code);
         $this->native    = $locales->getNative($this->code);
         $this->localized = $locales->getLocalized($this->code);
 
         $this->orientation = $data['orientation'] ?? Orientation::LeftToRight;
 
-        $this->country  = new CountryData($locale, $countries, $currencies);
-        $this->currency = new CurrencyData($locale, $currencies);
+        $this->country  = $countries ? new CountryData($locale, $countries) : null;
+        $this->currency = $currencies ? new CurrencyData($locale, $currencies) : null;
     }
 }

@@ -26,9 +26,7 @@ class CurrencyData
 
     public readonly string $code;
 
-    public readonly ?int $numericCode;
-
-    public readonly string $name;
+    public readonly ?int $numeric;
 
     public readonly string $native;
 
@@ -38,10 +36,8 @@ class CurrencyData
     {
         $code = $this->fromAlias($locale);
 
-        $this->code        = $data->getEnglish($code)->code;
-        $this->numericCode = $data->getEnglish($code)->numeric;
-
-        $this->name      = $data->getEnglish($code)->name;
+        $this->code      = $data->getNative($code)->code;
+        $this->numeric   = $data->getNative($code)->numeric;
         $this->native    = $data->getNative($code)->native;
         $this->localized = $data->getLocalized($code)->localized;
     }

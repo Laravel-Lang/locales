@@ -16,7 +16,9 @@
 declare(strict_types=1);
 
 use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Facades\Locales;
+use Pest\Expectation;
 
 it('returns English locale', function () {
     expect(Locales::getDefault()->code)
@@ -67,3 +69,18 @@ it('will return the English locale if both are set to null', function () {
     expect(Locales::getDefault()->code)
         ->toBe(Locale::English->value);
 });
+
+it('checks for missing currency information')
+    ->expect(fn () => Locales::getDefault(withCurrency: false))
+    ->country->not->toBeNull()
+    ->currency->toBeNull();
+
+it('checks for missing country information')
+    ->expect(fn () => Locales::getDefault(withCountry: false))
+    ->country->toBeNull()
+    ->currency->not->toBeNull();
+
+it('checks for missing country and currency information')
+    ->expect(fn () => Locales::getDefault(false, false))
+    ->country->toBeNull()
+    ->currency->toBeNull();

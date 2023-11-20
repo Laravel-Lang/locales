@@ -23,7 +23,7 @@ use LaravelLang\Locales\Enums\Config;
 
 trait Mapping
 {
-    protected function map(string $locale): LocaleData
+    protected function map(string $locale, bool $withCountry, bool $withCurrency): LocaleData
     {
         $locale = $this->findLocale($locale);
 
@@ -31,14 +31,14 @@ trait Mapping
             $locale,
             $this->mapData($locale),
             $this->localizedLocales(),
-            $this->localizedCountries(),
-            $this->localizedCurrencies()
+            $this->localizedCountries($withCountry),
+            $this->localizedCurrencies($withCurrency)
         );
     }
 
-    protected function mapLocales(array $locales): array
+    protected function mapLocales(array $locales, bool $withCountries, bool $withCurrencies): array
     {
-        return array_map(fn (string $locale) => $this->map($locale), $locales);
+        return array_map(fn (string $locale) => $this->map($locale, $withCountries, $withCurrencies), $locales);
     }
 
     protected function findLocale(string $locale): LocaleEnum

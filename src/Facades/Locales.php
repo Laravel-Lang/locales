@@ -24,17 +24,17 @@ use LaravelLang\Locales\Services\Locales as Service;
 use LaravelLang\Locales\Services\RawLocales;
 
 /**
- * @method static array<LocaleData> available()
- * @method static array<LocaleData> installed(bool $withProtects = true)
- * @method static array<LocaleData> notInstalled()
- * @method static array<LocaleData> protects()
+ * @method static array<LocaleData> available(bool $withCountries = true, bool $withCurrencies = true)
+ * @method static array<LocaleData> installed(bool $withProtects = true, bool $withCountries = true, bool $withCurrencies = true)
+ * @method static array<LocaleData> notInstalled(bool $withCountries = true, bool $withCurrencies = true)
+ * @method static array<LocaleData> protects(bool $withCountries = true, bool $withCurrencies = true)
  * @method static bool isAvailable(string|Locale|null $locale)
  * @method static bool isInstalled(string|Locale|null $locale)
  * @method static bool isProtected(string|Locale|null $locale)
- * @method static LocaleData get(mixed $locale)
- * @method static LocaleData getDefault()
- * @method static LocaleData getFallback()
- * @method static LocaleData info(mixed $locale)
+ * @method static LocaleData get(mixed $locale, bool $withCountry = true, bool $withCurrency = true)
+ * @method static LocaleData getDefault(bool $withCountry = true, bool $withCurrency = true)
+ * @method static LocaleData getFallback(bool $withCountry = true, bool $withCurrency = true)
+ * @method static LocaleData info(mixed $locale, bool $withCountry = true, bool $withCurrency = true)
  * @method static RawLocales raw()
  */
 class Locales extends Facade

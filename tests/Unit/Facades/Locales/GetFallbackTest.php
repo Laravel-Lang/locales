@@ -74,3 +74,18 @@ it('will return the locale by alias', function (Locale $locale, string $alias) {
         ->toBe($alias)
         ->not->toBe($locale->value);
 })->with('aliased-locales');
+
+it('checks for missing currency information')
+    ->expect(fn () => Locales::getFallback(withCurrency: false))
+    ->country->not->toBeNull()
+    ->currency->toBeNull();
+
+it('checks for missing country information')
+    ->expect(fn () => Locales::getFallback(withCountry: false))
+    ->country->toBeNull()
+    ->currency->not->toBeNull();
+
+it('checks for missing country and currency information')
+    ->expect(fn () => Locales::getFallback(false, false))
+    ->country->toBeNull()
+    ->currency->toBeNull();
