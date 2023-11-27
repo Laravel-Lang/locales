@@ -26,7 +26,7 @@ dataset('aliased-locales', [
     Locale::French->value => [Locale::French, 'fr-custom'],
 ]);
 
-dataset('locale-orientation-left-to-right', [
+dataset('locale-direction-left-to-right', [
     Locale::Afrikaans,
     Locale::Albanian,
     Locale::Armenian,
@@ -102,7 +102,7 @@ dataset('locale-orientation-left-to-right', [
     Locale::Welsh,
 ]);
 
-dataset('locale-orientation-right-to-left', [
+dataset('locale-direction-right-to-left', [
     Locale::Arabic,
     Locale::Hebrew,
     Locale::Pashto,

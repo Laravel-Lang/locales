@@ -16,13 +16,13 @@
 declare(strict_types=1);
 
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\Locales\Enums\Orientation;
+use LaravelLang\Locales\Enums\Direction;
 use LaravelLang\Locales\Facades\Locales;
 
-it('checks the left-to-right orientation property', function (Locale $locale) {
-    expect(Locales::info($locale))->orientation->toBe(Orientation::LeftToRight);
-})->with('locale-orientation-left-to-right');
+it('checks the left-to-right direction property', function (Locale $locale) {
+    expect(Locales::info($locale))->direction->toBe(Direction::LeftToRight);
+})->with('locale-direction-left-to-right');
 
-it('checks the right-to-left orientation property', function (Locale $locale) {
-    expect(Locales::info($locale))->orientation->toBe(Orientation::RightToLeft);
-})->with('locale-orientation-right-to-left');
+it('checks the right-to-left direction property', function (Locale $locale) {
+    expect(Locales::info($locale))->direction->toBe(Direction::RightToLeft);
+})->with('locale-direction-right-to-left');

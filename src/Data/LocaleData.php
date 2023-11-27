@@ -19,7 +19,7 @@ namespace LaravelLang\Locales\Data;
 
 use LaravelLang\LocaleList\Locale as LocaleEnum;
 use LaravelLang\Locales\Concerns\Aliases;
-use LaravelLang\Locales\Enums\Orientation;
+use LaravelLang\Locales\Enums\Direction;
 
 class LocaleData
 {
@@ -39,7 +39,7 @@ class LocaleData
 
     public readonly ?CurrencyData $currency;
 
-    public readonly Orientation $orientation;
+    public readonly Direction $direction;
 
     public function __construct(
         LocaleEnum $locale,
@@ -50,13 +50,13 @@ class LocaleData
     ) {
         $this->code = $this->toAlias($locale);
 
-        $this->type     = $data['type']     ?? 'Latn';
+        $this->type     = $data['type'] ?? 'Latn';
         $this->regional = $data['regional'] ?? null;
 
         $this->native    = $locales->getNative($this->code);
         $this->localized = $locales->getLocalized($this->code);
 
-        $this->orientation = $data['orientation'] ?? Orientation::LeftToRight;
+        $this->direction = $data['direction'] ?? Direction::LeftToRight;
 
         $this->country  = $countries ? new CountryData($locale, $countries) : null;
         $this->currency = $currencies ? new CurrencyData($locale, $currencies) : null;
