@@ -16,7 +16,7 @@
 declare(strict_types=1);
 
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\Locales\Enums\Orientation;
+use LaravelLang\Locales\Enums\Direction;
 
 return [
     'map' => [
@@ -34,7 +34,7 @@ return [
             'type'     => 'Arab',
             'regional' => 'ar_AE',
 
-            'orientation' => Orientation::RightToLeft,
+            'direction' => Direction::RightToLeft,
         ],
 
         Locale::Armenian->value => [
@@ -171,7 +171,7 @@ return [
             'type'     => 'Hebr',
             'regional' => 'he_IL',
 
-            'orientation' => Orientation::RightToLeft,
+            'direction' => Direction::RightToLeft,
         ],
 
         Locale::Hindi->value => [
@@ -273,14 +273,14 @@ return [
             'type'     => 'Arab',
             'regional' => 'ps_AF',
 
-            'orientation' => Orientation::RightToLeft,
+            'direction' => Direction::RightToLeft,
         ],
 
         Locale::Persian->value => [
             'type'     => 'Arab',
             'regional' => 'fa_IR',
 
-            'orientation' => Orientation::RightToLeft,
+            'direction' => Direction::RightToLeft,
         ],
 
         Locale::Pilipino->value => [
@@ -392,7 +392,7 @@ return [
             'type'     => 'Arab',
             'regional' => 'ug_CN',
 
-            'orientation' => Orientation::RightToLeft,
+            'direction' => Direction::RightToLeft,
         ],
 
         Locale::Ukrainian->value => [
@@ -404,7 +404,7 @@ return [
             'type'     => 'Arab',
             'regional' => 'ur_PK',
 
-            'orientation' => Orientation::RightToLeft,
+            'direction' => Direction::RightToLeft,
         ],
 
         Locale::UzbekCyrillic->value => [

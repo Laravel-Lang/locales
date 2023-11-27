@@ -16,7 +16,7 @@
 declare(strict_types=1);
 
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\Locales\Enums\Orientation;
+use LaravelLang\Locales\Enums\Direction;
 use LaravelLang\Locales\Facades\Locales;
 
 it('checks locale information without checking its installation', function (string $locale) {
@@ -44,7 +44,7 @@ it('checks locale information without checking its installation', function (stri
         ])
         ->native->toBeString()
         ->localized->toBeString()
-        ->orientation->toBeIn([Orientation::LeftToRight, Orientation::RightToLeft]);
+        ->direction->toBeIn([Direction::LeftToRight, Direction::RightToLeft]);
 })->with('locales');
 
 it('checks the Latn locale type', function (Locale $locale) {
@@ -125,5 +125,5 @@ it('checking information for incorrect locale', function (?string $locale) {
         ->type->toBeString()->toBe('Latn')
         ->native->toBeString()->toBe('English')
         ->localized->toBeString()->toBe('English')
-        ->orientation->toBe(Orientation::LeftToRight);
+        ->direction->toBe(Direction::LeftToRight);
 })->with('incorrect-locales');

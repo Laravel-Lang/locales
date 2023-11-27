@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Enums;
 
-enum Orientation: string
+enum Direction: string
 {
-    case LeftToRight = 'left-to-right';
-    case RightToLeft = 'right-to-left';
+    case LeftToRight = 'ltr';
+    case RightToLeft = 'rtl';
 }
