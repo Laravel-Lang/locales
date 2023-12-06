@@ -38,6 +38,7 @@ use LaravelLang\Locales\Services\RawLocales;
  * @method static LocaleData getFallback(bool $withCountry = true, bool $withCurrency = true)
  * @method static LocaleData info(mixed $locale, bool $withCountry = true, bool $withCurrency = true)
  * @method static RawLocales raw()
+ * @method static void set(mixed $locale)
  */
 class Locales extends Facade
 {
