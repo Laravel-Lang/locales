@@ -127,4 +127,11 @@ class Locales
             fn () => $this->map($this->raw->getFallback(), $withCountry, $withCurrency)
         );
     }
+
+    public function set(mixed $locale): void
+    {
+        if ($this->isInstalled($locale)) {
+            app()->setLocale($this->raw->get($locale));
+        }
+    }
 }
