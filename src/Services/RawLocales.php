@@ -132,6 +132,11 @@ class RawLocales
         });
     }
 
+    public function getCurrent(): string
+    {
+        return $this->getDefault();
+    }
+
     public function getFallback(): string
     {
         return $this->registry(__METHOD__, function () {
