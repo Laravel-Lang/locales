@@ -39,7 +39,7 @@
     "require-dev": {
         "orchestra/testbench": "^8.0",
         "pestphp/pest": "^2.24.1",
-        "symfony/var-dumper": "^6.0"
+        "symfony/var-dumper": "^6.0 || ^7.0"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
@@ -70,5 +70,10 @@
                 "LaravelLang\\Locales\\ServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "test": [
+            "php vendor/bin/pest --parallel"
+        ]
     }
 }

@@ -107,6 +107,11 @@ class Locales
         );
     }
 
+    public function getCurrent(bool $withCountry = true, bool $withCurrency = true): LocaleData
+    {
+        return $this->getDefault($withCountry, $withCurrency);
+    }
+
     public function getDefault(bool $withCountry = true, bool $withCurrency = true): LocaleData
     {
         return $this->registry(
