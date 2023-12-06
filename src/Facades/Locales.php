@@ -25,14 +25,15 @@ use LaravelLang\Locales\Services\Locales as Service;
 use LaravelLang\Locales\Services\RawLocales;
 
 /**
+ * @method static bool isAvailable(string|Locale|null $locale)
+ * @method static bool isInstalled(string|Locale|null $locale)
+ * @method static bool isProtected(string|Locale|null $locale)
  * @method static Collection<LocaleData> available(bool $withCountries = true, bool $withCurrencies = true)
  * @method static Collection<LocaleData> installed(bool $withProtects = true, bool $withCountries = true, bool $withCurrencies = true)
  * @method static Collection<LocaleData> notInstalled(bool $withCountries = true, bool $withCurrencies = true)
  * @method static Collection<LocaleData> protects(bool $withCountries = true, bool $withCurrencies = true)
- * @method static bool isAvailable(string|Locale|null $locale)
- * @method static bool isInstalled(string|Locale|null $locale)
- * @method static bool isProtected(string|Locale|null $locale)
  * @method static LocaleData get(mixed $locale, bool $withCountry = true, bool $withCurrency = true)
+ * @method static LocaleData getCurrent(bool $withCountry = true, bool $withCurrency = true)
  * @method static LocaleData getDefault(bool $withCountry = true, bool $withCurrency = true)
  * @method static LocaleData getFallback(bool $withCountry = true, bool $withCurrency = true)
  * @method static LocaleData info(mixed $locale, bool $withCountry = true, bool $withCurrency = true)
