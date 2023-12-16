@@ -34,4 +34,4 @@ jobs:
                 run: composer require laravel/framework:^${{ matrix.laravel }} --prefer-${{ matrix.prefer }}
 
             -   name: Execute tests
-                run: sudo vendor/bin/pest
+                run: composer test
