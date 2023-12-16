@@ -73,7 +73,7 @@
     },
     "scripts": {
         "test": [
-            "php vendor/bin/pest --parallel"
+            "php vendor/bin/pest --compact"
         ]
     }
 }

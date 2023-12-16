@@ -11,7 +11,7 @@ jobs:
         strategy:
             fail-fast: true
             matrix:
-                php: [ "8.1", "8.2" ]
+                php: [ "8.1", "8.2", "8.3" ]
                 laravel: [ "10.0" ]
                 prefer: [ "stable", "lowest" ]
 
@@ -34,4 +34,4 @@ jobs:
                 run: composer require laravel/framework:^${{ matrix.laravel }} --prefer-${{ matrix.prefer }}
 
             -   name: Execute tests
-                run: sudo vendor/bin/pest
+                run: composer test
