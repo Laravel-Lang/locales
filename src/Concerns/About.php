@@ -26,8 +26,8 @@ trait About
     protected function registerAbout(): void
     {
         $this->pushInformation(fn () => [
-            'Installed' => $this->implode(Locales::installed()),
-            'Protected' => $this->implode(Locales::protects()),
+            'Installed' => $this->implode(Locales::raw()->installed()),
+            'Protected' => $this->implode(Locales::raw()->protects()),
 
             'Locales Version' => $this->getPackageVersion('laravel-lang/locales'),
         ]);
