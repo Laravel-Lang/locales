@@ -31,17 +31,17 @@
         "archtechx/enums": "^0.3.2",
         "dragon-code/support": "^6.11.3",
         "illuminate/collections": "^10.0",
-        "laravel-lang/locale-list": "^1.2-RC1",
-        "laravel-lang/native-country-names": "^1.3-RC1",
-        "laravel-lang/native-currency-names": "^1.3-RC1",
-        "laravel-lang/native-locale-names": "^2.2-RC2"
+        "laravel-lang/locale-list": "^1.2",
+        "laravel-lang/native-country-names": "^1.3",
+        "laravel-lang/native-currency-names": "^1.3",
+        "laravel-lang/native-locale-names": "^2.2"
     },
     "require-dev": {
         "orchestra/testbench": "^8.0",
         "pestphp/pest": "^2.24.1",
         "symfony/var-dumper": "^6.0 || ^7.0"
     },
-    "minimum-stability": "RC",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
