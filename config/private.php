@@ -30,6 +30,11 @@ return [
             'regional' => 'sq_AL',
         ],
 
+        Locale::Amharic->value => [
+            'type'     => 'Ethi',
+            'regional' => 'am_ET',
+        ],
+
         Locale::Arabic->value => [
             'type'     => 'Arab',
             'regional' => 'ar_AE',
@@ -42,9 +47,24 @@ return [
             'regional' => 'hy_AM',
         ],
 
+        Locale::Assamese->value => [
+            'type'     => 'Beng',
+            'regional' => 'as_IN',
+        ],
+
         Locale::Azerbaijani->value => [
             'type'     => 'Latn',
             'regional' => 'az_AZ',
+        ],
+
+        Locale::Bambara->value => [
+            'type'     => 'Latn',
+            'regional' => 'bm_ML',
+        ],
+
+        Locale::Bhojpuri->value => [
+            'type'     => 'Deva',
+            'regional' => 'bho_IN',
         ],
 
         Locale::Basque->value => [
@@ -75,6 +95,11 @@ return [
         Locale::Catalan->value => [
             'type'     => 'Latn',
             'regional' => 'ca_ES',
+        ],
+
+        Locale::Cebuano->value => [
+            'type'     => 'Latn',
+            'regional' => 'ceb_PH',
         ],
 
         Locale::CentralKhmer->value => [
@@ -112,6 +137,11 @@ return [
             'regional' => 'da_DK',
         ],
 
+        Locale::Dogri->value => [
+            'type'     => 'Deva',
+            'regional' => 'doi_IN',
+        ],
+
         Locale::Dutch->value => [
             'type'     => 'Latn',
             'regional' => 'nl_NL',
@@ -122,9 +152,19 @@ return [
             'regional' => 'en_GB',
         ],
 
+        Locale::Esperanto->value => [
+            'type'     => 'Latn',
+            'regional' => 'eo_001',
+        ],
+
         Locale::Estonian->value => [
             'type'     => 'Latn',
             'regional' => 'et_EE',
+        ],
+
+        Locale::Ewe->value => [
+            'type'     => 'Latn',
+            'regional' => 'ee_GH',
         ],
 
         Locale::Finnish->value => [
@@ -135,6 +175,11 @@ return [
         Locale::French->value => [
             'type'     => 'Latn',
             'regional' => 'fr_FR',
+        ],
+
+        Locale::Frisian->value => [
+            'type'     => 'Latn',
+            'regional' => 'fy_NL',
         ],
 
         Locale::Galician->value => [
@@ -167,6 +212,16 @@ return [
             'regional' => 'gu_IN',
         ],
 
+        Locale::Hausa->value => [
+            'type'     => 'Latn',
+            'regional' => 'ha_NG',
+        ],
+
+        Locale::Hawaiian->value => [
+            'type'     => 'Latn',
+            'regional' => 'haw',
+        ],
+
         Locale::Hebrew->value => [
             'type'     => 'Hebr',
             'regional' => 'he_IL',
@@ -189,9 +244,19 @@ return [
             'regional' => 'is_IS',
         ],
 
+        Locale::Igbo->value => [
+            'type'     => 'Latn',
+            'regional' => 'ig_NG',
+        ],
+
         Locale::Indonesian->value => [
             'type'     => 'Latn',
             'regional' => 'id_ID',
+        ],
+
+        Locale::Irish->value => [
+            'type'     => 'Latn',
+            'regional' => 'ga_IE',
         ],
 
         Locale::Italian->value => [
@@ -214,9 +279,36 @@ return [
             'regional' => 'kk_KZ',
         ],
 
+        Locale::Kinyarwanda->value => [
+            'type'     => 'Latn',
+            'regional' => 'rw_RW',
+        ],
+
         Locale::Korean->value => [
             'type'     => 'Hang',
             'regional' => 'ko_KR',
+        ],
+
+        Locale::Kurdish->value => [
+            'type'     => 'Latn',
+            'regional' => 'ku_TR',
+        ],
+
+        Locale::KurdishSorani->value => [
+            'type'     => 'Arab',
+            'regional' => 'ckb_IQ',
+
+            'direction' => Direction::RightToLeft,
+        ],
+
+        Locale::Kyrgyz->value => [
+            'type'     => 'Cyrl',
+            'regional' => 'ky_KG',
+        ],
+
+        Locale::Lao->value => [
+            'type'     => 'Laoo',
+            'regional' => 'lo_LA',
         ],
 
         Locale::Latvian->value => [
@@ -224,9 +316,24 @@ return [
             'regional' => 'lv_LV',
         ],
 
+        Locale::Lingala->value => [
+            'type'     => 'Latn',
+            'regional' => 'ln_CD',
+        ],
+
         Locale::Lithuanian->value => [
             'type'     => 'Latn',
             'regional' => 'lt_LT',
+        ],
+
+        Locale::Luganda->value => [
+            'type'     => 'Latn',
+            'regional' => 'lg_UG',
+        ],
+
+        Locale::Luxembourgish->value => [
+            'type'     => 'Latn',
+            'regional' => 'lb_LU',
         ],
 
         Locale::Macedonian->value => [
@@ -234,9 +341,29 @@ return [
             'regional' => 'mk_MK',
         ],
 
+        Locale::Maithili->value => [
+            'type'     => 'Deva',
+            'regional' => 'mai_IN',
+        ],
+
+        Locale::Malagasy->value => [
+            'type'     => 'Latn',
+            'regional' => 'mg_MG',
+        ],
+
+        Locale::Malayalam->value => [
+            'type'     => 'Mlym',
+            'regional' => 'ml_IN',
+        ],
+
         Locale::Malay->value => [
             'type'     => 'Latn',
             'regional' => 'ms_MY',
+        ],
+
+        Locale::Maltese->value => [
+            'type'     => 'Latn',
+            'regional' => 'mt_MT',
         ],
 
         Locale::Marathi->value => [
@@ -244,9 +371,24 @@ return [
             'regional' => 'mr_IN',
         ],
 
+        Locale::Maori->value => [
+            'type'     => 'Latn',
+            'regional' => 'mi_NZ',
+        ],
+
+        Locale::MeiteilonManipuri->value => [
+            'type'     => 'Beng',
+            'regional' => 'mni_IN',
+        ],
+
         Locale::Mongolian->value => [
             'type'     => 'Mong',
             'regional' => 'mn_MN',
+        ],
+
+        Locale::MyanmarBurmese->value => [
+            'type'     => 'Mymr',
+            'regional' => 'my_MM',
         ],
 
         Locale::Nepali->value => [
@@ -267,6 +409,16 @@ return [
         Locale::Occitan->value => [
             'type'     => 'Latn',
             'regional' => 'oc_FR',
+        ],
+
+        Locale::OdiaOriya->value => [
+            'type'     => 'Orya',
+            'regional' => 'or_IN',
+        ],
+
+        Locale::Oromo->value => [
+            'type'     => 'Latn',
+            'regional' => 'om_ET',
         ],
 
         Locale::Pashto->value => [
@@ -303,6 +455,16 @@ return [
             'regional' => 'pt_BR',
         ],
 
+        Locale::Punjabi->value => [
+            'type'     => 'Guru',
+            'regional' => 'pa_IN',
+        ],
+
+        Locale::Quechua->value => [
+            'type'     => 'Latn',
+            'regional' => 'qu_PE',
+        ],
+
         Locale::Romanian->value => [
             'type'     => 'Latn',
             'regional' => 'ro_RO',
@@ -313,9 +475,19 @@ return [
             'regional' => 'ru_RU',
         ],
 
+        Locale::Sanskrit->value => [
+            'type'     => 'Deva',
+            'regional' => 'sa_IN',
+        ],
+
         Locale::Sardinian->value => [
             'type'     => 'Latn',
             'regional' => 'sc_IT',
+        ],
+
+        Locale::ScotsGaelic->value => [
+            'type'     => 'Latn',
+            'regional' => 'gd_GB',
         ],
 
         Locale::SerbianCyrillic->value => [
@@ -333,6 +505,18 @@ return [
             'regional' => 'sr_Latn_ME',
         ],
 
+        Locale::Shona->value => [
+            'type'     => 'Latn',
+            'regional' => 'sn_ZW',
+        ],
+
+        Locale::Sindhi->value => [
+            'type'     => 'Arab',
+            'regional' => 'sd_PK',
+
+            'direction' => Direction::RightToLeft,
+        ],
+
         Locale::Sinhala->value => [
             'type'     => 'Sinh',
             'regional' => 'si_LK',
@@ -348,9 +532,19 @@ return [
             'regional' => 'sl_SI',
         ],
 
+        Locale::Somali->value => [
+            'type'     => 'Latn',
+            'regional' => 'so_SO',
+        ],
+
         Locale::Spanish->value => [
             'type'     => 'Latn',
             'regional' => 'es_ES',
+        ],
+
+        Locale::Sundanese->value => [
+            'type'     => 'Latn',
+            'regional' => 'su_ID',
         ],
 
         Locale::Swahili->value => [
@@ -373,6 +567,26 @@ return [
             'regional' => 'tg_TJ',
         ],
 
+        Locale::Tamil->value => [
+            'type'     => 'Taml',
+            'regional' => 'ta_IN',
+        ],
+
+        Locale::Tatar->value => [
+            'type'     => 'Cyrl',
+            'regional' => 'tt_RU',
+        ],
+
+        Locale::Telugu->value => [
+            'type'     => 'Telu',
+            'regional' => 'te_IN',
+        ],
+
+        Locale::Tigrinya->value => [
+            'type'     => 'Ethi',
+            'regional' => 'ti_ET',
+        ],
+
         Locale::Thai->value => [
             'type'     => 'Thai',
             'regional' => 'th_TH',
@@ -386,6 +600,11 @@ return [
         Locale::Turkmen->value => [
             'type'     => 'Cyrl',
             'regional' => 'tk_TM',
+        ],
+
+        Locale::TwiAkan->value => [
+            'type'     => 'Latn',
+            'regional' => 'ak_GH',
         ],
 
         Locale::Uighur->value => [
@@ -425,6 +644,26 @@ return [
         Locale::Welsh->value => [
             'type'     => 'Latn',
             'regional' => 'cy_GB',
+        ],
+
+        Locale::Xhosa->value => [
+            'type'     => 'Latn',
+            'regional' => 'xh_ZA',
+        ],
+
+        Locale::Yiddish->value => [
+            'type'     => 'Hebr',
+            'regional' => 'yi_001',
+        ],
+
+        Locale::Yoruba->value => [
+            'type'     => 'Latn',
+            'regional' => 'yo_NG',
+        ],
+
+        Locale::Zulu->value => [
+            'type'     => 'Latn',
+            'regional' => 'zu_ZA',
         ],
     ],
 ];
