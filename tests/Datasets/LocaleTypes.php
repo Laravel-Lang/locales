@@ -21,48 +21,75 @@ dataset('locale-type-latn', [
     Locale::Afrikaans,
     Locale::Albanian,
     Locale::Azerbaijani,
+    Locale::Bambara,
     Locale::Basque,
     Locale::Bosnian,
     Locale::Catalan,
+    Locale::Cebuano,
     Locale::Croatian,
     Locale::Czech,
     Locale::Danish,
     Locale::Dutch,
     Locale::English,
+    Locale::Esperanto,
     Locale::Estonian,
+    Locale::Ewe,
     Locale::Finnish,
     Locale::French,
+    Locale::Frisian,
     Locale::Galician,
     Locale::German,
     Locale::GermanSwitzerland,
+    Locale::Hausa,
+    Locale::Hawaiian,
     Locale::Hungarian,
     Locale::Icelandic,
+    Locale::Igbo,
     Locale::Indonesian,
+    Locale::Irish,
     Locale::Italian,
+    Locale::Kinyarwanda,
+    Locale::Kurdish,
     Locale::Latvian,
+    Locale::Lingala,
     Locale::Lithuanian,
+    Locale::Luganda,
+    Locale::Luxembourgish,
+    Locale::Malagasy,
     Locale::Malay,
+    Locale::Maltese,
+    Locale::Maori,
     Locale::NorwegianBokmal,
     Locale::NorwegianNynorsk,
     Locale::Occitan,
+    Locale::Oromo,
     Locale::Pilipino,
     Locale::Polish,
     Locale::Portuguese,
     Locale::PortugueseBrazil,
+    Locale::Quechua,
     Locale::Romanian,
     Locale::Sardinian,
+    Locale::ScotsGaelic,
     Locale::SerbianLatin,
     Locale::SerbianMontenegrin,
+    Locale::Shona,
     Locale::Slovak,
     Locale::Slovenian,
+    Locale::Somali,
     Locale::Spanish,
+    Locale::Sundanese,
     Locale::Swahili,
     Locale::Swedish,
     Locale::Tagalog,
     Locale::Turkish,
+    Locale::TwiAkan,
     Locale::UzbekLatin,
     Locale::Vietnamese,
     Locale::Welsh,
+    Locale::Xhosa,
+    Locale::Yoruba,
+    Locale::Zulu,
 ]);
 
 dataset('locale-type-armn', [
@@ -73,10 +100,12 @@ dataset('locale-type-cyrl', [
     Locale::Belarusian,
     Locale::Bulgarian,
     Locale::Kazakh,
+    Locale::Kyrgyz,
     Locale::Macedonian,
     Locale::Russian,
     Locale::SerbianCyrillic,
     Locale::Tajik,
+    Locale::Tatar,
     Locale::Turkmen,
     Locale::Ukrainian,
     Locale::UzbekCyrillic,
@@ -84,14 +113,18 @@ dataset('locale-type-cyrl', [
 
 dataset('locale-type-arab', [
     Locale::Arabic,
+    Locale::KurdishSorani,
     Locale::Pashto,
     Locale::Persian,
+    Locale::Sindhi,
     Locale::Uighur,
     Locale::Urdu,
 ]);
 
 dataset('locale-type-beng', [
+    Locale::Assamese,
     Locale::Bengali,
+    Locale::MeiteilonManipuri,
 ]);
 
 dataset('locale-type-khmr', [
@@ -118,12 +151,17 @@ dataset('locale-type-gujr', [
 
 dataset('locale-type-hebr', [
     Locale::Hebrew,
+    Locale::Yiddish,
 ]);
 
 dataset('locale-type-deva', [
+    Locale::Bhojpuri,
+    Locale::Dogri,
     Locale::Hindi,
+    Locale::Maithili,
     Locale::Marathi,
     Locale::Nepali,
+    Locale::Sanskrit,
 ]);
 
 dataset('locale-type-jpan', [
@@ -148,4 +186,37 @@ dataset('locale-type-sinh', [
 
 dataset('locale-type-thai', [
     Locale::Thai,
+]);
+
+dataset('locale-type-ethi', [
+    Locale::Amharic,
+    Locale::Tigrinya,
+]);
+
+dataset('locale-type-laoo', [
+    Locale::Lao,
+]);
+
+dataset('locale-type-mlym', [
+    Locale::Malayalam,
+]);
+
+dataset('locale-type-mymr', [
+    Locale::MyanmarBurmese,
+]);
+
+dataset('locale-type-orya', [
+    Locale::OdiaOriya,
+]);
+
+dataset('locale-type-guru', [
+    Locale::Punjabi,
+]);
+
+dataset('locale-type-taml', [
+    Locale::Tamil,
+]);
+
+dataset('locale-type-telu', [
+    Locale::Telugu,
 ]);

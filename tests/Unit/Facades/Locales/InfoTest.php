@@ -23,23 +23,31 @@ it('checks locale information without checking its installation', function (stri
     expect(Locales::info($locale))
         ->code->toBeString()->toBe($locale)
         ->type->toBeString()->toBeIn([
-            'Latn',
-            'Armn',
-            'Cyrl',
             'Arab',
+            'Armn',
             'Beng',
-            'Khmr',
-            'Hans',
+            'Cyrl',
+            'Deva',
+            'Ethi',
             'Geor',
             'Grek',
             'Gujr',
-            'Hebr',
-            'Deva',
-            'Jpan',
-            'Knda',
+            'Guru',
             'Hang',
+            'Hans',
+            'Hebr',
+            'Jpan',
+            'Khmr',
+            'Knda',
+            'Laoo',
+            'Latn',
+            'Mlym',
             'Mong',
+            'Mymr',
+            'Orya',
             'Sinh',
+            'Taml',
+            'Telu',
             'Thai',
         ])
         ->native->toBeString()
@@ -118,6 +126,38 @@ it('checks the Sinh locale type', function (Locale $locale) {
 it('checks the Thai locale type', function (Locale $locale) {
     expect(Locales::info($locale))->type->toBe('Thai');
 })->with('locale-type-thai');
+
+it('checks the Ethi locale type', function (Locale $locale) {
+    expect(Locales::info($locale))->type->toBe('Ethi');
+})->with('locale-type-ethi');
+
+it('checks the Laoo locale type', function (Locale $locale) {
+    expect(Locales::info($locale))->type->toBe('Laoo');
+})->with('locale-type-laoo');
+
+it('checks the Mlym locale type', function (Locale $locale) {
+    expect(Locales::info($locale))->type->toBe('Mlym');
+})->with('locale-type-mlym');
+
+it('checks the Mymr locale type', function (Locale $locale) {
+    expect(Locales::info($locale))->type->toBe('Mymr');
+})->with('locale-type-mymr');
+
+it('checks the Orya locale type', function (Locale $locale) {
+    expect(Locales::info($locale))->type->toBe('Orya');
+})->with('locale-type-orya');
+
+it('checks the Guru locale type', function (Locale $locale) {
+    expect(Locales::info($locale))->type->toBe('Guru');
+})->with('locale-type-guru');
+
+it('checks the Taml locale type', function (Locale $locale) {
+    expect(Locales::info($locale))->type->toBe('Taml');
+})->with('locale-type-taml');
+
+it('checks the Telu locale type', function (Locale $locale) {
+    expect(Locales::info($locale))->type->toBe('Telu');
+})->with('locale-type-telu');
 
 it('checking information for incorrect locale', function (?string $locale) {
     expect(Locales::info($locale))
