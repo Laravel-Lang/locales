@@ -102,7 +102,7 @@ class Locales
     public function info(mixed $locale, bool $withCountry = true, bool $withCurrency = true): LocaleData
     {
         return $this->registry(
-            [__METHOD__, $locale],
+            [__METHOD__, $locale, $this->raw->getCurrent()],
             fn () => $this->map($this->raw->info($locale), $withCountry, $withCurrency)
         );
     }

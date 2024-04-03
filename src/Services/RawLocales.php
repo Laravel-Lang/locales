@@ -134,7 +134,7 @@ class RawLocales
 
     public function getCurrent(): string
     {
-        return $this->getDefault();
+        return app()->getLocale();
     }
 
     public function getFallback(): string

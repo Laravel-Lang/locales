@@ -59,7 +59,7 @@ trait Localized
     protected function appLocale(): string
     {
         return $this->fromAlias(
-            $this->raw->getDefault()
+            $this->raw->getCurrent()
         );
     }
 }
