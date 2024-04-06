@@ -69,17 +69,17 @@ it('will return the English locale if both are set to null', function () {
 });
 
 it('checks for missing currency information')
-    ->expect(fn () => Locales::getCurrent(withCurrency: false))
+    ->expect(fn () => Locales::getCurrent(true))
     ->country->not->toBeNull()
     ->currency->toBeNull();
 
 it('checks for missing country information')
-    ->expect(fn () => Locales::getCurrent(withCountry: false))
+    ->expect(fn () => Locales::getCurrent(withCurrency: true))
     ->country->toBeNull()
     ->currency->not->toBeNull();
 
 it('checks for missing country and currency information')
-    ->expect(fn () => Locales::getCurrent(false, false))
+    ->expect(fn () => Locales::getCurrent())
     ->country->toBeNull()
     ->currency->toBeNull();
 

@@ -44,21 +44,21 @@ it('checks incorrect locales against the list of available ones', function (?str
 })->with('incorrect-locales');
 
 it('checks for missing currency information')
-    ->expect(fn () => Locales::available(withCurrencies: false))
+    ->expect(fn () => Locales::available(true))
     ->each(fn (Expectation|LocaleData $item) => $item
         ->country->not->toBeNull()
         ->currency->toBeNull()
     );
 
 it('checks for missing country information')
-    ->expect(fn () => Locales::available(withCountries: false))
+    ->expect(fn () => Locales::available(withCurrencies: true))
     ->each(fn (Expectation|LocaleData $item) => $item
         ->country->toBeNull()
         ->currency->not->toBeNull()
     );
 
 it('checks for missing country and currency information')
-    ->expect(fn () => Locales::available(false, false))
+    ->expect(fn () => Locales::available())
     ->each(fn (Expectation|LocaleData $item) => $item
         ->country->toBeNull()
         ->currency->toBeNull()
