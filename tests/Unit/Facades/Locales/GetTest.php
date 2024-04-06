@@ -236,17 +236,17 @@ it('checks the return of the fallback localization if uninstalled ones are trans
 })->with('locales');
 
 it('checks for missing currency information')
-    ->expect(fn () => Locales::get(Locale::Vietnamese, withCurrency: false))
+    ->expect(fn () => Locales::get(Locale::Vietnamese, true))
     ->country->not->toBeNull()
     ->currency->toBeNull();
 
 it('checks for missing country information')
-    ->expect(fn () => Locales::get(Locale::Vietnamese, withCountry: false))
+    ->expect(fn () => Locales::get(Locale::Vietnamese, withCurrency: true))
     ->country->toBeNull()
     ->currency->not->toBeNull();
 
 it('checks for missing country and currency information')
-    ->expect(fn () => Locales::get(Locale::Vietnamese, false, false))
+    ->expect(fn () => Locales::get(Locale::Vietnamese))
     ->country->toBeNull()
     ->currency->toBeNull();
 

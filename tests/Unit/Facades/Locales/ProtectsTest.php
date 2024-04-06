@@ -94,7 +94,7 @@ it('checks for missing currency information', function () {
 
     setLocales(Locale::German, Locale::French);
 
-    expect(Locales::protects(withCurrencies: false))
+    expect(Locales::protects(true))
         ->each(fn (Expectation|LocaleData $item) => $item
             ->country->not->toBeNull()
             ->currency->toBeNull()
@@ -106,7 +106,7 @@ it('checks for missing country information', function () {
 
     setLocales(Locale::German, Locale::French);
 
-    expect(Locales::protects(withCountries: false))
+    expect(Locales::protects(withCurrencies: true))
         ->each(fn (Expectation|LocaleData $item) => $item
             ->country->toBeNull()
             ->currency->not->toBeNull()
@@ -118,7 +118,7 @@ it('checks for missing country and currency information', function () {
 
     setLocales(Locale::German, Locale::French);
 
-    expect(Locales::protects(withCountries: false, withCurrencies: false))
+    expect(Locales::protects())
         ->each(fn (Expectation|LocaleData $item) => $item
             ->country->toBeNull()
             ->currency->toBeNull()

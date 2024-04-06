@@ -43,7 +43,7 @@ class Locales
         return $this->raw;
     }
 
-    public function available(bool $withCountries = true, bool $withCurrencies = true): Collection
+    public function available(bool $withCountries = false, bool $withCurrencies = false): Collection
     {
         return $this->registry(
             __METHOD__,
@@ -53,8 +53,8 @@ class Locales
 
     public function installed(
         bool $withProtects = true,
-        bool $withCountries = true,
-        bool $withCurrencies = true
+        bool $withCountries = false,
+        bool $withCurrencies = false
     ): Collection {
         return $this->registry(
             [__METHOD__, $withProtects],
@@ -62,7 +62,7 @@ class Locales
         );
     }
 
-    public function notInstalled(bool $withCountries = true, bool $withCurrencies = true): Collection
+    public function notInstalled(bool $withCountries = false, bool $withCurrencies = false): Collection
     {
         return $this->registry(
             __METHOD__,
@@ -70,7 +70,7 @@ class Locales
         );
     }
 
-    public function protects(bool $withCountries = true, bool $withCurrencies = true): Collection
+    public function protects(bool $withCountries = false, bool $withCurrencies = false): Collection
     {
         return $this->registry(
             __METHOD__,
@@ -93,7 +93,7 @@ class Locales
         return $this->raw->isProtected($locale);
     }
 
-    public function get(mixed $locale, bool $withCountry = true, bool $withCurrency = true): LocaleData
+    public function get(mixed $locale, bool $withCountry = false, bool $withCurrency = false): LocaleData
     {
         return $this->registry(
             [__METHOD__, $locale, $this->appLocale()],
@@ -101,7 +101,7 @@ class Locales
         );
     }
 
-    public function info(mixed $locale, bool $withCountry = true, bool $withCurrency = true): LocaleData
+    public function info(mixed $locale, bool $withCountry = false, bool $withCurrency = false): LocaleData
     {
         return $this->registry(
             [__METHOD__, $locale, $this->appLocale()],
@@ -109,12 +109,12 @@ class Locales
         );
     }
 
-    public function getCurrent(bool $withCountry = true, bool $withCurrency = true): LocaleData
+    public function getCurrent(bool $withCountry = false, bool $withCurrency = false): LocaleData
     {
         return $this->getDefault($withCountry, $withCurrency);
     }
 
-    public function getDefault(bool $withCountry = true, bool $withCurrency = true): LocaleData
+    public function getDefault(bool $withCountry = false, bool $withCurrency = false): LocaleData
     {
         return $this->registry(
             [__METHOD__, $this->appLocale()],
@@ -122,7 +122,7 @@ class Locales
         );
     }
 
-    public function getFallback(bool $withCountry = true, bool $withCurrency = true): LocaleData
+    public function getFallback(bool $withCountry = false, bool $withCurrency = false): LocaleData
     {
         return $this->registry(
             [__METHOD__, $this->appLocale()],

@@ -48,7 +48,7 @@ it('checks locales', function (string $locale) {
     $nativeCurrency    = CurrencyNames::get()->all();
     $localizedCurrency = CurrencyNames::get($locale)->all();
 
-    foreach (Locales::available() as $item) {
+    foreach (Locales::available(true, true) as $item) {
         // Locales
         expect($item->native)->toBe($nativeLocale[$item->code]);
         expect($item->localized)->toBe($localizedLocale[$item->code]);
@@ -87,7 +87,7 @@ it('checks locales without displaying currency information', function (string $l
     $nativeCountry    = CountryNames::get()->all();
     $localizedCountry = CountryNames::get($locale)->all();
 
-    foreach (Locales::available(withCurrencies: false) as $item) {
+    foreach (Locales::available(true) as $item) {
         // Locales
         expect($item->native)->toBe($nativeLocale[$item->code]);
         expect($item->localized)->toBe($localizedLocale[$item->code]);
@@ -122,7 +122,7 @@ it('checks locales without displaying country information', function (string $lo
     $nativeCurrency    = CurrencyNames::get()->all();
     $localizedCurrency = CurrencyNames::get($locale)->all();
 
-    foreach (Locales::available(withCountries: false) as $item) {
+    foreach (Locales::available(withCurrencies: true) as $item) {
         // Locales
         expect($item->native)->toBe($nativeLocale[$item->code]);
         expect($item->localized)->toBe($localizedLocale[$item->code]);
@@ -151,7 +151,7 @@ it('checks locales without displaying country and currency information', functio
     $nativeLocale    = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
 
-    foreach (Locales::available(false, false) as $item) {
+    foreach (Locales::available() as $item) {
         expect($item->native)->toBe($nativeLocale[$item->code]);
         expect($item->localized)->toBe($localizedLocale[$item->code]);
 
@@ -180,7 +180,7 @@ it(
         expect(app()->getLocale())->toBe($forLocale);
         expect(Locales::getDefault()->code)->toBe($forLocale);
 
-        expect(Locales::info($locale))
+        expect(Locales::info($locale, true, true))
             // Locale
             ->code->toBe($locale)
             ->native->toBe($native)
