@@ -55,11 +55,4 @@ trait Localized
             CurrencyNames::get($this->appLocale())->all()
         ));
     }
-
-    protected function appLocale(): string
-    {
-        return $this->fromAlias(
-            $this->raw->getDefault()
-        );
-    }
 }

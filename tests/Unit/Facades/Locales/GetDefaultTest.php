@@ -82,3 +82,17 @@ it('checks for missing country and currency information')
     ->expect(fn () => Locales::getDefault(false, false))
     ->country->toBeNull()
     ->currency->toBeNull();
+
+it('returns the correct localized name if the non-default locale is set', function () {
+    createLocales(Locale::German, Locale::English);
+
+    Locales::set(Locale::English);
+
+    expect(Locales::getDefault())
+        ->localized->toBeString()->toBe('English');
+
+    Locales::set(Locale::German);
+
+    expect(Locales::getDefault())
+        ->localized->toBeString()->toBe('Deutsch');
+});

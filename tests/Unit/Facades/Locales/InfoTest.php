@@ -167,3 +167,17 @@ it('checking information for incorrect locale', function (?string $locale) {
         ->localized->toBeString()->toBe('English')
         ->direction->toBe(Direction::LeftToRight);
 })->with('incorrect-locales');
+
+it('returns the correct localized name if the non-default locale is set', function () {
+    createLocales(Locale::German, Locale::English);
+
+    Locales::set(Locale::English);
+
+    expect(Locales::info(Locale::German))
+        ->localized->toBeString()->toBe('German');
+
+    Locales::set(Locale::German);
+
+    expect(Locales::info(Locale::German))
+        ->localized->toBeString()->toBe('Deutsch');
+});
