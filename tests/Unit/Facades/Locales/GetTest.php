@@ -249,3 +249,17 @@ it('checks for missing country and currency information')
     ->expect(fn () => Locales::get(Locale::Vietnamese, false, false))
     ->country->toBeNull()
     ->currency->toBeNull();
+
+it('returns the correct localized name if the non-default locale is set', function () {
+    createLocales(Locale::German, Locale::English);
+
+    Locales::set(Locale::English);
+
+    expect(Locales::get(Locale::German))
+        ->localized->toBeString()->toBe('German');
+
+    Locales::set(Locale::German);
+
+    expect(Locales::get(Locale::German))
+        ->localized->toBeString()->toBe('Deutsch');
+});

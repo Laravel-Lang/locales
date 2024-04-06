@@ -21,12 +21,14 @@ use DragonCode\Support\Facades\Filesystem\Path;
 use Illuminate\Support\Collection;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Concerns\Aliases;
+use LaravelLang\Locales\Concerns\Application;
 use LaravelLang\Locales\Concerns\Pathable;
 use LaravelLang\Locales\Concerns\Registry;
 
 class RawLocales
 {
     use Aliases;
+    use Application;
     use Pathable;
     use Registry;
 
@@ -110,7 +112,7 @@ class RawLocales
 
     public function get(mixed $locale): string
     {
-        return $this->registry([__METHOD__, $locale], function () use ($locale) {
+        return $this->registry([__METHOD__, $locale, $this->appLocale()], function () use ($locale) {
             $locale = Resolver::fromMixed($locale);
 
             if ($this->isInstalled($locale)) {
@@ -123,7 +125,7 @@ class RawLocales
 
     public function getDefault(): string
     {
-        return $this->registry(__METHOD__, function () {
+        return $this->registry([__METHOD__, $this->appLocale()], function () {
             $locale = config('app.locale');
 
             return $this->toAlias(
@@ -139,7 +141,7 @@ class RawLocales
 
     public function getFallback(): string
     {
-        return $this->registry(__METHOD__, function () {
+        return $this->registry([__METHOD__, $this->appLocale()], function () {
             $locale = config('app.fallback_locale');
 
             if ($this->isAvailable($locale)) {
@@ -156,7 +158,7 @@ class RawLocales
 
     public function info(mixed $locale): string
     {
-        return $this->registry([__METHOD__, $locale], function () use ($locale) {
+        return $this->registry([__METHOD__, $locale, $this->appLocale()], function () use ($locale) {
             $locale = Resolver::fromMixed($locale);
 
             if ($this->isAvailable($locale)) {

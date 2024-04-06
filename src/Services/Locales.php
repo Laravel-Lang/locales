@@ -20,6 +20,7 @@ namespace LaravelLang\Locales\Services;
 use Illuminate\Support\Collection;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Concerns\Aliases;
+use LaravelLang\Locales\Concerns\Application;
 use LaravelLang\Locales\Concerns\Localized;
 use LaravelLang\Locales\Concerns\Mapping;
 use LaravelLang\Locales\Concerns\Registry;
@@ -28,6 +29,7 @@ use LaravelLang\Locales\Data\LocaleData;
 class Locales
 {
     use Aliases;
+    use Application;
     use Localized;
     use Mapping;
     use Registry;
@@ -94,7 +96,7 @@ class Locales
     public function get(mixed $locale, bool $withCountry = true, bool $withCurrency = true): LocaleData
     {
         return $this->registry(
-            [__METHOD__, $locale],
+            [__METHOD__, $locale, $this->appLocale()],
             fn () => $this->map($this->raw->get($locale), $withCountry, $withCurrency)
         );
     }
@@ -102,7 +104,7 @@ class Locales
     public function info(mixed $locale, bool $withCountry = true, bool $withCurrency = true): LocaleData
     {
         return $this->registry(
-            [__METHOD__, $locale, $this->raw->getCurrent()],
+            [__METHOD__, $locale, $this->appLocale()],
             fn () => $this->map($this->raw->info($locale), $withCountry, $withCurrency)
         );
     }
@@ -115,7 +117,7 @@ class Locales
     public function getDefault(bool $withCountry = true, bool $withCurrency = true): LocaleData
     {
         return $this->registry(
-            __METHOD__,
+            [__METHOD__, $this->appLocale()],
             fn () => $this->map($this->raw->getDefault(), $withCountry, $withCurrency)
         );
     }
@@ -123,7 +125,7 @@ class Locales
     public function getFallback(bool $withCountry = true, bool $withCurrency = true): LocaleData
     {
         return $this->registry(
-            __METHOD__,
+            [__METHOD__, $this->appLocale()],
             fn () => $this->map($this->raw->getFallback(), $withCountry, $withCurrency)
         );
     }

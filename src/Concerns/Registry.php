@@ -28,11 +28,7 @@ trait Registry
     {
         $key = $this->registryKey($key);
 
-        if (array_key_exists($key, $this->registry)) {
-            return $this->registry[$key];
-        }
-
-        return $this->registry[$key] = $callback();
+        return $this->registry[$key] ??= $callback();
     }
 
     protected function registryKey(array|string $key): string
