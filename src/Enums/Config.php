@@ -20,6 +20,8 @@ namespace LaravelLang\Locales\Enums;
 use ArchTech\Enums\InvokableCases;
 
 /**
+ * @deprecated Use \LaravelLang\Config\Enums\Name instead
+ *
  * @method static string PublicKey()
  * @method static string PrivateKey()
  */

@@ -15,12 +15,12 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Config\Enums\Name;
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\Locales\Enums\Config;
 
 function setAlias(Locale $locale, string $alias): void
 {
-    config()->set(Config::PublicKey() . '.aliases.' . $locale->value, $alias);
+    config()->set(Name::Shared() . '.aliases.' . $locale->value, $alias);
 }
 
 function setLocales(bool|Locale|string|null $main = false, bool|Locale|string|null $fallback = false): void
