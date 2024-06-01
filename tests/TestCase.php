@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Tests;
 
 use DragonCode\Support\Facades\Filesystem\Directory;
+use LaravelLang\Config\ServiceProvider as ConfigServiceProvider;
 use LaravelLang\Locales\ServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
@@ -32,7 +33,10 @@ abstract class TestCase extends BaseTestCase
 
     protected function getPackageProviders($app): array
     {
-        return [ServiceProvider::class];
+        return [
+            ServiceProvider::class,
+            ConfigServiceProvider::class,
+        ];
     }
 
     protected function cleanUp(): void

@@ -17,9 +17,10 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Data;
 
+use LaravelLang\LocaleList\Direction;
 use LaravelLang\LocaleList\Locale as LocaleEnum;
 use LaravelLang\Locales\Concerns\Aliases;
-use LaravelLang\Locales\Enums\Direction;
+use LaravelLang\Locales\Enums\Direction as DeprecatedDirection;
 
 class LocaleData
 {
@@ -39,7 +40,7 @@ class LocaleData
 
     public readonly ?CurrencyData $currency;
 
-    public readonly Direction $direction;
+    public readonly DeprecatedDirection|Direction $direction;
 
     public function __construct(
         LocaleEnum $locale,
@@ -50,7 +51,7 @@ class LocaleData
     ) {
         $this->code = $this->toAlias($locale);
 
-        $this->type     = $data['type']     ?? 'Latn';
+        $this->type     = $data['type']         ?? 'Latn';
         $this->regional = $data['regional'] ?? null;
 
         $this->native    = $locales->getNative($this->code);

@@ -15,8 +15,8 @@
 
 declare(strict_types=1);
 
+use LaravelLang\LocaleList\Direction;
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\Locales\Enums\Direction;
 use LaravelLang\Locales\Facades\Locales;
 
 it('checks locale information without checking its installation', function (string $locale) {

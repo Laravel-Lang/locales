@@ -19,33 +19,13 @@ namespace LaravelLang\Locales;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use LaravelLang\Locales\Concerns\About;
-use LaravelLang\Locales\Enums\Config;
 
 class ServiceProvider extends BaseServiceProvider
 {
     use About;
 
-    public function boot(): void
-    {
-        $this->bootPublishes();
-    }
-
     public function register(): void
     {
-        $this->registerConfig();
         $this->registerAbout();
-    }
-
-    protected function bootPublishes(): void
-    {
-        $this->publishes([
-            __DIR__ . '/../config/public.php' => $this->app->configPath(Config::PublicKey() . '.php'),
-        ], ['config', Config::PublicKey()]);
-    }
-
-    protected function registerConfig(): void
-    {
-        $this->mergeConfigFrom(__DIR__ . '/../config/public.php', Config::PublicKey());
-        $this->mergeConfigFrom(__DIR__ . '/../config/private.php', Config::PrivateKey());
     }
 }
