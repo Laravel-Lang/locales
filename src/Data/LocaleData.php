@@ -43,7 +43,7 @@ class LocaleData
     public readonly DeprecatedDirection|Direction $direction;
 
     public function __construct(
-        LocaleEnum $locale,
+        public readonly LocaleEnum $locale,
         array $data,
         NativeData $locales,
         ?NativeData $countries,
