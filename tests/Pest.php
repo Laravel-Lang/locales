@@ -15,6 +15,15 @@
 
 declare(strict_types=1);
 
+use DragonCode\Support\Facades\Filesystem\Directory;
+use Orchestra\Testbench\Concerns\WithWorkbench;
 use Tests\TestCase;
 
-uses(TestCase::class)->in('Unit');
+uses(TestCase::class, WithWorkbench::class)
+    ->beforeEach(function () {
+        Directory::ensureDelete(lang_path());
+        Directory::ensureDirectory(lang_path());
+    })
+    ->afterAll(function () {
+        Directory::ensureDelete(lang_path());
+    })->in('Unit');

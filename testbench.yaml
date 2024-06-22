@@ -1,0 +1,12 @@
+laravel: ./workbench
+providers:
+    - LaravelLang\Config\ServiceProvider
+    - LaravelLang\Locales\ServiceProvider
+workbench:
+    welcome: false
+    install: false
+    discovers:
+        web: false
+        api: false
+        commands: false
+        views: false

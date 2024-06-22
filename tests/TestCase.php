@@ -17,31 +17,6 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use DragonCode\Support\Facades\Filesystem\Directory;
-use LaravelLang\Config\ServiceProvider as ConfigServiceProvider;
-use LaravelLang\Locales\ServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
-abstract class TestCase extends BaseTestCase
-{
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->cleanUp();
-    }
-
-    protected function getPackageProviders($app): array
-    {
-        return [
-            ServiceProvider::class,
-            ConfigServiceProvider::class,
-        ];
-    }
-
-    protected function cleanUp(): void
-    {
-        Directory::ensureDelete(lang_path());
-        Directory::ensureDirectory(lang_path());
-    }
-}
+abstract class TestCase extends BaseTestCase {}
