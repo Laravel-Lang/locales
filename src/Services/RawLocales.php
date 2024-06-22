@@ -83,7 +83,7 @@ class RawLocales
         ])->filter()->unique()->sort()->values()->all());
     }
 
-    public function isAvailable(LocaleData|Locale|string|null $locale): bool
+    public function isAvailable(Locale|LocaleData|string|null $locale): bool
     {
         $locales = $this->available();
 
