@@ -40,8 +40,12 @@ class Resolver
         return static::toString((string) $locale);
     }
 
-    public static function toString(Locale|string|null $locale): ?string
+    public static function toString(Locale|LocaleData|string|null $locale): ?string
     {
+        if ($locale instanceof LocaleData) {
+            return $locale->locale->value;
+        }
+
         return $locale?->value ?? $locale;
     }
 }

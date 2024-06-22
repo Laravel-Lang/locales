@@ -91,7 +91,7 @@ class RawLocales
             || $this->inArray($this->fromAlias($locale), $locales);
     }
 
-    public function isInstalled(Locale|string|null $locale): bool
+    public function isInstalled(Locale|LocaleData|string|null $locale): bool
     {
         return $this->registry([__METHOD__, $locale], function () use ($locale) {
             $locales = $this->installed();
@@ -101,7 +101,7 @@ class RawLocales
         });
     }
 
-    public function isProtected(Locale|string|null $locale): bool
+    public function isProtected(Locale|LocaleData|string|null $locale): bool
     {
         return $this->registry([__METHOD__, $locale], function () use ($locale) {
             $locales = $this->protects();
@@ -170,7 +170,7 @@ class RawLocales
         });
     }
 
-    protected function inArray(Locale|string|null $locale, array $haystack): bool
+    protected function inArray(Locale|LocaleData|string|null $locale, array $haystack): bool
     {
         $locale = Resolver::toString($locale);
 
