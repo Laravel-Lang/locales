@@ -78,17 +78,17 @@ class Locales
         );
     }
 
-    public function isAvailable(Locale|string|null $locale): bool
+    public function isAvailable(LocaleData|Locale|string|null $locale): bool
     {
         return $this->raw->isAvailable($locale);
     }
 
-    public function isInstalled(Locale|string|null $locale): bool
+    public function isInstalled(LocaleData|Locale|string|null $locale): bool
     {
         return $this->raw->isInstalled($locale);
     }
 
-    public function isProtected(Locale|string|null $locale): bool
+    public function isProtected(LocaleData|Locale|string|null $locale): bool
     {
         return $this->raw->isProtected($locale);
     }

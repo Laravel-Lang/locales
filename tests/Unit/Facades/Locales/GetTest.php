@@ -40,6 +40,11 @@ it('returns the base locale from the correctly passed one', function () {
     expect(Locales::get(Locale::French)->code)->toBe('fr-custom');
     expect(Locales::get(Locale::Russian)->code)->toBe('ru');
     expect(Locales::get(Locale::Ukrainian)->code)->toBe('uk');
+
+    expect(Locales::get(fakeLocaleData(Locale::German))->code)->toBe('de-DE');
+    expect(Locales::get(fakeLocaleData(Locale::French))->code)->toBe('fr-custom');
+    expect(Locales::get(fakeLocaleData(Locale::Russian))->code)->toBe('ru');
+    expect(Locales::get(fakeLocaleData(Locale::Ukrainian))->code)->toBe('uk');
 });
 
 it('returns the main locale if passed incorrectly or empty', function () {
