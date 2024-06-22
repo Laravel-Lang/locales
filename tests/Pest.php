@@ -23,7 +23,4 @@ uses(TestCase::class, WithWorkbench::class)
     ->beforeEach(function () {
         Directory::ensureDelete(lang_path());
         Directory::ensureDirectory(lang_path());
-    })
-    ->afterAll(function () {
-        Directory::ensureDelete(lang_path());
     })->in('Unit');
