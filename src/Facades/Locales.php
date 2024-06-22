@@ -25,9 +25,9 @@ use LaravelLang\Locales\Services\Locales as Service;
 use LaravelLang\Locales\Services\RawLocales;
 
 /**
- * @method static bool isAvailable(string|Locale|null $locale)
- * @method static bool isInstalled(string|Locale|null $locale)
- * @method static bool isProtected(string|Locale|null $locale)
+ * @method static bool isAvailable(LocaleData|Locale|string|null $locale)
+ * @method static bool isInstalled(LocaleData|Locale|string|null $locale)
+ * @method static bool isProtected(LocaleData|Locale|string|null $locale)
  * @method static Collection<LocaleData> available(bool $withCountries = false, bool $withCurrencies = false)
  * @method static Collection<LocaleData> installed(bool $withProtects = true, bool $withCountries = false, bool $withCurrencies = false)
  * @method static Collection<LocaleData> notInstalled(bool $withCountries = false, bool $withCurrencies = false)

@@ -19,25 +19,26 @@ namespace LaravelLang\Locales\Concerns;
 
 use LaravelLang\Config\Facades\Config;
 use LaravelLang\LocaleList\Locale as LocaleCode;
+use LaravelLang\Locales\Data\LocaleData;
 
 trait Aliases
 {
-    protected function fromAlias(LocaleCode|string|null $locale): ?string
+    protected function fromAlias(LocaleCode|LocaleData|string|null $locale): ?string
     {
-        if ($locale = $locale?->value ?? $locale) {
+        if ($locale = $this->stringify($locale)) {
             return collect($this->aliases())->flip()->get($locale, $locale);
         }
 
-        return $this->stringify($locale);
+        return null;
     }
 
-    protected function toAlias(LocaleCode|string|null $locale): ?string
+    protected function toAlias(LocaleCode|LocaleData|string|null $locale): ?string
     {
-        if ($locale = $locale?->value ?? $locale) {
+        if ($locale = $this->stringify($locale)) {
             return collect($this->aliases())->get($locale, $locale);
         }
 
-        return $this->stringify($locale);
+        return null;
     }
 
     protected function aliases(): array
@@ -45,12 +46,12 @@ trait Aliases
         return Config::shared()->aliases->all();
     }
 
-    protected function stringify(LocaleCode|string|null $locale): ?string
+    protected function stringify(LocaleCode|LocaleData|string|null $locale): ?string
     {
-        if (! is_null($locale)) {
-            return $locale->value ?? $locale;
-        }
-
-        return null;
+        return match (true) {
+            $locale instanceof LocaleData => $locale->code,
+            $locale instanceof LocaleCode => $locale->value,
+            default                       => $locale
+        };
     }
 }

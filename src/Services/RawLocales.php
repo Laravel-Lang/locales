@@ -24,6 +24,7 @@ use LaravelLang\Locales\Concerns\Aliases;
 use LaravelLang\Locales\Concerns\Application;
 use LaravelLang\Locales\Concerns\Pathable;
 use LaravelLang\Locales\Concerns\Registry;
+use LaravelLang\Locales\Data\LocaleData;
 
 class RawLocales
 {
@@ -82,7 +83,7 @@ class RawLocales
         ])->filter()->unique()->sort()->values()->all());
     }
 
-    public function isAvailable(Locale|string|null $locale): bool
+    public function isAvailable(Locale|LocaleData|string|null $locale): bool
     {
         $locales = $this->available();
 
