@@ -59,7 +59,7 @@ class RawLocales
                 )
                 ->flatten()
                 ->map(fn (string $name) => $this->toAlias(Path::filename($name)))
-                ->filter(fn (string $locale) => $this->isAvailable($locale))
+                ->filter(fn (?string $locale) => $this->isAvailable($locale))
                 ->when(! $withProtects, fn (Collection $items) => $items->filter(
                     fn (string $locale) => ! $this->isProtected($locale)
                 ))
