@@ -34,8 +34,8 @@ class CountryData
     {
         $code = $this->fromAlias($locale);
 
-        $this->code      = $data->getNative($code)->code;
-        $this->native    = $data->getNative($code)->native;
+        $this->code = $data->getNative($code)->code;
+        $this->native = $data->getNative($code)->native;
         $this->localized = $data->getLocalized($code)->localized;
     }
 }

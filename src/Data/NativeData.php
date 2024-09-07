@@ -26,7 +26,8 @@ class NativeData
     public function __construct(
         public readonly array $native,
         public readonly array $localized
-    ) {}
+    ) {
+    }
 
     public function getNative(string $locale): mixed
     {

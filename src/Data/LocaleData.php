@@ -51,15 +51,15 @@ class LocaleData
     ) {
         $this->code = $this->toAlias($locale);
 
-        $this->type     = $data['type']     ?? 'Latn';
+        $this->type = $data['type'] ?? 'Latn';
         $this->regional = $data['regional'] ?? null;
 
-        $this->native    = $locales->getNative($this->code);
+        $this->native = $locales->getNative($this->code);
         $this->localized = $locales->getLocalized($this->code);
 
         $this->direction = $data['direction'] ?? Direction::LeftToRight;
 
-        $this->country  = $countries ? new CountryData($locale, $countries) : null;
+        $this->country = $countries ? new CountryData($locale, $countries) : null;
         $this->currency = $currencies ? new CurrencyData($locale, $currencies) : null;
     }
 }

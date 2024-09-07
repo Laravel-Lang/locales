@@ -36,7 +36,8 @@ class Locales
 
     public function __construct(
         protected RawLocales $raw
-    ) {}
+    ) {
+    }
 
     public function raw(): RawLocales
     {

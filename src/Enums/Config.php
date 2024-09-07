@@ -29,6 +29,6 @@ enum Config: string
 {
     use InvokableCases;
 
-    case PublicKey  = 'localization';
+    case PublicKey = 'localization';
     case PrivateKey = 'localization-private';
 }
