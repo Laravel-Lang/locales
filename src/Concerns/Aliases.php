@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
+use Illuminate\Support\Collection;
 use LaravelLang\Config\Data\ConfigData;
 use LaravelLang\LocaleList\Locale as LocaleCode;
 use LaravelLang\Locales\Data\LocaleData;
@@ -26,7 +27,7 @@ trait Aliases
     protected function fromAlias(LocaleCode|LocaleData|string|null $locale): ?string
     {
         if ($locale = $this->stringify($locale)) {
-            return collect($this->aliases())->flip()->get($locale, $locale);
+            return $this->aliases()->flip()->get($locale, $locale);
         }
 
         return null;
@@ -35,15 +36,15 @@ trait Aliases
     protected function toAlias(LocaleCode|LocaleData|string|null $locale): ?string
     {
         if ($locale = $this->stringify($locale)) {
-            return collect($this->aliases())->get($locale, $locale);
+            return $this->aliases()->get($locale, $locale);
         }
 
         return null;
     }
 
-    protected function aliases(): array
+    protected function aliases(): Collection
     {
-        return app(ConfigData::class)->main->aliases->all();
+        return app(ConfigData::class)->main->aliases;
     }
 
     protected function stringify(LocaleCode|LocaleData|string|null $locale): ?string
