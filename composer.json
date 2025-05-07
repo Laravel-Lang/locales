@@ -74,7 +74,7 @@
     },
     "scripts": {
         "test": [
-            "php vendor/bin/pest --compact"
+            "php vendor/bin/pest"
         ]
     }
 }
