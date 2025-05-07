@@ -31,21 +31,21 @@ it('checks locales', function (string $locale) {
     /**
      * @var array<string, string> $nativeLocale
      */
-    $nativeLocale = LocaleNames::get();
+    $nativeLocale    = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
 
     // Country
     /**
      * @var array<string, CountryData> $nativeCountry
      */
-    $nativeCountry = CountryNames::get()->all();
+    $nativeCountry    = CountryNames::get()->all();
     $localizedCountry = CountryNames::get($locale)->all();
 
     // Currency
     /**
      * @var array<string, CurrencyData> $nativeCurrency
      */
-    $nativeCurrency = CurrencyNames::get()->all();
+    $nativeCurrency    = CurrencyNames::get()->all();
     $localizedCurrency = CurrencyNames::get($locale)->all();
 
     foreach (Locales::available(true, true) as $item) {
@@ -77,14 +77,14 @@ it('checks locales without displaying currency information', function (string $l
     /**
      * @var array<string, string> $nativeLocale
      */
-    $nativeLocale = LocaleNames::get();
+    $nativeLocale    = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
 
     // Country
     /**
      * @var array<string, CountryData> $nativeCountry
      */
-    $nativeCountry = CountryNames::get()->all();
+    $nativeCountry    = CountryNames::get()->all();
     $localizedCountry = CountryNames::get($locale)->all();
 
     foreach (Locales::available(true) as $item) {
@@ -112,14 +112,14 @@ it('checks locales without displaying country information', function (string $lo
     /**
      * @var array<string, string> $nativeLocale
      */
-    $nativeLocale = LocaleNames::get();
+    $nativeLocale    = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
 
     // Currency
     /**
      * @var array<string, CurrencyData> $nativeCurrency
      */
-    $nativeCurrency = CurrencyNames::get()->all();
+    $nativeCurrency    = CurrencyNames::get()->all();
     $localizedCurrency = CurrencyNames::get($locale)->all();
 
     foreach (Locales::available(withCurrencies: true) as $item) {
@@ -148,7 +148,7 @@ it('checks locales without displaying country and currency information', functio
     /**
      * @var array<string, string> $nativeLocale
      */
-    $nativeLocale = LocaleNames::get();
+    $nativeLocale    = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
 
     foreach (Locales::available() as $item) {

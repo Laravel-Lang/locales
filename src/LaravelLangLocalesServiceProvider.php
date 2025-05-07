@@ -20,7 +20,7 @@ namespace LaravelLang\Locales;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use LaravelLang\Locales\Concerns\About;
 
-class ServiceProvider extends BaseServiceProvider
+class LaravelLangLocalesServiceProvider extends BaseServiceProvider
 {
     use About;
 
