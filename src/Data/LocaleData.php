@@ -22,28 +22,28 @@ use LaravelLang\LocaleList\Direction;
 use LaravelLang\LocaleList\Locale as LocaleEnum;
 use LaravelLang\Locales\Concerns\Aliases;
 
-class LocaleData
+readonly class LocaleData
 {
     use Aliases;
 
-    public readonly string $code;
+    public string $code;
 
-    public readonly ?string $regional;
+    public ?string $regional;
 
-    public readonly string $type;
+    public string $type;
 
-    public readonly string $native;
+    public string $native;
 
-    public readonly string $localized;
+    public string $localized;
 
-    public readonly ?CountryData $country;
+    public ?CountryData $country;
 
-    public readonly ?CurrencyData $currency;
+    public ?CurrencyData $currency;
 
-    public readonly Direction $direction;
+    public Direction $direction;
 
     public function __construct(
-        public readonly LocaleEnum $locale,
+        public LocaleEnum $locale,
         LocaleMapData $data,
         NativeData $locales,
         ?NativeData $countries,
