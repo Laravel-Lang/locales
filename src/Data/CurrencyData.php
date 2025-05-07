@@ -36,9 +36,9 @@ class CurrencyData
     {
         $code = $this->fromAlias($locale);
 
-        $this->code = $data->getNative($code)->code;
-        $this->numeric = $data->getNative($code)->numeric;
-        $this->native = $data->getNative($code)->native;
+        $this->code      = $data->getNative($code)->code;
+        $this->numeric   = $data->getNative($code)->numeric;
+        $this->native    = $data->getNative($code)->native;
         $this->localized = $data->getLocalized($code)->localized;
     }
 }

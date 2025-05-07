@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
-use LaravelLang\Config\Facades\Config;
+use LaravelLang\Config\Data\ConfigData;
 use LaravelLang\LocaleList\Locale as LocaleCode;
 use LaravelLang\Locales\Data\LocaleData;
 
@@ -43,7 +43,7 @@ trait Aliases
 
     protected function aliases(): array
     {
-        return Config::shared()->aliases->all();
+        return app(ConfigData::class)->main->aliases->all();
     }
 
     protected function stringify(LocaleCode|LocaleData|string|null $locale): ?string

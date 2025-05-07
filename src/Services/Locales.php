@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Services;
 
 use Illuminate\Support\Collection;
+use LaravelLang\Config\Data\ConfigData;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Concerns\Aliases;
 use LaravelLang\Locales\Concerns\Application;
@@ -35,9 +36,9 @@ class Locales
     use Registry;
 
     public function __construct(
-        protected RawLocales $raw
-    ) {
-    }
+        protected RawLocales $raw,
+        protected ConfigData $config,
+    ) {}
 
     public function raw(): RawLocales
     {

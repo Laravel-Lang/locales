@@ -17,31 +17,19 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use DragonCode\Support\Facades\Filesystem\Directory;
-use LaravelLang\Config\ServiceProvider as ConfigServiceProvider;
-use LaravelLang\Locales\ServiceProvider;
+use LaravelLang\Config\LaravelLangConfigServiceProvider;
+use LaravelLang\Locales\LaravelLangLocalesServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use Spatie\LaravelData\LaravelDataServiceProvider;
 
 abstract class TestCase extends BaseTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->cleanUp();
-    }
-
     protected function getPackageProviders($app): array
     {
         return [
-            ServiceProvider::class,
-            ConfigServiceProvider::class,
+            LaravelLangLocalesServiceProvider::class,
+            LaravelLangConfigServiceProvider::class,
+            LaravelDataServiceProvider::class,
         ];
-    }
-
-    protected function cleanUp(): void
-    {
-        Directory::ensureDelete(lang_path());
-        Directory::ensureDirectory(lang_path());
     }
 }

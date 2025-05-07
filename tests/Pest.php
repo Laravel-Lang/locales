@@ -15,6 +15,17 @@
 
 declare(strict_types=1);
 
+use DragonCode\Support\Facades\Filesystem\Directory;
 use Tests\TestCase;
 
-uses(TestCase::class)->in('Unit');
+pest()
+    ->printer()
+    ->compact();
+
+pest()
+    ->uses(TestCase::class)
+    ->in('Unit')
+    ->beforeEach(function () {
+        Directory::ensureDelete(lang_path());
+        Directory::ensureDirectory(lang_path());
+    });

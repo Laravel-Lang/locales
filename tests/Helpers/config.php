@@ -20,7 +20,7 @@ use LaravelLang\LocaleList\Locale;
 
 function setAlias(Locale $locale, string $alias): void
 {
-    config()->set(Name::Shared() . '.aliases.' . $locale->value, $alias);
+    config()?->set(Name::Main() . '.aliases.' . $locale->value, $alias);
 }
 
 function setLocales(bool|Locale|string|null $main = false, bool|Locale|string|null $fallback = false): void
@@ -36,10 +36,10 @@ function setLocales(bool|Locale|string|null $main = false, bool|Locale|string|nu
 
 function setMainLocale(Locale|string|null $locale): void
 {
-    config()->set('app.locale', $locale->value ?? $locale);
+    config()?->set('app.locale', $locale->value ?? $locale);
 }
 
 function setFallbackLocale(Locale|string|null $locale): void
 {
-    config()->set('app.fallback_locale', $locale->value ?? $locale);
+    config()?->set('app.fallback_locale', $locale->value ?? $locale);
 }
