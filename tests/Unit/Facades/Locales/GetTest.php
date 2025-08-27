@@ -66,7 +66,7 @@ it('returns the main locale if passed incorrectly or empty', function () {
     expect(Locales::get('[]')->code)->toBe('fr-custom');
     expect(Locales::get([])->code)->toBe('fr-custom');
 
-    expect(Locales::get(new stdClass())->code)->toBe('fr-custom');
+    expect(Locales::get(new stdClass)->code)->toBe('fr-custom');
 });
 
 it('returns the main locale if passed unset', function () {
@@ -116,7 +116,7 @@ it('returns a fallback locale if an incorrect or empty locale is passed', functi
     expect(Locales::get('[]')->code)->toBe('de-DE');
     expect(Locales::get([])->code)->toBe('de-DE');
 
-    expect(Locales::get(new stdClass())->code)->toBe('de-DE');
+    expect(Locales::get(new stdClass)->code)->toBe('de-DE');
 });
 
 it('returns a fallback locale if passed an uninstalled one', function () {
@@ -163,7 +163,7 @@ it(
         expect(Locales::get('100')->code)->toBe('de-DE');
         expect(Locales::get(100)->code)->toBe('de-DE');
 
-        expect(Locales::get(new stdClass())->code)->toBe('de-DE');
+        expect(Locales::get(new stdClass)->code)->toBe('de-DE');
     }
 );
 
@@ -211,7 +211,7 @@ it(
         expect(Locales::get('[]')->code)->toBe('en');
         expect(Locales::get([])->code)->toBe('en');
 
-        expect(Locales::get(new stdClass())->code)->toBe('en');
+        expect(Locales::get(new stdClass)->code)->toBe('en');
     }
 );
 
