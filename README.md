@@ -1,8 +1,8 @@
 # Laravel Lang: Locales
 
 <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://banners.beyondco.de/Locales.png?theme=dark&pattern=topography&style=style_2&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg&packageManager=composer+require&packageName=laravel-lang%2Flocales&description=Basic+functionality+for+working+with+localizations">
-    <img src="https://banners.beyondco.de/Locales.png?theme=light&pattern=topography&style=style_2&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg&packageManager=composer+require&packageName=laravel-lang%2Flocales&description=Basic+functionality+for+working+with+localizations" alt="Locales">
+    <source media="(prefers-color-scheme: dark)" srcset="https://banners.beyondco.de/Locales.png?theme=dark&pattern=topography&style=style_2&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg&packageManager=composer+require&packageName=laravel-lang%2Flocales&description=by+Laravel+Lang&md=1&showWatermark=1">
+    <img src="https://banners.beyondco.de/Locales.png?theme=light&pattern=topography&style=style_2&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg&packageManager=composer+require&packageName=laravel-lang%2Flocales&description=by+Laravel+Lang&md=1&showWatermark=1" alt="Locales">
 </picture>
 
 [![Stable Version][badge_stable]][link_packagist]
