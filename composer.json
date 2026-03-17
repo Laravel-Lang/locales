@@ -30,7 +30,7 @@
         "ext-json": "*",
         "archtechx/enums": "^0.3.2 || ^1.0",
         "dragon-code/support": "^6.11.3",
-        "illuminate/collections": "^10.0 || ^11.0 || ^12.0",
+        "illuminate/collections": "^10.0 || ^11.0 || ^12.0 || ^13.0",
         "laravel-lang/config": "^1.12",
         "laravel-lang/locale-list": "^1.5",
         "laravel-lang/native-country-names": "^1.5",
@@ -38,8 +38,8 @@
         "laravel-lang/native-locale-names": "^2.5"
     },
     "require-dev": {
-        "orchestra/testbench": "^8.0 || ^9.0 || ^10.0",
-        "pestphp/pest": "^2.24.1 || ^3.0",
+        "orchestra/testbench": "^8.0 || ^9.0 || ^10.0 || ^11.0",
+        "pestphp/pest": "^2.24.1 || ^3.0 || ^4.0",
         "symfony/var-dumper": "^6.0 || ^7.0"
     },
     "minimum-stability": "stable",
