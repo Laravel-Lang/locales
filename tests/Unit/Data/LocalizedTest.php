@@ -28,23 +28,17 @@ it('checks locales', function (string $locale) {
     expect(app()->getLocale())->toBe($locale);
 
     // Locales
-    /**
-     * @var array<string, string> $nativeLocale
-     */
+    /** @var array<string, string> $nativeLocale */
     $nativeLocale    = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
 
     // Country
-    /**
-     * @var array<string, CountryData> $nativeCountry
-     */
+    /** @var array<string, CountryData> $nativeCountry */
     $nativeCountry    = CountryNames::get()->all();
     $localizedCountry = CountryNames::get($locale)->all();
 
     // Currency
-    /**
-     * @var array<string, CurrencyData> $nativeCurrency
-     */
+    /** @var array<string, CurrencyData> $nativeCurrency */
     $nativeCurrency    = CurrencyNames::get()->all();
     $localizedCurrency = CurrencyNames::get($locale)->all();
 
@@ -74,16 +68,12 @@ it('checks locales without displaying currency information', function (string $l
     expect(app()->getLocale())->toBe($locale);
 
     // Locales
-    /**
-     * @var array<string, string> $nativeLocale
-     */
+    /** @var array<string, string> $nativeLocale */
     $nativeLocale    = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
 
     // Country
-    /**
-     * @var array<string, CountryData> $nativeCountry
-     */
+    /** @var array<string, CountryData> $nativeCountry */
     $nativeCountry    = CountryNames::get()->all();
     $localizedCountry = CountryNames::get($locale)->all();
 
@@ -109,16 +99,12 @@ it('checks locales without displaying country information', function (string $lo
     expect(app()->getLocale())->toBe($locale);
 
     // Locales
-    /**
-     * @var array<string, string> $nativeLocale
-     */
+    /** @var array<string, string> $nativeLocale */
     $nativeLocale    = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
 
     // Currency
-    /**
-     * @var array<string, CurrencyData> $nativeCurrency
-     */
+    /** @var array<string, CurrencyData> $nativeCurrency */
     $nativeCurrency    = CurrencyNames::get()->all();
     $localizedCurrency = CurrencyNames::get($locale)->all();
 
@@ -145,9 +131,7 @@ it('checks locales without displaying country and currency information', functio
     expect(app()->getLocale())->toBe($locale);
 
     // Locales
-    /**
-     * @var array<string, string> $nativeLocale
-     */
+    /** @var array<string, string> $nativeLocale */
     $nativeLocale    = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
 
