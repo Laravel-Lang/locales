@@ -15,37 +15,25 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\Locales;
+namespace LaravelLang\Locales\Concerns;
 
-use Closure;
 use Composer\InstalledVersions;
 use Illuminate\Foundation\Console\AboutCommand;
-use Illuminate\Support\Collection;
-use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use LaravelLang\Locales\Facades\Locales;
 
-class LocalesServiceProvider extends BaseServiceProvider
+trait About
 {
-    public function register(): void
-    {
-        if (! $this->app->runningInConsole()) {
-            return;
-        }
-
-        $this->about();
-    }
-
-    protected function about(): void
+    protected function registerAbout(): void
     {
         $this->pushInformation(fn () => [
             'Installed' => $this->implode(Locales::raw()->installed()),
             'Protected' => $this->implode(Locales::raw()->protects()),
 
-            'Version' => $this->getPackageVersion('laravel-lang/locales'),
+            'Locales Version' => $this->getPackageVersion('laravel-lang/locales'),
         ]);
     }
 
-    protected function pushInformation(Closure $data): void
+    protected function pushInformation(callable $data): void
     {
         AboutCommand::add('Locales', $data);
     }
@@ -56,13 +44,11 @@ class LocalesServiceProvider extends BaseServiceProvider
             return InstalledVersions::getPrettyVersion($package);
         }
 
-        return '<fg=yellow;options=bold>UNKNOWN</>';
+        return '<fg=yellow;options=bold>INCORRECT</>';
     }
 
     protected function implode(array $values): string
     {
-        return (new Collection($values))
-            ->sort()
-            ->implode(', ');
+        return collect($values)->sort()->implode(', ');
     }
 }

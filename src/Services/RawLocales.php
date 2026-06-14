@@ -35,12 +35,14 @@ class RawLocales
 
     public function available(): array
     {
-        return $this->registry(__METHOD__, fn () => collect(Locale::cases())
-            ->map(fn (Locale $locale) => $this->toAlias($locale))
-            ->filter()
-            ->sort()
-            ->values()
-            ->all()
+        return $this->registry(
+            __METHOD__,
+            fn () => collect(Locale::cases())
+                ->map(fn (Locale $locale) => $this->toAlias($locale))
+                ->filter()
+                ->sort()
+                ->values()
+                ->all()
         );
     }
 
