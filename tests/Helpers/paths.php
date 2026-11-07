@@ -15,12 +15,12 @@
 
 declare(strict_types=1);
 
-use DragonCode\Support\Facades\Filesystem\Directory;
+use Illuminate\Support\Facades\File;
 use LaravelLang\LocaleList\Locale;
 
 function createLocale(Locale|string $locale): void
 {
-    Directory::ensureDirectory(
+    File::ensureDirectoryExists(
         lang_path($locale->value ?? $locale)
     );
 }
@@ -30,4 +30,11 @@ function createLocales(Locale|string ...$locales): void
     foreach ($locales as $locale) {
         createLocale($locale);
     }
+}
+
+function storeFile(string $path, string $content): void
+{
+    File::ensureDirectoryExists(dirname($path));
+
+    File::put($path, $content);
 }

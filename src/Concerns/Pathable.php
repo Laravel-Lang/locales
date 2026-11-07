@@ -17,15 +17,14 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
-use DragonCode\Support\Facades\Filesystem\Directory;
-use DragonCode\Support\Facades\Filesystem\File;
 use Illuminate\Support\Collection;
+use LaravelLang\Locales\Helpers\Filesystem;
 
 trait Pathable
 {
     protected function directoryExists(): bool
     {
-        return Directory::exists(lang_path());
+        return is_dir(lang_path());
     }
 
     protected function directoryDoesntExist(): bool
@@ -35,7 +34,7 @@ trait Pathable
 
     protected function directories(string $path = ''): array
     {
-        return collect(Directory::names(lang_path($path)))
+        return collect(Filesystem::directories(lang_path($path)))
             ->when(
                 fn (Collection $items) => $items->contains('vendor'),
                 fn (Collection $items) => $items->merge(
@@ -50,6 +49,6 @@ trait Pathable
 
     protected function jsons(): array
     {
-        return File::names(lang_path(), recursive: true);
+        return Filesystem::files(lang_path());
     }
 }

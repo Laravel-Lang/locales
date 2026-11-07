@@ -15,8 +15,7 @@
 
 declare(strict_types=1);
 
-use DragonCode\Support\Facades\Filesystem\Directory;
-use DragonCode\Support\Facades\Filesystem\File;
+use Illuminate\Support\Facades\File;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Facades\Locales;
@@ -74,7 +73,7 @@ it('returns a list of installed locales', function () {
 });
 
 it('check localization detection by vendor file availability', function () {
-    File::store(lang_path('vendor/custom/de.json'), '{}');
+    storeFile(lang_path('vendor/custom/de.json'), '{}');
 
     expect(simpleData(Locales::installed()))
         ->toBe([
@@ -84,7 +83,7 @@ it('check localization detection by vendor file availability', function () {
 });
 
 it('check localization detection by vendor directory availability', function () {
-    Directory::ensureDirectory(lang_path('vendor/custom/de'));
+    File::ensureDirectoryExists(lang_path('vendor/custom/de'));
 
     expect(simpleData(Locales::installed()))
         ->toBe([
@@ -94,11 +93,11 @@ it('check localization detection by vendor directory availability', function () 
 });
 
 it('checks installed localizations without declaring aliases', function () {
-    File::store(lang_path('vendor/custom/de.json'), '{}');
-    File::store(lang_path('vendor/custom/de-DE.json'), '{}');
+    storeFile(lang_path('vendor/custom/de.json'), '{}');
+    storeFile(lang_path('vendor/custom/de-DE.json'), '{}');
 
-    Directory::ensureDirectory(lang_path('vendor/custom/de_CH'));
-    Directory::ensureDirectory(lang_path('vendor/custom/de-CH'));
+    File::ensureDirectoryExists(lang_path('vendor/custom/de_CH'));
+    File::ensureDirectoryExists(lang_path('vendor/custom/de-CH'));
 
     expect(simpleData(Locales::installed()))->toBe([
         'de',
