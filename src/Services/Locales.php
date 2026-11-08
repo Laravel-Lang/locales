@@ -35,9 +35,8 @@ class Locales
     use Registry;
 
     public function __construct(
-        protected RawLocales $raw
-    ) {
-    }
+        protected RawLocales $raw,
+    ) {}
 
     public function raw(): RawLocales
     {
@@ -55,7 +54,7 @@ class Locales
     public function installed(
         bool $withProtects = true,
         bool $withCountries = false,
-        bool $withCurrencies = false
+        bool $withCurrencies = false,
     ): Collection {
         return $this->registry(
             [__METHOD__, $withProtects],
@@ -112,15 +111,16 @@ class Locales
 
     public function getCurrent(bool $withCountry = false, bool $withCurrency = false): LocaleData
     {
-        return $this->getDefault($withCountry, $withCurrency);
-    }
-
-    public function getDefault(bool $withCountry = false, bool $withCurrency = false): LocaleData
-    {
         return $this->registry(
             [__METHOD__, $this->appLocale()],
             fn () => $this->map($this->raw->getDefault(), $withCountry, $withCurrency)
         );
+    }
+
+    /** @deprecated Use `getCurrent` instead */
+    public function getDefault(bool $withCountry = false, bool $withCurrency = false): LocaleData
+    {
+        return $this->getCurrent($withCountry, $withCurrency);
     }
 
     public function getFallback(bool $withCountry = false, bool $withCurrency = false): LocaleData
