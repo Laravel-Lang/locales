@@ -15,17 +15,20 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\Locales;
+namespace LaravelLang\Locales\Enums;
 
-use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use LaravelLang\Locales\Concerns\About;
+use ArchTech\Enums\InvokableCases;
 
-class LaravelLangLocalesServiceProvider extends BaseServiceProvider
+/**
+ * @deprecated Use \LaravelLang\Config\Enums\Name instead
+ *
+ * @method static string PublicKey()
+ * @method static string PrivateKey()
+ */
+enum Config: string
 {
-    use About;
+    use InvokableCases;
 
-    public function register(): void
-    {
-        $this->registerAbout();
-    }
+    case PublicKey = 'localization';
+    case PrivateKey = 'localization-private';
 }

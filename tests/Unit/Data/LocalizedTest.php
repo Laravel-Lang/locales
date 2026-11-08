@@ -28,18 +28,24 @@ it('checks locales', function (string $locale) {
     expect(app()->getLocale())->toBe($locale);
 
     // Locales
-    /** @var array<string, string> $nativeLocale */
-    $nativeLocale    = LocaleNames::get();
+    /**
+     * @var array<string, string> $nativeLocale
+     */
+    $nativeLocale = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
 
     // Country
-    /** @var array<string, CountryData> $nativeCountry */
-    $nativeCountry    = CountryNames::get()->all();
+    /**
+     * @var array<string, CountryData> $nativeCountry
+     */
+    $nativeCountry = CountryNames::get()->all();
     $localizedCountry = CountryNames::get($locale)->all();
 
     // Currency
-    /** @var array<string, CurrencyData> $nativeCurrency */
-    $nativeCurrency    = CurrencyNames::get()->all();
+    /**
+     * @var array<string, CurrencyData> $nativeCurrency
+     */
+    $nativeCurrency = CurrencyNames::get()->all();
     $localizedCurrency = CurrencyNames::get($locale)->all();
 
     foreach (Locales::available(true, true) as $item) {
@@ -68,13 +74,17 @@ it('checks locales without displaying currency information', function (string $l
     expect(app()->getLocale())->toBe($locale);
 
     // Locales
-    /** @var array<string, string> $nativeLocale */
-    $nativeLocale    = LocaleNames::get();
+    /**
+     * @var array<string, string> $nativeLocale
+     */
+    $nativeLocale = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
 
     // Country
-    /** @var array<string, CountryData> $nativeCountry */
-    $nativeCountry    = CountryNames::get()->all();
+    /**
+     * @var array<string, CountryData> $nativeCountry
+     */
+    $nativeCountry = CountryNames::get()->all();
     $localizedCountry = CountryNames::get($locale)->all();
 
     foreach (Locales::available(true) as $item) {
@@ -99,13 +109,17 @@ it('checks locales without displaying country information', function (string $lo
     expect(app()->getLocale())->toBe($locale);
 
     // Locales
-    /** @var array<string, string> $nativeLocale */
-    $nativeLocale    = LocaleNames::get();
+    /**
+     * @var array<string, string> $nativeLocale
+     */
+    $nativeLocale = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
 
     // Currency
-    /** @var array<string, CurrencyData> $nativeCurrency */
-    $nativeCurrency    = CurrencyNames::get()->all();
+    /**
+     * @var array<string, CurrencyData> $nativeCurrency
+     */
+    $nativeCurrency = CurrencyNames::get()->all();
     $localizedCurrency = CurrencyNames::get($locale)->all();
 
     foreach (Locales::available(withCurrencies: true) as $item) {
@@ -131,8 +145,10 @@ it('checks locales without displaying country and currency information', functio
     expect(app()->getLocale())->toBe($locale);
 
     // Locales
-    /** @var array<string, string> $nativeLocale */
-    $nativeLocale    = LocaleNames::get();
+    /**
+     * @var array<string, string> $nativeLocale
+     */
+    $nativeLocale = LocaleNames::get();
     $localizedLocale = LocaleNames::get($locale);
 
     foreach (Locales::available() as $item) {

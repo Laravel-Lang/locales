@@ -20,25 +20,25 @@ namespace LaravelLang\Locales\Data;
 use LaravelLang\LocaleList\Locale as LocaleEnum;
 use LaravelLang\Locales\Concerns\Aliases;
 
-readonly class CurrencyData
+class CurrencyData
 {
     use Aliases;
 
-    public string $code;
+    public readonly string $code;
 
-    public ?int $numeric;
+    public readonly ?int $numeric;
 
-    public string $native;
+    public readonly string $native;
 
-    public string $localized;
+    public readonly string $localized;
 
     public function __construct(LocaleEnum $locale, NativeData $data)
     {
         $code = $this->fromAlias($locale);
 
-        $this->code      = $data->getNative($code)->code;
-        $this->numeric   = $data->getNative($code)->numeric;
-        $this->native    = $data->getNative($code)->native;
+        $this->code = $data->getNative($code)->code;
+        $this->numeric = $data->getNative($code)->numeric;
+        $this->native = $data->getNative($code)->native;
         $this->localized = $data->getLocalized($code)->localized;
     }
 }

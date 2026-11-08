@@ -19,14 +19,15 @@ namespace LaravelLang\Locales\Data;
 
 use LaravelLang\Locales\Concerns\Aliases;
 
-readonly class NativeData
+class NativeData
 {
     use Aliases;
 
     public function __construct(
-        public array $native,
-        public array $localized
-    ) {}
+        public readonly array $native,
+        public readonly array $localized
+    ) {
+    }
 
     public function getNative(string $locale): mixed
     {

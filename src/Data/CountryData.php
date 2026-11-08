@@ -20,22 +20,22 @@ namespace LaravelLang\Locales\Data;
 use LaravelLang\LocaleList\Locale as LocaleEnum;
 use LaravelLang\Locales\Concerns\Aliases;
 
-readonly class CountryData
+class CountryData
 {
     use Aliases;
 
-    public string $code;
+    public readonly string $code;
 
-    public string $native;
+    public readonly string $native;
 
-    public string $localized;
+    public readonly string $localized;
 
     public function __construct(LocaleEnum $locale, NativeData $data)
     {
         $code = $this->fromAlias($locale);
 
-        $this->code      = $data->getNative($code)->code;
-        $this->native    = $data->getNative($code)->native;
+        $this->code = $data->getNative($code)->code;
+        $this->native = $data->getNative($code)->native;
         $this->localized = $data->getLocalized($code)->localized;
     }
 }

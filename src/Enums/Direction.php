@@ -15,17 +15,13 @@
 
 declare(strict_types=1);
 
-use DragonCode\Support\Facades\Filesystem\Directory;
-use Tests\TestCase;
+namespace LaravelLang\Locales\Enums;
 
-pest()
-    ->printer()
-    ->compact();
-
-pest()
-    ->uses(TestCase::class)
-    ->in('Unit')
-    ->beforeEach(function () {
-        Directory::ensureDelete(lang_path());
-        Directory::ensureDirectory(lang_path());
-    });
+/**
+ * @deprecated Use the \LaravelLang\LocaleList\Direction instead
+ */
+enum Direction: string
+{
+    case LeftToRight = 'ltr';
+    case RightToLeft = 'rtl';
+}

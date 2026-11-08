@@ -16,7 +16,6 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Collection;
-use LaravelLang\Config\Data\Hidden\LocaleMapData;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Data\NativeData;
@@ -33,17 +32,9 @@ function fakeLocaleData(Locale $locale): LocaleData
 {
     return new LocaleData(
         locale    : $locale,
-        data      : fakeLocaleMapData(),
+        data      : [],
         locales   : new NativeData(LocaleNames::get(), LocaleNames::get($locale->value)),
         countries : new NativeData(CountryNames::get()->all(), CountryNames::get($locale->value)->all()),
         currencies: new NativeData(CurrencyNames::get()->all(), CurrencyNames::get($locale->value)->all())
     );
-}
-
-function fakeLocaleMapData(): LocaleMapData
-{
-    return LocaleMapData::from([
-        'type'     => 'Latn',
-        'regional' => 'en_GB',
-    ]);
 }
