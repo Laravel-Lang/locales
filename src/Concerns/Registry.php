@@ -24,6 +24,11 @@ trait Registry
 {
     protected array $registry = [];
 
+    public function clearRegistryCache(): void
+    {
+        $this->registry = [];
+    }
+
     protected function registry(array|string $key, Closure $callback): mixed
     {
         $key = $this->registryKey($key);

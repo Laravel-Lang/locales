@@ -137,4 +137,12 @@ class Locales
             app()->setLocale($this->raw->get($locale));
         }
     }
+
+    public function reload(): void
+    {
+        $this->clearRegistryCache();
+        $this->raw->clearRegistryCache();
+
+        app()->forgetInstance('translator');
+    }
 }
