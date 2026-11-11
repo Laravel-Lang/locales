@@ -17,17 +17,15 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Data;
 
-use LaravelLang\Locales\Concerns\Aliases;
+use LaravelLang\Config\Services\Alias;
 
 class NativeData
 {
-    use Aliases;
-
     public function __construct(
         public readonly array $native,
-        public readonly array $localized
-    ) {
-    }
+        public readonly array $localized,
+        protected readonly Alias $alias,
+    ) {}
 
     public function getNative(string $locale): mixed
     {
@@ -41,7 +39,7 @@ class NativeData
 
     protected function get(array $items, string $locale): mixed
     {
-        $locale = $this->fromAlias($locale);
+        $locale = $this->alias->from($locale);
 
         return $items[$locale];
     }

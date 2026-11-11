@@ -17,13 +17,11 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Data;
 
+use LaravelLang\Config\Services\Alias;
 use LaravelLang\LocaleList\Locale as LocaleEnum;
-use LaravelLang\Locales\Concerns\Aliases;
 
 class CurrencyData
 {
-    use Aliases;
-
     public readonly string $code;
 
     public readonly ?int $numeric;
@@ -32,13 +30,16 @@ class CurrencyData
 
     public readonly string $localized;
 
-    public function __construct(LocaleEnum $locale, NativeData $data)
-    {
-        $code = $this->fromAlias($locale);
+    public function __construct(
+        LocaleEnum $locale,
+        NativeData $data,
+        Alias $alias,
+    ) {
+        $code = $alias->from($locale);
 
-        $this->code = $data->getNative($code)->code;
-        $this->numeric = $data->getNative($code)->numeric;
-        $this->native = $data->getNative($code)->native;
+        $this->code      = $data->getNative($code)->code;
+        $this->numeric   = $data->getNative($code)->numeric;
+        $this->native    = $data->getNative($code)->native;
         $this->localized = $data->getLocalized($code)->localized;
     }
 }

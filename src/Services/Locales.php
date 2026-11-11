@@ -19,7 +19,6 @@ namespace LaravelLang\Locales\Services;
 
 use Illuminate\Support\Collection;
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\Locales\Concerns\Aliases;
 use LaravelLang\Locales\Concerns\Application;
 use LaravelLang\Locales\Concerns\Localized;
 use LaravelLang\Locales\Concerns\Mapping;
@@ -28,7 +27,6 @@ use LaravelLang\Locales\Data\LocaleData;
 
 class Locales
 {
-    use Aliases;
     use Application;
     use Localized;
     use Mapping;

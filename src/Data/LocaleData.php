@@ -17,15 +17,13 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Data;
 
+use LaravelLang\Config\Services\Alias;
 use LaravelLang\LocaleList\Direction;
 use LaravelLang\LocaleList\Locale as LocaleEnum;
-use LaravelLang\Locales\Concerns\Aliases;
 use LaravelLang\Locales\Enums\Direction as DeprecatedDirection;
 
 class LocaleData
 {
-    use Aliases;
-
     public readonly string $code;
 
     public readonly ?string $regional;
@@ -47,19 +45,20 @@ class LocaleData
         array $data,
         NativeData $locales,
         ?NativeData $countries,
-        ?NativeData $currencies
+        ?NativeData $currencies,
+        Alias $alias,
     ) {
-        $this->code = $this->toAlias($locale);
+        $this->code = $alias->to($locale);
 
-        $this->type = $data['type'] ?? 'Latn';
+        $this->type     = $data['type'] ?? 'Latn';
         $this->regional = $data['regional'] ?? null;
 
-        $this->native = $locales->getNative($this->code);
+        $this->native    = $locales->getNative($this->code);
         $this->localized = $locales->getLocalized($this->code);
 
         $this->direction = $data['direction'] ?? Direction::LeftToRight;
 
-        $this->country = $countries ? new CountryData($locale, $countries) : null;
-        $this->currency = $currencies ? new CurrencyData($locale, $currencies) : null;
+        $this->country  = $countries ? new CountryData($locale, $countries, $alias) : null;
+        $this->currency = $currencies ? new CurrencyData($locale, $currencies, $alias) : null;
     }
 }
