@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Services;
 
-use DragonCode\Support\Facades\Filesystem\Path;
 use Illuminate\Support\Collection;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Concerns\Aliases;
@@ -60,7 +59,7 @@ class RawLocales
                     $this->protects(),
                 )
                 ->flatten()
-                ->map(fn (string $name) => $this->toAlias(Path::filename($name)))
+                ->map(fn (string $name) => $this->toAlias(pathinfo($name, PATHINFO_FILENAME)))
                 ->filter(fn (?string $locale) => $this->isAvailable($locale))
                 ->when(! $withProtects, fn (Collection $items) => $items->filter(
                     fn (string $locale) => ! $this->isProtected($locale)

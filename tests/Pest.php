@@ -15,7 +15,7 @@
 
 declare(strict_types=1);
 
-use DragonCode\Support\Facades\Filesystem\Directory;
+use Illuminate\Support\Facades\File;
 use Tests\TestCase;
 
 pest()
@@ -26,6 +26,6 @@ pest()
     ->uses(TestCase::class)
     ->in('Unit')
     ->beforeEach(function () {
-        Directory::ensureDelete(lang_path());
-        Directory::ensureDirectory(lang_path());
+        File::deleteDirectory(lang_path());
+        File::ensureDirectoryExists(lang_path());
     });

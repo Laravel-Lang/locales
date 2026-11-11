@@ -15,8 +15,7 @@
 
 declare(strict_types=1);
 
-use DragonCode\Support\Facades\Filesystem\Directory;
-use DragonCode\Support\Facades\Filesystem\File;
+use Illuminate\Support\Facades\File;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Data\LocaleData;
 use LaravelLang\Locales\Facades\Locales;
@@ -62,7 +61,7 @@ it('checks the availability of installed localizations', function () {
 });
 
 it('check localization detection by file availability', function () {
-    File::store(lang_path('vendor/custom/de.json'), '{}');
+    storeFile(lang_path('vendor/custom/de.json'), '{}');
 
     expect(simpleData(Locales::notInstalled()))
         ->toContain(Locale::French->value)
@@ -73,7 +72,7 @@ it('check localization detection by file availability', function () {
 });
 
 it('check localization detection by directory availability', function () {
-    Directory::ensureDirectory(lang_path('vendor/custom/de'));
+    File::ensureDirectoryExists(lang_path('vendor/custom/de'));
 
     expect(simpleData(Locales::notInstalled()))
         ->toContain(Locale::French->value)

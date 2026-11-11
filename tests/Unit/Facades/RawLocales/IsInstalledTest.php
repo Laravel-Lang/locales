@@ -15,8 +15,7 @@
 
 declare(strict_types=1);
 
-use DragonCode\Support\Facades\Filesystem\Directory;
-use DragonCode\Support\Facades\Filesystem\File;
+use Illuminate\Support\Facades\File;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Facades\Locales;
 
@@ -36,7 +35,7 @@ it('checks the installation of protected locales', function () {
 });
 
 it('checks the label of installed locales using a json file', function () {
-    File::store(lang_path('vendor/custom/de.json'), '{}');
+    storeFile(lang_path('vendor/custom/de.json'), '{}');
 
     setAlias(Locale::German, 'de-DE');
 
@@ -45,7 +44,7 @@ it('checks the label of installed locales using a json file', function () {
 });
 
 it('checks the label of installed locales using a directory', function () {
-    Directory::ensureDirectory(lang_path('vendor/custom/de'));
+    File::ensureDirectoryExists(lang_path('vendor/custom/de'));
 
     setAlias(Locale::German, 'de-DE');
 
