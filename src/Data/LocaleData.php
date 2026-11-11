@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Data;
 
-use LaravelLang\Config\Services\Alias;
+use LaravelLang\Config\Services\AliasConfig;
 use LaravelLang\LocaleList\Direction;
 use LaravelLang\LocaleList\Locale as LocaleEnum;
 use LaravelLang\Locales\Enums\Direction as DeprecatedDirection;
@@ -46,7 +46,7 @@ class LocaleData
         NativeData $locales,
         ?NativeData $countries,
         ?NativeData $currencies,
-        Alias $alias,
+        AliasConfig $alias,
     ) {
         $this->code = $alias->to($locale);
 

@@ -6,7 +6,7 @@ namespace LaravelLang\Locales\Services;
 
 use DragonCode\Support\Facades\Filesystem\Path;
 use Illuminate\Support\Collection;
-use LaravelLang\Config\Services\Alias;
+use LaravelLang\Config\Services\AliasConfig;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Concerns\Application;
 use LaravelLang\Locales\Concerns\Pathable;
@@ -20,7 +20,7 @@ class RawLocales
     use Registry;
 
     public function __construct(
-        protected Alias $alias,
+        protected AliasConfig $alias,
     ) {}
 
     public function available(): array

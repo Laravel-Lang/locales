@@ -17,14 +17,14 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Data;
 
-use LaravelLang\Config\Services\Alias;
+use LaravelLang\Config\Services\AliasConfig;
 
 class NativeData
 {
     public function __construct(
         public readonly array $native,
         public readonly array $localized,
-        protected readonly Alias $alias,
+        protected readonly AliasConfig $alias,
     ) {}
 
     public function getNative(string $locale): mixed

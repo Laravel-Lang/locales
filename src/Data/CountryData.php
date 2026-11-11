@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Data;
 
-use LaravelLang\Config\Services\Alias;
+use LaravelLang\Config\Services\AliasConfig;
 use LaravelLang\LocaleList\Locale as LocaleEnum;
 
 class CountryData
@@ -31,7 +31,7 @@ class CountryData
     public function __construct(
         LocaleEnum $locale,
         NativeData $data,
-        Alias $alias,
+        AliasConfig $alias,
     ) {
         $code = $alias->from($locale);
 
