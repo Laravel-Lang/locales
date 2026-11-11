@@ -41,11 +41,11 @@
         "archtechx/enums": "^1.0",
         "dragon-code/support": "^6.11.3",
         "illuminate/collections": "^11.0 || ^12.0",
-        "laravel-lang/config": "^2.0",
+        "laravel-lang/config": "^2.2",
         "laravel-lang/locale-list": "^1.5",
         "laravel-lang/native-country-names": "^1.5",
         "laravel-lang/native-currency-names": "^1.6",
-        "laravel-lang/native-locale-names": "^2.5"
+        "laravel-lang/native-locale-names": "^2.10"
     },
     "require-dev": {
         "orchestra/testbench": "^9.0 || ^10.0",
