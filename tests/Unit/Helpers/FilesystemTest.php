@@ -28,6 +28,10 @@ beforeEach(function () {
     File::ensureDirectoryExists($this->root . '/de');
 });
 
+afterEach(function () {
+    File::deleteDirectory($this->root);
+});
+
 it('lists the directories directly below the path, sorted', function () {
     expect(Filesystem::directories($this->root))->toBe(['de', 'vendor']);
     expect(Filesystem::directories($this->root . '/vendor'))->toBe(['pkg']);
