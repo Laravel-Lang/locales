@@ -17,12 +17,13 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
-use LaravelLang\Config\Facades\Config;
 use LaravelLang\LocaleList\Locale as LocaleCode;
 use LaravelLang\Locales\Data\LocaleData;
 
+/** @deprecated */
 trait Aliases
 {
+    /** @deprecated */
     protected function fromAlias(LocaleCode|LocaleData|string|null $locale): ?string
     {
         if ($locale = $this->stringify($locale)) {
@@ -32,6 +33,7 @@ trait Aliases
         return null;
     }
 
+    /** @deprecated */
     protected function toAlias(LocaleCode|LocaleData|string|null $locale): ?string
     {
         if ($locale = $this->stringify($locale)) {
@@ -39,19 +41,5 @@ trait Aliases
         }
 
         return null;
-    }
-
-    protected function aliases(): array
-    {
-        return Config::shared()->aliases->all();
-    }
-
-    protected function stringify(LocaleCode|LocaleData|string|null $locale): ?string
-    {
-        return match (true) {
-            $locale instanceof LocaleData => $locale->code,
-            $locale instanceof LocaleCode => $locale->value,
-            default                       => $locale
-        };
     }
 }
