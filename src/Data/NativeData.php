@@ -24,7 +24,6 @@ class NativeData
     public function __construct(
         public readonly array $native,
         public readonly array $localized,
-        protected readonly AliasConfig $alias,
     ) {}
 
     public function getNative(string $locale): mixed
@@ -39,8 +38,13 @@ class NativeData
 
     protected function get(array $items, string $locale): mixed
     {
-        $locale = $this->alias->from($locale);
+        $locale = $this->config()->from($locale);
 
         return $items[$locale];
+    }
+
+    protected function config(): AliasConfig
+    {
+        return app(AliasConfig::class);
     }
 }

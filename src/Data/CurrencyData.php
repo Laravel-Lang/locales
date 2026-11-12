@@ -33,13 +33,17 @@ class CurrencyData
     public function __construct(
         LocaleEnum $locale,
         NativeData $data,
-        AliasConfig $alias,
     ) {
-        $code = $alias->from($locale);
+        $code = $this->config()->from($locale);
 
         $this->code      = $data->getNative($code)->code;
         $this->numeric   = $data->getNative($code)->numeric;
         $this->native    = $data->getNative($code)->native;
         $this->localized = $data->getLocalized($code)->localized;
+    }
+
+    protected function config(): AliasConfig
+    {
+        return app(AliasConfig::class);
     }
 }

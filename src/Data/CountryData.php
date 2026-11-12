@@ -31,12 +31,16 @@ class CountryData
     public function __construct(
         LocaleEnum $locale,
         NativeData $data,
-        AliasConfig $alias,
     ) {
-        $code = $alias->from($locale);
+        $code = $this->config()->from($locale);
 
         $this->code      = $data->getNative($code)->code;
         $this->native    = $data->getNative($code)->native;
         $this->localized = $data->getLocalized($code)->localized;
+    }
+
+    protected function config(): AliasConfig
+    {
+        return app(AliasConfig::class);
     }
 }

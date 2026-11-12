@@ -22,6 +22,8 @@ use LaravelLang\LocaleList\Direction;
 use LaravelLang\LocaleList\Locale as LocaleEnum;
 use LaravelLang\Locales\Enums\Direction as DeprecatedDirection;
 
+use function app;
+
 class LocaleData
 {
     public readonly string $code;
@@ -46,9 +48,8 @@ class LocaleData
         NativeData $locales,
         ?NativeData $countries,
         ?NativeData $currencies,
-        AliasConfig $alias,
     ) {
-        $this->code = $alias->to($locale);
+        $this->code = $this->config()->to($locale);
 
         $this->type     = $data['type'] ?? 'Latn';
         $this->regional = $data['regional'] ?? null;
@@ -58,7 +59,12 @@ class LocaleData
 
         $this->direction = $data['direction'] ?? Direction::LeftToRight;
 
-        $this->country  = $countries ? new CountryData($locale, $countries, $alias) : null;
-        $this->currency = $currencies ? new CurrencyData($locale, $currencies, $alias) : null;
+        $this->country  = $countries ? new CountryData($locale, $countries) : null;
+        $this->currency = $currencies ? new CurrencyData($locale, $currencies) : null;
+    }
+
+    protected function config(): AliasConfig
+    {
+        return app(AliasConfig::class);
     }
 }

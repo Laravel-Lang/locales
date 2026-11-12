@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Services;
 
 use Illuminate\Support\Collection;
+use LaravelLang\Config\Services\AliasConfig;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Concerns\Application;
 use LaravelLang\Locales\Concerns\Localized;
@@ -34,6 +35,7 @@ class Locales
 
     public function __construct(
         protected RawLocales $raw,
+        protected AliasConfig $aliasConfig,
     ) {}
 
     public function raw(): RawLocales

@@ -46,8 +46,8 @@ trait Mapping
 
     protected function findLocale(string $locale): LocaleEnum
     {
-        return LocaleEnum::tryFrom($this->toAlias($locale))
-            ?: LocaleEnum::tryFrom($this->fromAlias($locale))
+        return LocaleEnum::tryFrom($this->aliasConfig->to($locale))
+            ?: LocaleEnum::tryFrom($this->aliasConfig->from($locale))
                 ?: LocaleEnum::English;
     }
 
