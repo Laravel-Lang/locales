@@ -26,6 +26,11 @@ pest()
     ->uses(TestCase::class)
     ->in('Unit')
     ->beforeEach(function () {
+        // Each process gets its own lang directory, so concurrent runs
+        // (parallel workers, IDE test runners) cannot delete each other's files.
+        app()->useLangPath(sys_get_temp_dir() . '/laravel-lang-locales-tests/' . getmypid());
+
         Directory::ensureDelete(lang_path());
         Directory::ensureDirectory(lang_path());
-    });
+    })
+    ->afterEach(fn () => Directory::ensureDelete(lang_path()));

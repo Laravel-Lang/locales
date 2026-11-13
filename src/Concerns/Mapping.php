@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Concerns;
 
 use Illuminate\Support\Collection;
-use LaravelLang\Config\Data\Hidden\LocaleMapData;
+use LaravelLang\Config\Data\Hidden\MetaData;
 use LaravelLang\LocaleList\Locale as LocaleEnum;
 use LaravelLang\Locales\Data\LocaleData;
 
@@ -51,8 +51,9 @@ trait Mapping
                 ?: LocaleEnum::English;
     }
 
-    protected function mapData(LocaleEnum $locale): LocaleMapData
+    protected function mapData(LocaleEnum $locale): MetaData
     {
-        return $this->config->hidden->map->get($locale->value);
+        return $this->config->hidden->meta->get($locale->value)
+            ?? new MetaData(type: 'Latn', regional: $locale->value);
     }
 }

@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Data;
 
-use LaravelLang\Config\Data\Hidden\LocaleMapData;
+use LaravelLang\Config\Data\Hidden\MetaData;
 use LaravelLang\LocaleList\Direction;
 use LaravelLang\LocaleList\Locale as LocaleEnum;
 use LaravelLang\Locales\Concerns\Aliases;
@@ -44,7 +44,7 @@ readonly class LocaleData
 
     public function __construct(
         public LocaleEnum $locale,
-        LocaleMapData $data,
+        MetaData $data,
         NativeData $locales,
         ?NativeData $countries,
         ?NativeData $currencies
