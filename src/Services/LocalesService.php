@@ -93,7 +93,7 @@ class LocalesService
         return $this->raw->isProtected($locale);
     }
 
-    public function info(Locale|string|null $locale = null): LocaleData
+    public function info(Locale|LocaleData|string|null $locale = null): LocaleData
     {
         $locale ??= $this->current();
 
@@ -126,7 +126,7 @@ class LocalesService
             : $this->aliasConfig->to(Locale::English);
     }
 
-    public function set(mixed $locale): void
+    public function set(Locale|LocaleData|string|null $locale): void
     {
         if (! $this->isInstalled($locale)) {
             return;
@@ -135,6 +135,20 @@ class LocalesService
         app()->setLocale(
             $this->aliasConfig->from($locale)
         );
+    }
+
+    public function fromAlias(Locale|LocaleData|string|null $locale = null): string
+    {
+        $locale ??= $this->current();
+
+        return $this->aliasConfig->from($locale);
+    }
+
+    public function toAlias(Locale|LocaleData|string|null $locale = null): string
+    {
+        $locale ??= $this->current();
+
+        return $this->aliasConfig->to($locale);
     }
 
     public function reload(): void
