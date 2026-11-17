@@ -136,9 +136,6 @@ class LocalesService
 
     public function reload(): void
     {
-        $this->clearRegistryCache();
-        $this->raw->clearRegistryCache();
-
         app()->forgetInstance('translator');
     }
 }
