@@ -65,13 +65,6 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "LaravelLang\\Locales\\ServiceProvider"
-            ]
-        }
-    },
     "scripts": {
         "test": [
             "php vendor/bin/pest --compact"

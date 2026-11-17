@@ -43,7 +43,7 @@ class Resolver
     public static function toString(Locale|LocaleData|string|null $locale): ?string
     {
         if ($locale instanceof LocaleData) {
-            return $locale->locale->value;
+            return $locale->code->value;
         }
 
         return $locale?->value ?? $locale;
