@@ -12,8 +12,7 @@ use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Concerns\Application;
 use LaravelLang\Locales\Concerns\Localized;
 use LaravelLang\Locales\Concerns\Mapping;
-use LaravelLang\Locales\Data\LocaleData;
-use LaravelLang\NativeLocaleNames\LocaleData as NativeLocaleData;
+use LaravelLang\NativeLocaleNames\LocaleData;
 use LaravelLang\NativeLocaleNames\LocaleNames;
 
 use function app;
@@ -94,7 +93,7 @@ class LocalesService
         return $this->raw->isProtected($locale);
     }
 
-    public function info(Locale|string|null $locale): NativeLocaleData
+    public function info(Locale|string|null $locale = null): LocaleData
     {
         $locale ??= $this->current();
 
@@ -129,9 +128,13 @@ class LocalesService
 
     public function set(mixed $locale): void
     {
-        if ($this->isInstalled($locale)) {
-            app()->setLocale($this->raw->get($locale));
+        if (! $this->isInstalled($locale)) {
+            return;
         }
+
+        app()->setLocale(
+            $this->aliasConfig->from($locale)
+        );
     }
 
     public function reload(): void
