@@ -6,7 +6,7 @@ namespace LaravelLang\Locales\Services;
 
 use Illuminate\Support\Collection;
 use LaravelLang\Config\Services\AliasConfig;
-use LaravelLang\Exceptions\UnknownLocaleCodeException;
+use LaravelLang\Exceptions\UnknownLocaleException;
 use LaravelLang\Filesystem\Filesystem;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Concerns\Application;
@@ -101,7 +101,7 @@ class LocalesService
         $normalized = $this->aliasConfig->from($locale);
 
         if (! $this->isAvailable($normalized)) {
-            throw new UnknownLocaleCodeException($normalized);
+            throw new UnknownLocaleException($normalized);
         }
 
         return $this->localeNames->one($this->current(), $normalized);
