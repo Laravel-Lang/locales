@@ -32,24 +32,28 @@ class LocalesService
         protected Filesystem $filesystem,
     ) {}
 
-    public function available(): Collection
+    public function available(bool $aliased = true): Collection
     {
         return (new Collection(Locale::values()))
-            ->map(fn (string $locale) => $this->aliasConfig->to($locale))
+            ->when($aliased, fn (Collection $items) => $items->map(
+                fn (string $locale) => $this->toAlias($locale)
+            ))
             ->sort()
             ->values();
     }
 
-    public function installed(): Collection
+    public function installed(bool $aliased = true): Collection
     {
-        $protects = $this->protects();
+        $protects = $this->protects($aliased);
 
         $items  = $this->filesystem->glob(lang_path('*'));
         $vendor = $this->filesystem->glob(lang_path('vendor/*/*.json'));
 
         return (new Collection($items))
             ->merge($vendor)
-            ->map(fn (string $path) => $this->aliasConfig->to(pathinfo($path, PATHINFO_FILENAME)))
+            ->when($aliased, fn (Collection $items) => $items->map(
+                fn (string $path) => $this->toAlias(pathinfo($path, PATHINFO_FILENAME))
+            ))
             ->filter(fn (string $locale) => $this->isAvailable($locale))
             ->merge($protects)
             ->unique()
@@ -57,24 +61,22 @@ class LocalesService
             ->values();
     }
 
-    public function uninstalled(): Collection
+    public function uninstalled(bool $aliased = true): Collection
     {
-        $installed = $this->installed()->map(
-            fn (string $locale) => $this->aliasConfig->from($locale)
-        );
-
         return (new Collection(Locale::values()))
-            ->diff($installed)
-            ->map(fn (string $locale) => $this->aliasConfig->to($locale))
+            ->diff($this->installed($aliased))
+            ->when($aliased, fn (Collection $items) => $items->map(
+                fn (string $locale) => $this->toAlias($locale)
+            ))
             ->sort()
             ->values();
     }
 
-    public function protects(): Collection
+    public function protects(bool $aliased = true): Collection
     {
         return (new Collection([
-            $this->current(),
-            $this->fallback(),
+            $this->current($aliased),
+            $this->fallback($aliased),
         ]))->unique()->values();
     }
 
@@ -97,7 +99,7 @@ class LocalesService
     {
         $locale ??= $this->current();
 
-        $normalized = $this->aliasConfig->from($locale);
+        $normalized = $this->fromAlias($locale);
 
         if (! $this->isAvailable($normalized)) {
             throw new UnknownLocaleException($normalized);
@@ -106,24 +108,34 @@ class LocalesService
         return $this->localeNames->one($this->current(), $normalized);
     }
 
-    public function current(): string
+    public function current(bool $aliased = true): string
     {
         $locale = app()->getLocale();
 
         if ($this->isAvailable($locale)) {
-            return $this->aliasConfig->to($locale);
+            return $aliased
+                ? $this->toAlias($locale)
+                : $this->fromAlias($locale);
         }
 
-        return $this->fallback();
+        return $this->fallback($aliased);
     }
 
-    public function fallback(): string
+    public function fallback(bool $aliased = true): string
     {
         $locale = app()->getFallbackLocale();
 
-        return $this->isAvailable($locale)
-            ? $this->aliasConfig->to($locale)
-            : $this->aliasConfig->to(Locale::English);
+        if ($this->isAvailable($locale)) {
+            return $aliased
+                ? $this->toAlias($locale)
+                : $this->fromAlias($locale);
+        }
+
+        if ($aliased) {
+            return $this->toAlias(Locale::English);
+        }
+
+        return Locale::English->value;
     }
 
     public function set(Locale|LocaleData|string|null $locale): void
@@ -133,7 +145,7 @@ class LocalesService
         }
 
         app()->setLocale(
-            $this->aliasConfig->from($locale)
+            $this->fromAlias($locale)
         );
     }
 
