@@ -16,6 +16,7 @@ use LaravelLang\NativeLocaleNames\LocaleData;
 use LaravelLang\NativeLocaleNames\LocaleNames;
 
 use function app;
+use function in_array;
 use function lang_path;
 use function pathinfo;
 
@@ -26,7 +27,6 @@ class LocalesService
     use Mapping;
 
     public function __construct(
-        protected RawLocales $raw,
         protected AliasConfig $aliasConfig,
         protected LocaleNames $localeNames,
         protected Filesystem $filesystem,
@@ -51,9 +51,13 @@ class LocalesService
 
         return (new Collection($items))
             ->merge($vendor)
-            ->when($aliased, fn (Collection $items) => $items->map(
-                fn (string $path) => $this->toAlias(pathinfo($path, PATHINFO_FILENAME))
-            ))
+            ->map(function (string $path) use ($aliased): string {
+                $locale = pathinfo($path, PATHINFO_FILENAME);
+
+                return $aliased
+                    ? $this->toAlias($locale)
+                    : $this->fromAlias($locale);
+            })
             ->filter(fn (string $locale) => $this->isAvailable($locale))
             ->merge($protects)
             ->unique()
@@ -82,22 +86,38 @@ class LocalesService
 
     public function isAvailable(Locale|LocaleData|string|null $locale): bool
     {
-        return $this->raw->isAvailable($locale);
+        if (! $locale) {
+            return false;
+        }
+
+        return in_array($this->fromAlias($locale), Locale::values(), true);
     }
 
     public function isInstalled(Locale|LocaleData|string|null $locale): bool
     {
-        return $this->raw->isInstalled($locale);
+        if (! $locale) {
+            return false;
+        }
+
+        return $this->installed(false)->contains(
+            $this->fromAlias($locale)
+        );
     }
 
     public function isProtected(Locale|LocaleData|string|null $locale): bool
     {
-        return $this->raw->isProtected($locale);
+        if (! $locale) {
+            return false;
+        }
+
+        return $this->protects(false)->contains(
+            $this->fromAlias($locale)
+        );
     }
 
     public function info(Locale|LocaleData|string|null $locale = null): LocaleData
     {
-        $locale ??= $this->current();
+        $locale ??= $this->current(false);
 
         $normalized = $this->fromAlias($locale);
 
@@ -149,14 +169,14 @@ class LocalesService
         );
     }
 
-    public function fromAlias(Locale|LocaleData|string|null $locale = null): string
+    public function fromAlias(Locale|LocaleData|string|null $locale = null): ?string
     {
         $locale ??= $this->current();
 
         return $this->aliasConfig->from($locale);
     }
 
-    public function toAlias(Locale|LocaleData|string|null $locale = null): string
+    public function toAlias(Locale|LocaleData|string|null $locale = null): ?string
     {
         $locale ??= $this->current();
 
