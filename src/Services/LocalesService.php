@@ -9,9 +9,6 @@ use LaravelLang\Config\Services\AliasLangConfig;
 use LaravelLang\Exceptions\UnknownLocaleException;
 use LaravelLang\Filesystem\Filesystem;
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\Locales\Concerns\Application;
-use LaravelLang\Locales\Concerns\Localized;
-use LaravelLang\Locales\Concerns\Mapping;
 use LaravelLang\NativeLocaleNames\LocaleData;
 use LaravelLang\NativeLocaleNames\LocaleNames;
 
@@ -22,15 +19,16 @@ use function pathinfo;
 
 class LocalesService
 {
-    use Application;
-    use Localized;
-    use Mapping;
-
     public function __construct(
         protected AliasLangConfig $aliasConfig,
         protected LocaleNames $localeNames,
         protected Filesystem $filesystem,
     ) {}
+
+    public function data(): LocalesDataService
+    {
+        return app()->make(LocalesDataService::class);
+    }
 
     public function available(bool $aliased = true): Collection
     {
@@ -84,6 +82,36 @@ class LocalesService
         ]))->unique()->values();
     }
 
+    public function current(bool $aliased = true): string
+    {
+        $locale = app()->getLocale();
+
+        if ($this->isAvailable($locale)) {
+            return $aliased
+                ? $this->toAlias($locale)
+                : $this->fromAlias($locale);
+        }
+
+        return $this->fallback($aliased);
+    }
+
+    public function fallback(bool $aliased = true): string
+    {
+        $locale = app()->getFallbackLocale();
+
+        if ($this->isAvailable($locale)) {
+            return $aliased
+                ? $this->toAlias($locale)
+                : $this->fromAlias($locale);
+        }
+
+        if ($aliased) {
+            return $this->toAlias(Locale::English);
+        }
+
+        return Locale::English->value;
+    }
+
     public function isAvailable(Locale|LocaleData|string|null $locale): bool
     {
         if (! $locale) {
@@ -128,36 +156,6 @@ class LocalesService
         return $this->localeNames->one($this->current(), $normalized);
     }
 
-    public function current(bool $aliased = true): string
-    {
-        $locale = app()->getLocale();
-
-        if ($this->isAvailable($locale)) {
-            return $aliased
-                ? $this->toAlias($locale)
-                : $this->fromAlias($locale);
-        }
-
-        return $this->fallback($aliased);
-    }
-
-    public function fallback(bool $aliased = true): string
-    {
-        $locale = app()->getFallbackLocale();
-
-        if ($this->isAvailable($locale)) {
-            return $aliased
-                ? $this->toAlias($locale)
-                : $this->fromAlias($locale);
-        }
-
-        if ($aliased) {
-            return $this->toAlias(Locale::English);
-        }
-
-        return Locale::English->value;
-    }
-
     public function set(Locale|LocaleData|string|null $locale): void
     {
         if (! $this->isInstalled($locale)) {
@@ -167,6 +165,11 @@ class LocalesService
         app()->setLocale(
             $this->fromAlias($locale)
         );
+    }
+
+    public function reload(): void
+    {
+        app()->forgetInstance('translator');
     }
 
     public function fromAlias(Locale|LocaleData|string|null $locale = null): ?string
@@ -181,10 +184,5 @@ class LocalesService
         $locale ??= $this->current();
 
         return $this->aliasConfig->to($locale);
-    }
-
-    public function reload(): void
-    {
-        app()->forgetInstance('translator');
     }
 }
