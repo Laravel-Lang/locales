@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Concerns;
 
 use Illuminate\Support\Collection;
-use LaravelLang\Config\Services\MapConfig;
+use LaravelLang\Config\Services\MapLangConfig;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Data\LocaleData;
 
@@ -53,6 +53,6 @@ trait Mapping
 
     protected function mapData(Locale $locale): array
     {
-        return app(MapConfig::class)->get($locale);
+        return app(MapLangConfig::class)->get($locale);
     }
 }

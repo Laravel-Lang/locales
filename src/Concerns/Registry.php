@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Concerns;
 
 use Closure;
-use LaravelLang\Locales\Services\Resolver;
+use LaravelLang\Locales\Services\ResolverService;
 
 trait Registry
 {
@@ -39,7 +39,7 @@ trait Registry
     protected function registryKey(array|string $key): string
     {
         return collect($key)
-            ->map(static fn (mixed $item) => (string) Resolver::fromMixed($item))
+            ->map(static fn (mixed $item) => (string) ResolverService::fromMixed($item))
             ->implode(':');
     }
 }

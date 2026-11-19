@@ -21,7 +21,7 @@ use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Data\LocaleData;
 use stdClass;
 
-class Resolver
+class ResolverService
 {
     public static function fromMixed(mixed $locale): ?string
     {

@@ -6,7 +6,7 @@ namespace LaravelLang\Locales\Services;
 
 use DragonCode\Support\Facades\Filesystem\Path;
 use Illuminate\Support\Collection;
-use LaravelLang\Config\Services\AliasConfig;
+use LaravelLang\Config\Services\AliasLangConfig;
 use LaravelLang\LocaleList\Locale;
 use LaravelLang\Locales\Concerns\Application;
 use LaravelLang\Locales\Concerns\Pathable;
@@ -20,7 +20,7 @@ class RawLocales
     use Registry;
 
     public function __construct(
-        protected AliasConfig $alias,
+        protected AliasLangConfig $alias,
     ) {}
 
     public function available(): array
@@ -104,7 +104,7 @@ class RawLocales
     public function get(mixed $locale): string
     {
         return $this->registry([__METHOD__, $locale, $this->appLocale()], function () use ($locale) {
-            $locale = Resolver::fromMixed($locale);
+            $locale = ResolverService::fromMixed($locale);
 
             if ($this->isInstalled($locale)) {
                 return $this->alias->to($locale);
@@ -152,7 +152,7 @@ class RawLocales
     public function info(mixed $locale): string
     {
         return $this->registry([__METHOD__, $locale, $this->appLocale()], function () use ($locale) {
-            $locale = Resolver::fromMixed($locale);
+            $locale = ResolverService::fromMixed($locale);
 
             if ($this->isAvailable($locale)) {
                 return $this->alias->to($locale);
@@ -164,7 +164,7 @@ class RawLocales
 
     protected function inArray(Locale|LocaleData|string|null $locale, array $haystack): bool
     {
-        $locale = Resolver::toString($locale);
+        $locale = ResolverService::toString($locale);
 
         return ! empty($locale) && in_array($locale, $haystack, true);
     }

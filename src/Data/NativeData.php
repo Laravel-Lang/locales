@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Data;
 
-use LaravelLang\Config\Services\AliasConfig;
+use LaravelLang\Config\Services\AliasLangConfig;
 
 class NativeData
 {
@@ -43,8 +43,8 @@ class NativeData
         return $items[$locale];
     }
 
-    protected function config(): AliasConfig
+    protected function config(): AliasLangConfig
     {
-        return app(AliasConfig::class);
+        return app(AliasLangConfig::class);
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Services;
 
 use Illuminate\Support\Collection;
-use LaravelLang\Config\Services\AliasConfig;
+use LaravelLang\Config\Services\AliasLangConfig;
 use LaravelLang\Exceptions\UnknownLocaleException;
 use LaravelLang\Filesystem\Filesystem;
 use LaravelLang\LocaleList\Locale;
@@ -27,7 +27,7 @@ class LocalesService
     use Mapping;
 
     public function __construct(
-        protected AliasConfig $aliasConfig,
+        protected AliasLangConfig $aliasConfig,
         protected LocaleNames $localeNames,
         protected Filesystem $filesystem,
     ) {}

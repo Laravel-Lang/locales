@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Data;
 
-use LaravelLang\Config\Services\AliasConfig;
+use LaravelLang\Config\Services\AliasLangConfig;
 use LaravelLang\LocaleList\Locale as LocaleEnum;
 
 class CountryData
@@ -39,8 +39,8 @@ class CountryData
         $this->localized = $data->getLocalized($code)->localized;
     }
 
-    protected function config(): AliasConfig
+    protected function config(): AliasLangConfig
     {
-        return app(AliasConfig::class);
+        return app(AliasLangConfig::class);
     }
 }
