@@ -34,7 +34,7 @@ class LocalesService
 
     public function available(bool $aliased = true): Collection
     {
-        return (new Collection(Locale::values()))
+        return Locale::collection()
             ->when($aliased, fn (Collection $items) => $items->map(
                 fn (string $locale) => $this->toAlias($locale)
             ))
@@ -67,7 +67,7 @@ class LocalesService
 
     public function uninstalled(bool $aliased = true): Collection
     {
-        return (new Collection(Locale::values()))
+        return Locale::collection()
             ->diff($this->installed($aliased))
             ->when($aliased, fn (Collection $items) => $items->map(
                 fn (string $locale) => $this->toAlias($locale)
