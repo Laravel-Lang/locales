@@ -17,15 +17,13 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Concerns;
 
-use DragonCode\Support\Facades\Filesystem\Directory;
-use DragonCode\Support\Facades\Filesystem\File;
 use Illuminate\Support\Collection;
 
 trait Pathable
 {
     protected function directoryExists(): bool
     {
-        return Directory::exists(lang_path());
+        return is_dir(lang_path());
     }
 
     protected function directoryDoesntExist(): bool

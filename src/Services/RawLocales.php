@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace LaravelLang\Locales\Services;
 
-use DragonCode\Support\Facades\Filesystem\Path;
 use Illuminate\Support\Collection;
 use LaravelLang\Config\Services\AliasLangConfig;
 use LaravelLang\LocaleList\Locale;
