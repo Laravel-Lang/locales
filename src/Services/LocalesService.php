@@ -66,7 +66,7 @@ class LocalesService
     public function uninstalled(bool $aliased = true): Collection
     {
         return Locale::collection()
-            ->diff($this->installed($aliased))
+            ->diff($this->installed(false))
             ->when($aliased, fn (Collection $items) => $items->map(
                 fn (string $locale) => $this->toAlias($locale)
             ))
