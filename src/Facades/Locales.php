@@ -28,7 +28,7 @@ use LaravelLang\NativeLocaleNames\LocaleData;
  * @method static void reload()
  * @method static void set(Locale|LocaleData|string|null $locale)
  */
-class Locales extends Facade
+final class Locales extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
