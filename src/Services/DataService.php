@@ -18,7 +18,7 @@ class DataService
     public function available(): Collection
     {
         return $this->service->available(false)->map(
-            fn (string $locale): LocaleData => $this->map($locale)
+            fn (string $locale) => $this->map($locale)
         );
     }
 
@@ -39,21 +39,21 @@ class DataService
     public function installed(): Collection
     {
         return $this->service->installed(false)->map(
-            fn (string $locale): LocaleData => $this->map($locale)
+            fn (string $locale) => $this->map($locale)
         );
     }
 
     public function protects(): Collection
     {
         return $this->service->protects(false)->map(
-            fn (string $locale): LocaleData => $this->map($locale)
+            fn (string $locale) => $this->map($locale)
         );
     }
 
     public function uninstalled(): Collection
     {
         return $this->service->uninstalled(false)->map(
-            fn (string $locale): LocaleData => $this->map($locale)
+            fn (string $locale) => $this->map($locale)
         );
     }
 
