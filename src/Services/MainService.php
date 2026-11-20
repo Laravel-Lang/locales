@@ -17,7 +17,7 @@ use function in_array;
 use function lang_path;
 use function pathinfo;
 
-class LocalesService
+class MainService
 {
     public function __construct(
         protected AliasLangConfig $aliasConfig,
@@ -25,9 +25,9 @@ class LocalesService
         protected Filesystem $filesystem,
     ) {}
 
-    public function data(): LocalesDataService
+    public function data(): DataService
     {
-        return app()->make(LocalesDataService::class);
+        return app()->make(DataService::class);
     }
 
     public function available(bool $aliased = true): Collection

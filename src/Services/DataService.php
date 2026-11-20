@@ -8,10 +8,10 @@ use Illuminate\Support\Collection;
 use LaravelLang\NativeLocaleNames\LocaleData;
 use LaravelLang\NativeLocaleNames\LocaleNames;
 
-class LocalesDataService
+class DataService
 {
     public function __construct(
-        protected LocalesService $service,
+        protected MainService $service,
         protected LocaleNames $names,
     ) {}
 

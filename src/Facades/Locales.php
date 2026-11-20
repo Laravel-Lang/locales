@@ -7,8 +7,8 @@ namespace LaravelLang\Locales\Facades;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Facade;
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\Locales\Services\LocalesDataService;
-use LaravelLang\Locales\Services\LocalesService;
+use LaravelLang\Locales\Services\DataService;
+use LaravelLang\Locales\Services\MainService;
 use LaravelLang\NativeLocaleNames\LocaleData;
 
 /**
@@ -20,7 +20,7 @@ use LaravelLang\NativeLocaleNames\LocaleData;
  * @method static Collection<string> protects(bool $aliased = true)
  * @method static Collection<string> uninstalled(bool $aliased = true)
  * @method static LocaleData info(Locale|LocaleData|string|null $locale = null)
- * @method static LocalesDataService data()
+ * @method static DataService data()
  * @method static string current(bool $aliased = true)
  * @method static string fallback(bool $aliased = true)
  * @method static string fromAlias(Locale|LocaleData|string|null $locale = null)
@@ -32,6 +32,6 @@ final class Locales extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return LocalesService::class;
+        return MainService::class;
     }
 }
