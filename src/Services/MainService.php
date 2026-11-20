@@ -34,7 +34,7 @@ class MainService
     {
         return Locale::collection()
             ->when($aliased, fn (Collection $items) => $items->map(
-                fn (string $locale) => $this->toAlias($locale)
+                fn (string $locale): ?string => $this->toAlias($locale)
             ))
             ->sort()
             ->values();
@@ -56,7 +56,7 @@ class MainService
                     ? $this->toAlias($locale)
                     : $this->fromAlias($locale);
             })
-            ->filter(fn (string $locale) => $this->isAvailable($locale))
+            ->filter(fn (string $locale): bool => $this->isAvailable($locale))
             ->merge($protects)
             ->unique()
             ->sort()
@@ -68,7 +68,7 @@ class MainService
         return Locale::collection()
             ->diff($this->installed(false))
             ->when($aliased, fn (Collection $items) => $items->map(
-                fn (string $locale) => $this->toAlias($locale)
+                fn (string $locale): ?string => $this->toAlias($locale)
             ))
             ->sort()
             ->values();
