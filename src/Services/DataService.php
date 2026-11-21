@@ -15,6 +15,7 @@ class DataService
         protected LocaleNames $names,
     ) {}
 
+    /** @return Collection<int, LocaleData> */
     public function available(): Collection
     {
         return $this->service->available(false)->map(
@@ -36,6 +37,7 @@ class DataService
         );
     }
 
+    /** @return Collection<int, LocaleData> */
     public function installed(): Collection
     {
         return $this->service->installed(false)->map(
@@ -43,6 +45,7 @@ class DataService
         );
     }
 
+    /** @return Collection<int, LocaleData> */
     public function protects(): Collection
     {
         return $this->service->protects(false)->map(
@@ -50,6 +53,7 @@ class DataService
         );
     }
 
+    /** @return Collection<int, LocaleData> */
     public function uninstalled(): Collection
     {
         return $this->service->uninstalled(false)->map(

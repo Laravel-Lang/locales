@@ -30,16 +30,18 @@ class MainService
         return app()->make(DataService::class);
     }
 
+    /** @return Collection<int, string> */
     public function available(bool $aliased = true): Collection
     {
         return Locale::collection()
             ->when($aliased, fn (Collection $items) => $items->map(
-                fn (string $locale): ?string => $this->toAlias($locale)
+                fn (string $locale): string => $this->formatLocale($locale, aliased: true)
             ))
             ->sort()
             ->values();
     }
 
+    /** @return Collection<int, string> */
     public function installed(bool $aliased = true): Collection
     {
         $protects = $this->protects($aliased);
@@ -52,9 +54,7 @@ class MainService
             ->map(function (string $path) use ($aliased): string {
                 $locale = pathinfo($path, PATHINFO_FILENAME);
 
-                return $aliased
-                    ? $this->toAlias($locale)
-                    : $this->fromAlias($locale);
+                return $this->formatLocale($locale, $aliased);
             })
             ->filter(fn (string $locale): bool => $this->isAvailable($locale))
             ->merge($protects)
@@ -63,17 +63,19 @@ class MainService
             ->values();
     }
 
+    /** @return Collection<int, string> */
     public function uninstalled(bool $aliased = true): Collection
     {
         return Locale::collection()
             ->diff($this->installed(false))
             ->when($aliased, fn (Collection $items) => $items->map(
-                fn (string $locale): ?string => $this->toAlias($locale)
+                fn (string $locale): string => $this->formatLocale($locale, aliased: true)
             ))
             ->sort()
             ->values();
     }
 
+    /** @return Collection<int, string> */
     public function protects(bool $aliased = true): Collection
     {
         return (new Collection([
@@ -87,9 +89,7 @@ class MainService
         $locale = app()->getLocale();
 
         if ($this->isAvailable($locale)) {
-            return $aliased
-                ? $this->toAlias($locale)
-                : $this->fromAlias($locale);
+            return $this->formatLocale($locale, $aliased);
         }
 
         return $this->fallback($aliased);
@@ -100,13 +100,11 @@ class MainService
         $locale = app()->getFallbackLocale();
 
         if ($this->isAvailable($locale)) {
-            return $aliased
-                ? $this->toAlias($locale)
-                : $this->fromAlias($locale);
+            return $this->formatLocale($locale, $aliased);
         }
 
         if ($aliased) {
-            return $this->toAlias(Locale::English);
+            return $this->formatLocale(Locale::English->value, aliased: true);
         }
 
         return Locale::English->value;
@@ -123,24 +121,16 @@ class MainService
 
     public function isInstalled(Locale|LocaleData|string|null $locale): bool
     {
-        if (! $locale) {
-            return false;
-        }
+        $normalized = $locale ? $this->fromAlias($locale) : null;
 
-        return $this->installed(false)->contains(
-            $this->fromAlias($locale)
-        );
+        return $normalized !== null && $this->installed(false)->contains($normalized);
     }
 
     public function isProtected(Locale|LocaleData|string|null $locale): bool
     {
-        if (! $locale) {
-            return false;
-        }
+        $normalized = $locale ? $this->fromAlias($locale) : null;
 
-        return $this->protects(false)->contains(
-            $this->fromAlias($locale)
-        );
+        return $normalized !== null && $this->protects(false)->contains($normalized);
     }
 
     public function info(Locale|LocaleData|string|null $locale = null): LocaleData
@@ -149,8 +139,8 @@ class MainService
 
         $normalized = $this->fromAlias($locale);
 
-        if (! $this->isAvailable($normalized)) {
-            throw new UnknownLocaleException($normalized);
+        if ($normalized === null || ! $this->isAvailable($normalized)) {
+            throw new UnknownLocaleException($normalized ?? $locale);
         }
 
         return $this->localeNames->one($this->current(), $normalized);
@@ -158,13 +148,13 @@ class MainService
 
     public function set(Locale|LocaleData|string|null $locale): void
     {
-        if (! $this->isInstalled($locale)) {
+        $normalized = $locale ? $this->fromAlias($locale) : null;
+
+        if ($normalized === null || ! $this->isInstalled($locale)) {
             return;
         }
 
-        app()->setLocale(
-            $this->fromAlias($locale)
-        );
+        app()->setLocale($normalized);
     }
 
     public function reload(): void
@@ -184,5 +174,14 @@ class MainService
         $locale ??= $this->current();
 
         return $this->aliasConfig->to($locale);
+    }
+
+    protected function formatLocale(string $locale, bool $aliased): string
+    {
+        $result = $aliased
+            ? $this->toAlias($locale)
+            : $this->fromAlias($locale);
+
+        return $result ?? $locale;
     }
 }
