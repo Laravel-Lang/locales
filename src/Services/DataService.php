@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace LaravelLang\Locales\Services;
 
 use Illuminate\Support\Collection;
-use LaravelLang\NativeLocaleNames\LocaleData;
-use LaravelLang\NativeLocaleNames\LocaleNames;
+use LaravelLang\LocaleNames\LocaleData;
+use LaravelLang\LocaleNames\LocaleNames;
 
 class DataService
 {

@@ -33,8 +33,7 @@
         "laravel-lang/config": "^1.12",
         "laravel-lang/country-names": "^1.5",
         "laravel-lang/locale-list": "^1.5",
-        "laravel-lang/native-currency-names": "^1.6",
-        "laravel-lang/native-locale-names": "^2.5"
+        "laravel-lang/locale-names": "^3.0"
     },
     "require-dev": {
         "orchestra/testbench": "^8.0 || ^9.0 || ^10.0 || ^11.0",
