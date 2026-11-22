@@ -9,8 +9,8 @@ use LaravelLang\Config\Services\AliasLangConfig;
 use LaravelLang\Exceptions\UnknownLocaleException;
 use LaravelLang\Filesystem\Filesystem;
 use LaravelLang\LocaleList\Locale;
-use LaravelLang\NativeLocaleNames\LocaleData;
-use LaravelLang\NativeLocaleNames\LocaleNames;
+use LaravelLang\LocaleNames\LocaleData;
+use LaravelLang\LocaleNames\LocaleNames;
 
 use function app;
 use function in_array;

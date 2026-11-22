@@ -7,9 +7,9 @@ namespace LaravelLang\Locales\Facades;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Facade;
 use LaravelLang\LocaleList\Locale;
+use LaravelLang\LocaleNames\LocaleData;
 use LaravelLang\Locales\Services\DataService;
 use LaravelLang\Locales\Services\MainService;
-use LaravelLang\NativeLocaleNames\LocaleData;
 
 /**
  * @method static ($value is Locale|LocaleData|string|null ? true : false) acceptsInput(mixed $value)

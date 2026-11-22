@@ -32,9 +32,9 @@
         "illuminate/collections": "^10.0 || ^11.0 || ^12.0 || ^13.0 || dev-master",
         "laravel-lang/config": "^1.12",
         "laravel-lang/locale-list": "^1.5",
+        "laravel-lang/locale-names": "^3.0",
         "laravel-lang/native-country-names": "^1.5",
-        "laravel-lang/native-currency-names": "^1.6",
-        "laravel-lang/native-locale-names": "^2.5"
+        "laravel-lang/native-currency-names": "^1.6"
     },
     "require-dev": {
         "orchestra/testbench": "^8.0 || ^9.0 || ^10.0 || ^11.0",
