@@ -191,11 +191,7 @@ class MainService
             return true;
         }
 
-        if (is_string($value)) {
-            return true;
-        }
-
-        return false;
+        return is_string($value);
     }
 
     public function normalize(mixed $value): ?string
