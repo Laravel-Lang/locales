@@ -14,6 +14,7 @@ use LaravelLang\NativeLocaleNames\LocaleNames;
 
 use function app;
 use function in_array;
+use function is_string;
 use function lang_path;
 use function pathinfo;
 
@@ -174,6 +175,48 @@ class MainService
         $locale ??= $this->current();
 
         return $this->aliasConfig->to($locale);
+    }
+
+    public function acceptsInput(mixed $value): bool
+    {
+        if ($value === null) {
+            return true;
+        }
+
+        if ($value instanceof Locale) {
+            return true;
+        }
+
+        if ($value instanceof LocaleData) {
+            return true;
+        }
+
+        if (is_string($value)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function normalize(mixed $value): ?string
+    {
+        if ($value === null) {
+            return null;
+        }
+
+        if ($value instanceof Locale) {
+            return $value->value;
+        }
+
+        if ($value instanceof LocaleData) {
+            return $value->code;
+        }
+
+        if (is_string($value)) {
+            return $value;
+        }
+
+        return null;
     }
 
     protected function formatLocale(string $locale, bool $aliased): string
