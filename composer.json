@@ -33,7 +33,6 @@
         "laravel-lang/config": "^1.12",
         "laravel-lang/locale-list": "^1.5",
         "laravel-lang/native-country-names": "^1.5",
-        "laravel-lang/native-currency-names": "^1.6",
         "laravel-lang/native-locale-names": "^2.5"
     },
     "require-dev": {
