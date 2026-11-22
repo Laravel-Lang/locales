@@ -12,7 +12,7 @@ use LaravelLang\Locales\Services\MainService;
 use LaravelLang\NativeLocaleNames\LocaleData;
 
 /**
- * @method static bool acceptsInput(mixed $value)
+ * @method static ($value is Locale|LocaleData|string|null ? true : false) acceptsInput(mixed $value)
  * @method static bool isAvailable(Locale|LocaleData|string|null $locale)
  * @method static bool isInstalled(Locale|LocaleData|string|null $locale)
  * @method static bool isProtected(Locale|LocaleData|string|null $locale)
