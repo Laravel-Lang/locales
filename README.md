@@ -12,7 +12,7 @@
 
 ## Documentation
 
-See the [documentation](https://laravel-lang.com/start) for detailed information.
+[List supported or installed locales and set the application locale.](https://laravel-lang.com/locales)
 
 ## Contributing
 
